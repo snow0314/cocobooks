@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import bean.Forward;
 
 
-@WebServlet("/HomeController")
+@WebServlet("/signup")
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -21,7 +21,7 @@ public class HomeController extends HttpServlet {
 		
 		
 		switch (cmd) {
-		case :
+		case "signup":
 			
 			break;
 
