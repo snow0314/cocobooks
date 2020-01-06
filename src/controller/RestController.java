@@ -21,7 +21,7 @@ public class RestController extends HttpServlet {
 		String json=null; //제이슨 받을 문자열 변수
 		
 		switch (cmd) {
-		case value:
+		case "value":
 			
 			break;
 
@@ -40,12 +40,12 @@ public class RestController extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doProcess(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doProcess(request, response);
 	}
 
 }
