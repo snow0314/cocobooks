@@ -23,6 +23,7 @@ public class RestController extends HttpServlet {
 		switch (cmd) {
 		case "value":
 			System.out.println("수정합니다");
+			System.out.println("두번쨰 수정");
 			break;
 
 		default:
