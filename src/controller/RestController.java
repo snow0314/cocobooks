@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow","/authorchange"
-			,"/singoinfo","/noblelimit","/genreadd"})
+@WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
+			,"/singoinfo","/noblelimit","/genreadd","checkid"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -90,7 +90,12 @@ public class RestController extends HttpServlet {
 			
 			break;
 			
+		case "/checkid":
 			
+			
+			
+			
+			break;
 			
 			
 		default:
