@@ -22,69 +22,69 @@ public class RestController extends HttpServlet {
 		String json=null; //제이슨 받을 문자열 변수
 		
 		switch (cmd) {
-		case "list": //작품 목록
+		case "/list": //작품 목록
 			
 			
 			
 			break;
 
-		case "noveldetaillist": //작품 목록
+		case "/noveldetaillist": //작품 목록
 			
 			
 			
 			break;	
-		case "mynoble": //내가 쓴 작품 목록
+		case "/mynoble": //내가 쓴 작품 목록
 			
 			
 			
 			break;	
-		case "preference": //선호작 목록
+		case "/preference": //선호작 목록
 			
 			
 			
 			break;	
-		case "myinfo": //회원가입시 입력한 정보 출력
+		case "/myinfo": //회원가입시 입력한 정보 출력
 	
 	
 	
 			break;	
-		case "contents": //그동안 구매한 작품 목록
+		case "/contents": //그동안 구매한 작품 목록
 			
 			
 			
 			break;		
-		case "charge": //그동안 충전한 내역
+		case "/charge": //그동안 충전한 내역
 			
 			
 			
 			break;		
-		case "userinfo": //관리자기능, 회원보기
+		case "/userinfo": //관리자기능, 회원보기
 			
 			
 			
 			break;	
-		case "blacklistshow": //관리자기능, 블랙리스트 보기
+		case "/blacklistshow": //관리자기능, 블랙리스트 보기
 			
 			
 			
 			break;	
-		case "authorchange": //관리자기능, 전환신청한 작가들 보기,변경
+		case "/authorchange": //관리자기능, 전환신청한 작가들 보기,변경
 			
 			
 			
 			break;
-		case "singoinfo": //관리자기능, 1회 이상 신고받은 모든 글 보기 및 확인 후 삭제 해준다
+		case "/singoinfo": //관리자기능, 1회 이상 신고받은 모든 글 보기 및 확인 후 삭제 해준다
 	
 	
 	
 			break;
 			
-		case "noblelimit": //관리자기능, 성인등급 제한
+		case "/noblelimit": //관리자기능, 성인등급 제한
 			
 			
 			
 			break;
-		case "genreadd": //관리자기능, 장르 추가 기능
+		case "/genreadd": //관리자기능, 장르 추가 기능
 			
 			
 			
