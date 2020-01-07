@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/RestController")
+@WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow","/authorchange"
+			,"/singoinfo","/noblelimit","/genreadd"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import bean.Forward;
 
 
-@WebServlet("/signup")
+@WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
+				"/noveldetail","/buynovel","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -1,4 +1,4 @@
-package dao;
+package common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,7 +21,7 @@ public class JdbcUtill {
 	public static Connection getConnection() {
 		Connection con=null;
 		try{
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe",
+			con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.0.43:1521:xe",
 					"ICIA", "1111");
 			System.out.println("Connection Success!");
 			
