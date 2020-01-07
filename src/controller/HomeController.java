@@ -19,10 +19,8 @@ public class HomeController extends HttpServlet {
 		String cmd=request.getServletPath(); 
 		Forward fw=null;
 		
-		
 		switch (cmd) {
 		case "signup":
-			
 			break;
 
 		default:
