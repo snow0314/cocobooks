@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
+import service.LogOut;
 import service.Login;
 import service.Signup;
 import service.Write;
@@ -137,7 +138,8 @@ public class HomeController extends HttpServlet {
 			System.out.println("회원가입1");
 			break;
 		case "/logout":	
-			
+			LogOut logOut = new LogOut(request,response);
+			fw=logOut.logout();
 			
 			
 			

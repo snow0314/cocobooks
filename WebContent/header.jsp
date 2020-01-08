@@ -1,12 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Header</title>
 <style>
-
+body{
+background-color: #F2F2F2;}
 		.header_logo{
 			padding-left: 650px;
 			position: absolute;
@@ -63,24 +64,24 @@
 </head>
 <body>
 <div class="header_menu">
-	<div class="header_item">&#124; ·Î±×ÀÎ</div>
-	<div class="header_item">&#124; È¸¿ø°¡ÀÔ</div>
-	<div class="header_item">&#124; °áÁ¦ÇÏ±â </div>
-	<div class="header_item">&#124; °ü¸®ÀÚ ±â´É</div>
+	<div class="header_item">&#124; ë¡œê·¸ì¸</div>
+	<div class="header_item">&#124; íšŒì›ê°€ì…</div>
+	<div class="header_item">&#124; ê²°ì œí•˜ê¸° </div>
+	<div class="header_item">&#124; ê´€ë¦¬ì ê¸°ëŠ¥</div>
 	</div>
 	<div class="header_logo">
 	<img src="image/logo.png" class="header_image" alt="logo">
 	</div>
 	
 	<div class="header_search">
-		<input type="text" placeholder="ÀÛÇ°¸í,ÀÛ°¡¸í" class="search_text">
-		<input type="submit" value="ÅëÇÕ°Ë»ö" class="search_button">
+		<input type="text" placeholder="ì‘í’ˆëª…,ì‘ê°€ëª…" class="search_text">
+		<input type="submit" value="í†µí•©ê²€ìƒ‰" class="search_button">
 	</div>
    
 	<div class="main_menu">
-		<div class="menu">¹«·á À¥¼Ò¼³</div>
-		<div class="menu">À¯·á À¥¼Ò¼³</div>
-		<div class="menu">µ¶ÀÚ °Ô½ÃÆÇ</div>
+		<div class="menu">ë¬´ë£Œ ì›¹ì†Œì„¤</div>
+		<div class="menu">ìœ ë£Œ ì›¹ì†Œì„¤</div>
+		<div class="menu">ë…ì ê²Œì‹œíŒ</div>
 	</div>
 </body>
 </html>

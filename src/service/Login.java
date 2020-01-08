@@ -31,7 +31,6 @@ public class Login {
 			fw.setRedirect(false);
 			HttpSession session=request.getSession();
 			session.setAttribute("id", id);
-			request.setAttribute("msg", "로그인 성공");
 		}else {
 			request.setAttribute("msg", "아이디 또는 비밀번호가 다릅니다.");
 			System.out.println("아이디 또는 비밀번호가 다릅니다.");
