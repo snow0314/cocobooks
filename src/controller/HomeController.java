@@ -19,6 +19,7 @@ public class HomeController extends HttpServlet {
        
     
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String cmd=request.getServletPath(); 
 		Forward fw=null;
 		
@@ -127,7 +128,7 @@ public class HomeController extends HttpServlet {
 		case "/signcompleted": //회원가입 DB에 저장	
 			Signup sign = new Signup(request,response);
 			fw=sign.signcompleted();
-			
+			System.out.println("회원가입1");
 
 		default:
 

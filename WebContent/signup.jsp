@@ -52,7 +52,7 @@
 
 </head>
 <body>
-	<form class="form-horizontal" name="signcompleted" onsubmit="return validate();">
+	<form class="form-horizontal" name="signcompleted" action="signcompleted" method="post" onsubmit="return validate();">
 		<fieldset>
 
 			<!-- Form Name -->
@@ -64,7 +64,7 @@
 				<div class="col-md-4" id="id_div">
 					<input id="id" name="id" type="text" placeholder="아이디를 입력하세요"
 						class="form-control input-md">
-				<a href="checkid" class="myButton">중복확인</a>
+					<input type="button" class="myButton" value="중복확인"></>
 				</div>
 			</div>
 			
@@ -103,8 +103,8 @@
 			<div class="form-group">
 				<label class="col-md-4 control-label" for="age">나이</label>
 				<div class="col-md-4">
-					<input id="age" name="age" type="text" placeholder="나이를 입력하세요"
-						class="form-control input-md" onkeypress="inNumber();">
+					<input id="age" name="age" type="number" placeholder="나이를 입력하세요"
+						class="form-control input-md">
 
 				</div>
 			</div>
@@ -117,12 +117,12 @@
 				<div class="col-md-4">
 					<div class="radio">
 						<label for="gender-0"> <input type="radio" name="gender"
-							id="gender-0" value="male" checked="checked"> 남자
+							id="gender-0" value="남" checked="checked"> 남자
 						</label>
 					</div>
 					<div class="radio">
 						<label for="gender-1"> <input type="radio" name="gender"
-							id="gender-1" value="female"> 여자
+							id="gender-1" value="여"> 여자
 						</label>
 					</div>
 				</div>
@@ -143,14 +143,16 @@
 			<div class="form-group">
 			
 				<div class="col-md-4">
-					<button id="singlebutton" name="singlebutton"
-						class="btn btn-primary">회원가입</button>
+					<input type="submit" id="singlebutton" name="singlebutton"
+						class="btn btn-primary" value="회원가입">
+					<input type="button" id="gomain"
+						class="btn btn-primary" value="메인으로">
 				</div>
 			</div>
 
 		</fieldset>
 	</form>
-
+	
 <script type="text/javascript">
 
 function validate() {
@@ -200,7 +202,7 @@ function validate() {
         return false;
     }
     
-    
+    console.log(signcompleted.gender.value);
 }
 
     function check(re, what, message) {
@@ -219,7 +221,26 @@ function validate() {
     	  }
     	}
 
+    $(".myButton").click(function() {
+    	$.ajax({
+    		url: "checkid",
+    		type: "get",
+    		data: {"idcheck": signcompleted.id.value},
+    		
+    		success: function(data) {
+    			alert(data);
+    		},
+    		error: function(error) {
+    			alert(error);
+    			console.log(error);
+    		}
+    	}); //ajax End
+    	
+	});
 
+    $("#gomain").click(function() {
+		location.href="main.jsp";
+	});
 
 </script>
 
