@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
+import bean.Member;
 
 public class Signup {
 	HttpServletRequest request; 
@@ -16,6 +17,8 @@ public class Signup {
 
 	public Forward signcompleted() {
 		Forward fw=new Forward();
+		Member mb= new Member();
+		
 		request.getParameter("id");
 		
 		return null;
