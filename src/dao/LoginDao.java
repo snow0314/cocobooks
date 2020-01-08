@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import javax.swing.JButton;
 
+import bean.Member;
 import common.JdbcUtill;
 
 public class LoginDao {
@@ -20,24 +21,27 @@ public class LoginDao {
 	public void close() {
 		JdbcUtill.close(rs, pstmt, con);
 	}
-	public boolean loginCheck(String id, String pw) {
+	public Member loginCheck(String id, String pw) {
+		Member mb=null;
 		String sql = "SELECT * FROM MEMBER WHERE MB_ID=?";
-		boolean result=false;
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setNString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if (rs.getNString("MB_PW").equals(pw)) {
-					result = true;// 모두 일치
+					mb = new Member();
+					mb.setCoin(rs.getInt("MB_COIN"));
+					return mb; //모두 일치 하면 코인을 담아서 쏨
 				} else {
-					result = false; // 비번불일치
+					return mb; // 비번 or 아이디 불일치시 null을 보냄
 				}
 			} 
 		} catch (SQLException e) {
+			System.out.println("로그인 예외");
 			e.printStackTrace();
 		}
-		return result;
+		return mb;
 		
 	}
 	
