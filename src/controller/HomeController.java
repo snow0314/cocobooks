@@ -15,7 +15,7 @@ import service.Write;
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
 				"/noveldetail","/buynovel","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
-				})
+				,"/logout"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -135,7 +135,13 @@ public class HomeController extends HttpServlet {
 			Signup sign = new Signup(request,response);
 			fw=sign.signcompleted();
 			System.out.println("회원가입1");
-
+			break;
+		case "/logout":	
+			
+			
+			
+			
+			break;
 		default:
 
 			break;
