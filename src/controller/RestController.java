@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import service.Signup;
+
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
 			,"/singoinfo","/noblelimit","/genreadd","/checkid"})
@@ -91,10 +95,9 @@ public class RestController extends HttpServlet {
 			break;
 			
 		case "/checkid":
-			
-			
-			
-			
+			Signup sign=new Signup(request, response);
+			json=sign.checkid(request.getParameter("idcheck"));
+			//Gson gson =new Gson().toJson(json);
 			break;
 			
 			

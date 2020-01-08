@@ -40,6 +40,19 @@ public class Signup {
 		
 		return fw;
 	}
+
+	public String checkid(String id) { //아이디 중복 검사 메소드
+		SignupDao signdao=new SignupDao();
+		boolean result=signdao.checkid(id);
+		
+		if(result) {
+			System.out.println("아이디 중복 검사 성공");
+			return "중복된 아이디 입니다";
+		}else {
+			return "사용가능한 아이디 입니다";
+		}
+		
+	}
 	
 
 }

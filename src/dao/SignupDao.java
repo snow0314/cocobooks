@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import bean.Member;
+import common.JdbcUtill;
 
 public class SignupDao {
 		Connection con;
@@ -15,7 +16,7 @@ public class SignupDao {
 	
 	public boolean signup(Member mb) {
 		String sql="INSERT INTO MEMBER(MB_ID,MB_PW,MB_NAME,MB_AGE,MB_EMAIL,MB_GENDER) VALUES(?,?,?,?,?,?)";
-		
+		con=JdbcUtill.getConnection();
 		try {
 			
 			pstmt=con.prepareStatement(sql);
@@ -29,12 +30,41 @@ public class SignupDao {
 			
 			if(result !=0) {
 				System.out.println("회원가입 성공");
+				JdbcUtill.close(rs, pstmt, con);
 				return true;
 			}
 			
 			
 		} catch (SQLException e) {
 			System.out.println("회원가입 오류 발생");
+			JdbcUtill.close(rs, pstmt, con);
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
+
+	public boolean checkid(String id) {
+		String sql="SELECT MB_ID FROM MEMBER WHERE MB_ID=?";
+		con=JdbcUtill.getConnection();
+		
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println("중복된 아이디 있음");
+				return true;
+			}else {
+				System.out.println("중복된 아이디 없음");
+				return false;
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("아이디 중복검사 오류");
 			e.printStackTrace();
 		}
 		
