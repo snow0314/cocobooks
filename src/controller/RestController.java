@@ -15,7 +15,7 @@ import service.Signup;
 
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
-			,"/singoinfo","/noblelimit","/genreadd","/checkid"})
+			,"/singoinfo","/noblelimit","/genreadd","/checkid","/checkemail"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -97,10 +97,14 @@ public class RestController extends HttpServlet {
 		case "/checkid":
 			Signup sign=new Signup(request, response);
 			json=sign.checkid(request.getParameter("idcheck"));
-			//Gson gson =new Gson().toJson(json);
+			
 			break;
 			
+		case "/checkemail":
+			Signup sign2=new Signup(request, response);
+			json=sign2.checkemail(request.getParameter("idcheck"));
 			
+			break;
 		default:
 			break;
 		}

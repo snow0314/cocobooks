@@ -71,4 +71,32 @@ public class SignupDao {
 		return false;
 	}
 
+
+	public boolean checkeamil(String email) {
+		
+		String sql="SELECT MB_EMAIL FROM MEMBER WHERE MB_EMAIL=?";
+		con=JdbcUtill.getConnection();
+		
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, email);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println("중복된 이메일 있음");
+				return true;
+			}else {
+				System.out.println("중복된 이메일 없음");
+				return false;
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("이메일 중복검사 오류");
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
 }

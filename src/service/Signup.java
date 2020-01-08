@@ -53,6 +53,18 @@ public class Signup {
 		}
 		
 	}
+
+	public String checkemail(String email) {
+		SignupDao signdao=new SignupDao();
+		boolean result=signdao.checkeamil(email);
+		
+		if(result) {
+			System.out.println("이메일 중복 검사 성공");
+			return "중복된 이메일 입니다";
+		}else {
+			return "사용가능한 이메일 입니다";
+		}
+	}
 	
 
 }

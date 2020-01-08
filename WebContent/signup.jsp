@@ -17,36 +17,6 @@
 <style type="text/css">
 
 
-.myButton {
-	box-shadow:inset 0px 1px 0px 0px #fff6af;
-	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
-	background-color:#ffec64;
-	border-radius:6px;
-	border:1px solid #ffaa22;
-	display:inline-block;
-	cursor:pointer;
-	color:#665666;
-	font-family:Arial;
-	font-size:15px;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffee66;
-}
-.myButton:hover {
-	background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-	background-color:#ffab23;
-}
-.myButton:active {
-	position:relative;
-	top:1px;
-}
-
-#id_div{
-	
-}
-
-
 </style>
 
 
@@ -65,6 +35,7 @@
 					<input id="id" name="id" type="text" placeholder="아이디를 입력하세요"
 						class="form-control input-md">
 					<input type="button" class="myButton" value="중복확인"></>
+					<input type="hidden" id="idcheck" value="false">
 				</div>
 			</div>
 			
@@ -135,6 +106,8 @@
 					<div class="input-group">
 						<input id="email" name="email" class="form-control"
 							placeholder="이메일을 입력하세요" type="text">
+						<input type="button" class="myButton2" value="중복확인"></>
+						<input type="hidden" id="emailcheck" value="false">
 					</div>
 				</div>
 			</div>
@@ -201,8 +174,15 @@ function validate() {
         signcompleted.age.focus();
         return false;
     }
+    if(signcompleted.idcheck.value!="true"){
+    	alert("아이디 중복 검사를 하세요");
+    	return false;
+    }
+    if(signcompleted.emailcheck.value!="true"){
+    	alert("이메일 중복 검사를 하세요");
+    	return false;
+    }
     
-    console.log(signcompleted.gender.value);
 }
 
     function check(re, what, message) {
@@ -221,13 +201,37 @@ function validate() {
     	  }
     	}
 
-    $(".myButton").click(function() {
+    $(".myButton").click(function() { //아이디 중복 검사
     	$.ajax({
     		url: "checkid",
-    		type: "get",
+    		type: "post",
     		data: {"idcheck": signcompleted.id.value},
-    		
+    		dataType: 'text',
     		success: function(data) {
+    			alert(data);
+    			if(data=="사용가능한 아이디 입니다"){
+    				signcompleted.idcheck.value="true";
+    			}
+    			},
+    		error: function(error) {
+    			alert(error);
+    			console.log(error);
+    			
+    		}
+    	}); //ajax End
+    	
+	});
+
+    $(".myButton2").click(function() { //이메일 중복 검사
+    	$.ajax({
+    		url: "checkemail",
+    		type: "post",
+    		data: {"idcheck": signcompleted.email.value},
+    		dataType: 'text',
+    		success: function(data) {
+    			if(data=="사용가능한 이메일 입니다"){
+    				signcompleted.emailcheck.value="true";
+    			}
     			alert(data);
     		},
     		error: function(error) {
@@ -237,7 +241,7 @@ function validate() {
     	}); //ajax End
     	
 	});
-
+    
     $("#gomain").click(function() {
 		location.href="main.jsp";
 	});
