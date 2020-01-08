@@ -21,8 +21,9 @@ display: flex;}
 .login{
 width: 500px;
 height: 400px;
-border: 2px solid grey;
 margin-left: 60px;
+margin-top: 40px;
+background-color: #F2F2F2;
 }
 .cash{
 border: 2px solid grey;
@@ -31,14 +32,13 @@ height: 200px;
 margin-left: 60px;
 margin-top: 20px;
 }
+.logintext{
+font-size: 20px;
+}
 </style>
 </head>
 <body>
-	<header>
-	<div class="header">
 	<jsp:include page="header.jsp"></jsp:include>
-	</div>
-	</header>
 	<div class="novel_category">
 	<div class="free_best">
 	베스트 무료 웹 소설 목록
@@ -48,14 +48,14 @@ margin-top: 20px;
 	</div>
 	<div class="right">
 	<div class="login">
-	로그인 창
+	<div class="logintext">회원 로그인</div>
+	<jsp:include page="loginFrm.jsp"></jsp:include>
 	</div>
 	<div class="cash">
 	결제 하기
 	</div>
 	</div>
 	</div>
-	
 	<footer>
 	<jsp:include page="footer.jsp"></jsp:include>
 	</footer>
