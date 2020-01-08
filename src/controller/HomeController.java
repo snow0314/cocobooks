@@ -24,6 +24,7 @@ public class HomeController extends HttpServlet {
 		
 		switch (cmd) {
 		case "/main": //메인화면
+			-------------------------------------
 			Login lg=new Login(request,response);
 			fw=lg.check();
 			break;
