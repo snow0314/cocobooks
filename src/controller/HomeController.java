@@ -17,7 +17,7 @@ import service.Write;
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
 				"/noveldetail","/buynovel","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
-				,"/logout"})
+				,"/logout","/chargecoin"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -143,6 +143,12 @@ public class HomeController extends HttpServlet {
 		case "/logout":	
 			LogOut logOut = new LogOut(request,response);
 			fw=logOut.logout();
+			
+			
+			
+			break;
+		case "/chargecoin": //결제 페이지에서 결제하기 버튼 눌렸을때 충전, DB 업로드
+			
 			
 			
 			
