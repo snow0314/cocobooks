@@ -19,7 +19,12 @@ public class Signup {
 		Forward fw=new Forward();
 		Member mb= new Member();
 		
-		request.getParameter("id");
+		mb.setId(request.getParameter("id"));
+		mb.setPw(request.getParameter("pw"));
+		mb.setName(request.getParameter("name"));
+		mb.setAge(Integer.parseInt(request.getParameter("age")));
+		
+		
 		
 		return null;
 	}
