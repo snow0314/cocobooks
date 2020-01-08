@@ -7,6 +7,35 @@ public class Member {
 	int age;
 	String gender;
 	String email;
+	int coin;
+	String kind;
+	String apply;
+	String blackList;
+	
+	public int getCoin() {
+		return coin;
+	}
+	public void setCoin(int coin) {
+		this.coin = coin;
+	}
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public String getApply() {
+		return apply;
+	}
+	public void setApply(String apply) {
+		this.apply = apply;
+	}
+	public String getBlackList() {
+		return blackList;
+	}
+	public void setBlackList(String blackList) {
+		this.blackList = blackList;
+	}
 	public String getId() {
 		return id;
 	}
