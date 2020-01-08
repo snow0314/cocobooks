@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
+import service.Login;
 import service.Signup;
+import service.Write;
 
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
@@ -19,8 +21,10 @@ public class HomeController extends HttpServlet {
        
     
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String cmd=request.getServletPath(); 
 		Forward fw=null;
+		System.out.println(cmd);
 		
 		switch (cmd) {
 		case "/main": //메인화면
@@ -36,6 +40,8 @@ public class HomeController extends HttpServlet {
 			break;
 		
 		case "/login": //로그인
+			Login login=new Login(request, response);
+			fw=login.check();
 			break;
 			
 			
@@ -98,6 +104,7 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/write": //글쓰기
+			Write write= new Write();
 			break;
 			
 			

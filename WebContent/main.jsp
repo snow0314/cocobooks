@@ -49,7 +49,7 @@ font-size: 20px;
 	<div class="right">
 	<div class="login">
 	<div class="logintext">회원 로그인</div>
-	<jsp:include page="loginFrm.jsp"></jsp:include>
+	
 	</div>
 	<div class="cash">
 	결제 하기
@@ -59,5 +59,15 @@ font-size: 20px;
 	<footer>
 	<jsp:include page="footer.jsp"></jsp:include>
 	</footer>
+	<script type="text/javascript">
+		var info= "${id}";
+		console.log(info);
+		if(info==null){
+			$(".logintext").load('loginFrm.jsp');
+		}else {
+			$(".logintext").load('loginSuccessFrm.jsp');
+		}
+	</script>
+	
 </body>
 </html>
