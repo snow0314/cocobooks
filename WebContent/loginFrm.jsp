@@ -66,6 +66,7 @@
 	<div><input type="submit" value="간편 회원가입" class="signup" formaction="signup"></div>
 	<div><input type="submit" value="아이디 찾기" class="find" formaction="idsearch"></div>
 	<div><input type="submit" value="비밀번호 찾기" class="find" formaction="pwsearch"></div>
+	---------------------------------------------------
 	</div>
 	</div>
 	</form>
