@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import bean.Forward;
 import service.LogOut;
 import service.Login;
+import service.PayMent;
 import service.Signup;
 import service.Write;
 
@@ -123,6 +124,8 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/payment": //결제하기
+			PayMent payment=new PayMent(request,response);
+			fw=payment.chargeCoin();
 			break;
 			
 			

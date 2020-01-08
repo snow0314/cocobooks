@@ -88,8 +88,6 @@ padding-top: 50px;
 	</footer>
 	<script type="text/javascript">
 		var info="${id}";
-		console.dir(info);
-		
 		if(info!=""){
 			$("#logintext").load("loginSuccessFrm.jsp");
 		}else {
