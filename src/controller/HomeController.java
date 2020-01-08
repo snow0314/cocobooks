@@ -25,15 +25,15 @@ public class HomeController extends HttpServlet {
 		switch (cmd) {
 		case "/main": //메인화면
 	
-			Login lg=new Login(request,response);
-			fw=lg.check();
+			//Login lg=new Login(request,response);
+			//fw=lg.check();
 			break;
 		
 		case "/signup": //회원가입
-			break;
+			
 			fw=new Forward();
 			fw.setPath("signup.jsp");
-			
+			break;
 		
 		case "/login": //로그인
 			break;
@@ -124,7 +124,7 @@ public class HomeController extends HttpServlet {
 			
 			
 			
-		case "/signcompleted": //회원가입 완료	
+		case "/signcompleted": //회원가입 DB에 저장	
 			Signup sign = new Signup(request,response);
 			fw=sign.signcompleted();
 			
