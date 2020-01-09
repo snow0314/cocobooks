@@ -12,6 +12,7 @@ import service.ChargeCoin;
 import service.LogOut;
 import service.Login;
 import service.Main;
+import service.MyPage;
 import service.PayMent;
 import service.Signup;
 import service.Write;
@@ -120,6 +121,8 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/myPage": //마이페이지 
+			MyPage myPage=new MyPage();
+			fw=myPage.move();
 			break;
 			
 			

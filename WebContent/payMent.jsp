@@ -100,7 +100,7 @@
 	</div>
 	</div>
 	<div class="footerBox"><input type="submit" value="결제" class="chargeBtn" formaction="chargecoin">
-	<input type="submit" value="취소" class="cancelBtn" formaction="payment">
+	<input type="submit" value="취소" class="cancelBtn" formaction="main">
 	</div>
 	</form>
 </body>

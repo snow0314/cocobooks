@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import service.Charge;
 import service.Signup;
 import service.UserInfo;
 
@@ -59,8 +60,8 @@ public class RestController extends HttpServlet {
 			
 			break;		
 		case "/charge": //그동안 충전한 내역
-			
-			
+			Charge charge=new Charge(request,response);
+			json=charge.allChargeList();
 			
 			break;		
 		case "/userinfo": //관리자기능, 회원보기
