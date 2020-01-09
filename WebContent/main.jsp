@@ -79,7 +79,7 @@ padding-top: 50px;
 	</div>
 	</div>
 	<div class="cash">
-	결제 하기
+	<jsp:include page="chargeCoin.jsp"></jsp:include>
 	</div>
 	</div>
 	</div>
