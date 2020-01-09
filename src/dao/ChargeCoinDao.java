@@ -19,11 +19,11 @@ public class ChargeCoinDao {
 		JdbcUtill.close(rs, pstmt, con);
 	}
 	public boolean ChargeCoin(String id, int coin) {
-		String sql="UPDATE WHERE MB_ID=?"; //
+		String sql="UPDATE MEMBER SET MB_COIN =MB_COIN+? WHERE MB_ID = ?";
 		try {
 			pstmt=con.prepareStatement(sql);
-			pstmt.setNString(1, "");
-			pstmt.setInt(2, coin);
+			pstmt.setInt(1, coin);
+			pstmt.setNString(2, id);
 			int result=pstmt.executeUpdate();
 			if(result!=0) {
 				System.out.println("충전 성공");

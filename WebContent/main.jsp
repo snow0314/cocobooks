@@ -93,7 +93,6 @@ padding-top: 50px;
 		}else {
 			$("#logintext").load("loginFrm.jsp");
 		}
-			
 	</script>
 	
 </body>

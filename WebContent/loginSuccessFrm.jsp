@@ -47,6 +47,7 @@ background-color: #F2F2F2;}
 		margin-left: 50px;
 		margin-top: 50px;
 		font-weight: 700;
+		
 	}
 </style>
 </head>
@@ -55,8 +56,17 @@ background-color: #F2F2F2;}
 	<div class="userId">*${id}님 환영합니다.*</div>
 	<div class="myCoin">내 코인 : ${coin} 개</div>
 	<div><input type="submit" formaction="myPage" value="마이 페이지" class="myPage"></div>
-	<div><input type="submit" formaction="admin" value="관리자 모드" class="admin"></div>
+	<div><input id="admin" type="submit" formaction="admin" value="관리자 모드" class="admin" ></div>
 	<div><input type="submit" formaction="logout" value="로그아웃" class="logOutBtn"></div>
 	</form>
+	<script type="text/javascript">
+	var kind="${kind}"
+	console.log(kind);
+	if(kind=="관리"){
+		document.getElementById("admin").style.display= "";
+	}else if(kind=="일반"){
+		document.getElementById("admin").style.display= "none";
+	}
+	</script>
 </body>
 </html>
