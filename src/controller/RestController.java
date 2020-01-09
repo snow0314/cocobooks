@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import service.Charge;
+import service.Genre;
 import service.Signup;
 import service.UserInfo;
 
@@ -91,8 +92,8 @@ public class RestController extends HttpServlet {
 			
 			break;
 		case "/genreadd": //관리자기능, 장르 추가 기능
-			
-			
+			Genre genre=new Genre();
+			json=genre.genreShow();
 			
 			break;
 			

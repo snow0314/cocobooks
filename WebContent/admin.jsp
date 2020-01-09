@@ -50,12 +50,11 @@ table{
   <div class="left">
   <div class="list-group">
   <a class="list-group-item list-group-item-action" onclick="userinfo()">회원보기</a><br>
-  <!-- <input type="hidden" class="page" value=0> -->
   <a class="list-group-item list-group-item-action">블랙리스트 보기</a><br>
   <a class="list-group-item list-group-item-action">유료 작가 전환</a><br>
   <a class="list-group-item list-group-item-action">신고받은 글 보기 및 삭제</a><br>
   <a class="list-group-item list-group-item-action">작품 등급 제한 걸기</a><br>
-  <a class="list-group-item list-group-item-action">장르 추가 기능</a><br>
+  <a class="list-group-item list-group-item-action" onclick="genreInfo()">장르 추가 기능</a><br>
   </div>
   </div>
   <div class="content" id="content">
@@ -68,7 +67,25 @@ table{
 </body>
 <script>
 	
-    var json;
+    var json; 
+    var index;
+    var maxindex;
+    
+    function genreInfo() { //장르 추가 기능
+    	$.ajax({
+    		url: "genreadd",
+    		type: "post",
+    		dataType: 'json',
+    		success: function(data) {
+    			json=data;
+    			console.log(json);
+    		},
+    		error: function(error) {
+    			alert(error);
+    			console.log(error);
+    		}
+    	}); //ajax End
+	}
     
 	function userinfo(){ //회원보기 
 		$.ajax({
@@ -89,8 +106,9 @@ table{
     	}); //ajax End
 	} //userinfo End
 	
-	function pageShow(json,num) {
-		
+	function pageShow(json,num) { //페이지 안의 내용 보여주는 함수
+		index=num;
+	
 		var str="";
 		str+="<table class='table-striped'>";
 		str+="<tr>";
@@ -132,30 +150,46 @@ table{
 	}
 	
 	
- 	function pageNum(json) {
+ 	function pageNum(json) { //페이지 넘버 보여주는 함수
 		var totalpage;
 		
 		totalPages = json.length/10;
 		if (json.length/10 > 0) {
 		totalPages++;
 		}
+		maxindex=Math.floor(totalPages);
 		var str2="";
 		str2+="<ul class='pagination justify-content-center'>";
-		str2+="<li class='page-item'><a class='page-link'>Previous</a></li>";
+		str2+="<li class='page-item'><a class='page-link' onclick='newpage("+0+")'>Previous</a></li>";
 		
 		for(var k=1; k<totalPages;k++){
 			str2+="<li class='page-item'><a class='page-link' onclick='newpage("+k+")'>"+k+"</a></li>";
 			str2+="<input type='hidden' class='page' value='"+k+"'>";
 		}
-		str2+="<li class='page-item'><a class='page-link'>Next</a></li></ul>";
+		str2+="<li class='page-item'><a class='page-link' onclick='newpage("+-1+")'>Next</a></li></ul>";
 		str2+="</ul>";
 		
 		$("#bottom").append(str2);
 		
 	} 
 	
- 	function newpage(num) {
-		pageShow(json,num);
+ 	function newpage(num) { //페이지 이전, 다음 버튼 누를시 이동 제어하는 함수
+ 		if(num===0){
+ 			if(index==1){
+ 				pageShow(json,1);
+ 			}else{
+ 				pageShow(json,index-1);
+ 			}
+ 		}else if(num===-1){
+ 			console.log(maxindex);
+ 			if(index==maxindex){
+ 				pageShow(json,maxindex);
+ 			}else{
+ 				pageShow(json,index+1);
+ 			}
+ 		}else{
+ 			pageShow(json,num);
+ 		}
 	}
 
 	
