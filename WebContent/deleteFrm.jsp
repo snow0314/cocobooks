@@ -57,7 +57,7 @@
 </div>
 <div class="mbpass">
 <h4>현재 비밀번호</h4>
-<input type="password" class="text" placeholder="비밀번호를 입력하세요." required="required"/>
+<input type="password" name="pw" class="text" placeholder="비밀번호를 입력하세요." required="required"/>
 </div>
 <div class="twobutton">
 <input type="submit" value="확인" class="a button" formaction="dropmember"/>
