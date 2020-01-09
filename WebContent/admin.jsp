@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
 <title>Insert title here</title>
 <style type="text/css">
     .left {
@@ -49,72 +50,36 @@ table{
   <div class="left">
   <div class="list-group">
   <a class="list-group-item list-group-item-action" onclick="userinfo()">회원보기</a><br>
-  <a href="#" class="list-group-item list-group-item-action">블랙리스트 보기</a><br>
-  <a href="#" class="list-group-item list-group-item-action">유료 작가 전환</a><br>
-  <a href="#" class="list-group-item list-group-item-action">신고받은 글 보기 및 삭제</a><br>
-  <a href="#" class="list-group-item list-group-item-action">작품 등급 제한 걸기</a><br>
-  <a href="#" class="list-group-item list-group-item-action">장르 추가 기능</a><br>
+  <!-- <input type="hidden" class="page" value=0> -->
+  <a class="list-group-item list-group-item-action">블랙리스트 보기</a><br>
+  <a class="list-group-item list-group-item-action">유료 작가 전환</a><br>
+  <a class="list-group-item list-group-item-action">신고받은 글 보기 및 삭제</a><br>
+  <a class="list-group-item list-group-item-action">작품 등급 제한 걸기</a><br>
+  <a class="list-group-item list-group-item-action">장르 추가 기능</a><br>
   </div>
   </div>
   <div class="content" id="content">
   content
   </div>
-  <div class="bottom">
-  
+  <div class="bottom" id="bottom">
+ <ul class="pagination" id="pagination"></ul>
   </div>
 
 </body>
 <script>
 	
+    var json;
     
-
-
 	function userinfo(){ //회원보기 
 		$.ajax({
     		url: "userinfo",
     		type: "post",
+    		//data: {"page":$("page").value},
     		dataType: 'json',
     		success: function(data) {
-    			var json=data;
-    			var str="";
-    			console.log(json);
-    			str+="<table class='table-striped'>";
-    			str+="<tr>";
-    			str+="<th>아이디</th>";
-    			str+="<th>이름</th>";
-    			str+="<th>나이</th>";
-    			str+="<th>성별</th>";
-    			str+="<th>코인</th>";
-    			str+="<th>종류</th>";
-    			str+="<th>이메일</th>";
-    			str+="</tr>";
-    			
-    			for(var i=0;i<20;i++){
-    				if(i<json.length){
-    				str+="<tr>";
-    				str+="<th>"+json[i].id+"</th>";
-    				str+="<th>"+json[i].name+"</th>";
-    				str+="<th>"+json[i].age+"</th>";
-    				str+="<th>"+json[i].gender+"</th>";
-    				str+="<th>"+json[i].coin+"</th>";
-    				str+="<th>"+json[i].kind+"</th>";
-    				str+="<th>"+json[i].email+"</th>";
-    				str+="</tr>";
-    			}else{
-    				str+="<tr>";
-    				str+="<th></th>";
-    				str+="<th></th>";
-    				str+="<th></th>";
-    				str+="<th></th>";
-    				str+="<th></th>";
-    				str+="<th></th>";
-    				str+="<th></th>";
-    				str+="</tr>";
-    			}
-    				pageNum(json);
-    			}
-    			str+="</table>";
-    			$("#content").html(str);
+    			json=data;
+    			pageShow(json,1);
+    			pageNum(json);
     			
     		},
     		error: function(error) {
@@ -124,20 +89,76 @@ table{
     	}); //ajax End
 	} //userinfo End
 	
-	function pageNum(json) {
-		var str2="";
-		str2="<ul class='pagination justify-content-center'>";
+	function pageShow(json,num) {
 		
-		<li class="page-item"><a class="page-link">Previous</a></li>
-		<li class="page-item active"><a class="page-link">1</a></li>
-		<li class="page-item"><a class="page-link">2</a></li>
-		<li class="page-item"><a class="page-link">3</a></li>
-		<li class="page-item"><a class="page-link">4</a></li>
-		<li class="page-item"><a class="page-link">5</a></li>
-		<li class="page-item"><a class="page-link">Next</a></li>
-	</ul>
+		var str="";
+		str+="<table class='table-striped'>";
+		str+="<tr>";
+		str+="<th>아이디</th>";
+		str+="<th>이름</th>";
+		str+="<th>나이</th>";
+		str+="<th>성별</th>";
+		str+="<th>코인</th>";
+		str+="<th>종류</th>";
+		str+="<th>이메일</th>";
+		str+="</tr>";
+		
+		for(var i=(num - 1) *10;i<(num*10);i++){
+			if(i<json.length){
+			str+="<tr>";
+			str+="<th>"+json[i].id+"</th>";
+			str+="<th>"+json[i].name+"</th>";
+			str+="<th>"+json[i].age+"</th>";
+			str+="<th>"+json[i].gender+"</th>";
+			str+="<th>"+json[i].coin+"</th>";
+			str+="<th>"+json[i].kind+"</th>";
+			str+="<th>"+json[i].email+"</th>";
+			str+="</tr>";
+		}else{
+			str+="<tr>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="</tr>";
+		}
+			
+		}
+		str+="</table>";
+		$("#content").html(str);
+	}
 	
+	
+ 	function pageNum(json) {
+		var totalpage;
+		
+		totalPages = json.length/10;
+		if (json.length/10 > 0) {
+		totalPages++;
+		}
+		var str2="";
+		str2+="<ul class='pagination justify-content-center'>";
+		str2+="<li class='page-item'><a class='page-link'>Previous</a></li>";
+		
+		for(var k=1; k<totalPages;k++){
+			str2+="<li class='page-item'><a class='page-link' onclick='newpage("+k+")'>"+k+"</a></li>";
+			str2+="<input type='hidden' class='page' value='"+k+"'>";
+		}
+		str2+="<li class='page-item'><a class='page-link'>Next</a></li></ul>";
+		str2+="</ul>";
+		
+		$("#bottom").append(str2);
+		
+	} 
+	
+ 	function newpage(num) {
+		pageShow(json,num);
 	}
 
+	
+	
 </script>
 </html>

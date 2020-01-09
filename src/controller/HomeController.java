@@ -19,7 +19,7 @@ import service.Write;
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
 				"/noveldetail","/buynovel","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
-				,"/logout","/chargecoin"})
+				,"/logout","/chargecoin","/admin"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -152,6 +152,11 @@ public class HomeController extends HttpServlet {
 		case "/chargecoin": //결제 페이지에서 결제하기 버튼 눌렸을때 충전, DB 업로드
 			ChargeCoin cCoin=new ChargeCoin(request,response);
 			fw=cCoin.chargeCoin();
+			
+			
+			break;
+		case "/admin":
+			fw.setPath("admin.jsp");
 			
 			
 			break;
