@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
+import service.ChargeCoin;
 import service.LogOut;
 import service.Login;
+import service.Main;
 import service.PayMent;
 import service.Signup;
 import service.Write;
@@ -30,9 +32,9 @@ public class HomeController extends HttpServlet {
 		
 		switch (cmd) {
 		case "/main": //메인화면
-	
-			//Login lg=new Login(request,response);
-			//fw=lg.check();
+			
+			Main main=new Main(request, response);
+			fw=main.check();
 			break;
 		
 		case "/signup": //회원가입
@@ -124,8 +126,8 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/payment": //결제하기
-			PayMent payment=new PayMent(request,response);
-			fw=payment.chargeCoin();
+			PayMent payment=new PayMent(request, response);
+			fw=payment.move();
 			break;
 			
 			
@@ -148,8 +150,8 @@ public class HomeController extends HttpServlet {
 			
 			break;
 		case "/chargecoin": //결제 페이지에서 결제하기 버튼 눌렸을때 충전, DB 업로드
-			
-			
+			ChargeCoin cCoin=new ChargeCoin(request,response);
+			fw=cCoin.chargeCoin();
 			
 			
 			break;

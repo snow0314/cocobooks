@@ -31,7 +31,7 @@ public class LoginDao {
 			if (rs.next()) {
 				if (rs.getNString("MB_PW").equals(pw)) {
 					mb = new Member();
-					mb.setCoin(rs.getInt("MB_COIN"));
+					mb.setKind(rs.getNString("MB_KIND_NUM"));
 					return mb; //모두 일치 하면 코인을 담아서 쏨
 				} else {
 					return mb; // 비번 or 아이디 불일치시 null을 보냄
