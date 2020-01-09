@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import service.Signup;
+import service.UserInfo;
 
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
@@ -63,8 +64,8 @@ public class RestController extends HttpServlet {
 			
 			break;		
 		case "/userinfo": //관리자기능, 회원보기
-			
-			
+			UserInfo info=new UserInfo(request,response);
+			json=info.allUserInfo();
 			
 			break;	
 		case "/blacklistshow": //관리자기능, 블랙리스트 보기
