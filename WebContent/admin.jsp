@@ -61,7 +61,7 @@ table{
   content
   </div>
   <div class="bottom" id="bottom">
- <ul class="pagination" id="pagination"></ul>
+ 
   </div>
 
 </body>
@@ -71,14 +71,30 @@ table{
     var index;
     var maxindex;
     
-    function genreInfo() { //장르 추가 기능
+    function genreInfo() { //DB에 저장된 장르 보기
     	$.ajax({
     		url: "genreadd",
     		type: "post",
     		dataType: 'json',
     		success: function(data) {
     			json=data;
-    			console.log(json);
+    			var str="";
+    			str+="<table class='table-striped'>";
+    			str+="<tr>";
+    			str+="<th>번호</th>";
+    			str+="<th>장르이름</th>";
+    			str+="<th>삭제</th>";
+    			str+="</tr>";
+    			for(var i=0;i<json.length;i++){
+    				str+="<tr>";
+    				str+="<th>"+(i+1)+"</th>";
+    				str+="<th>"+json[i]+"</th>";
+    				str+="<th><input type=''
+    				str+="</tr>";
+    			}
+    			str+="</table>";
+    			$("#content").html(str);
+    			$("#bottom").html();
     		},
     		error: function(error) {
     			alert(error);
