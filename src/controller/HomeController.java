@@ -12,7 +12,7 @@ import service.AuthorChangeInsert;
 import service.Authorchange;
 import service.ChargeCoin;
 import service.Delete;
-import service.Genre;
+import service.FaideWebFiction;
 import service.LogOut;
 import service.Login;
 import service.Main;
@@ -89,6 +89,8 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/faidewebfiction": //유료 웹 소설
+			FaideWebFiction fadeWebFiction= new FaideWebFiction(request,response);
+			fw=fadeWebFiction.move();
 			break;
 			
 			
