@@ -83,7 +83,9 @@ background-color: #F2F2F2;}
 	</div>
 	
 	<div class="header_search">
-		<input type="text" placeholder="작품명,작가명" class="search_text">
+		<input type="text" placehold
+		
+		er="작품명,작가명" class="search_text">
 		<input type="submit" value="통합검색" class="search_button">
 	</div>
    

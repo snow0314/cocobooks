@@ -70,9 +70,10 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/dropmember": //회원탈퇴
+			Delete delete = new Delete(request, response);
+			System.out.println("회원탈퇴1");
+			fw=delete.dropmember();
 			break;
-			
-			
 			
 			
 		case "/searchboard": //통합검색
