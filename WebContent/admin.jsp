@@ -56,6 +56,9 @@ table{
 	padding:12px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #1570cd;
+	position:   relative;
+	left:       400px;
+	
 }
 .myButton:hover {
 	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
