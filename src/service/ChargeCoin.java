@@ -32,6 +32,7 @@ public class ChargeCoin {
 				System.out.println("충전내역 INSERT성공");
 				fw.setPath("/main");
 				fw.setRedirect(false);
+				cDao.close();
 			}
 		}else {
 			System.out.println("충전내역 INSERT실패");
