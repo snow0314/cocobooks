@@ -89,7 +89,7 @@ table{
     				str+="<tr>";
     				str+="<th>"+(i+1)+"</th>";
     				str+="<th>"+json[i]+"</th>";
-    				str+="<th><input type=''
+    				str+="<th><input type=>";
     				str+="</tr>";
     			}
     			str+="</table>";

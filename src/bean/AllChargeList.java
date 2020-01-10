@@ -1,12 +1,17 @@
 package bean;
 
-import java.util.Date;
 
 public class AllChargeList {
 	int chargeNum;
 	String chargeId;
 	int chargePrice;
-	Date ChargeDate;
+	String ChargeDate;
+	public String getChargeDate() {
+		return ChargeDate;
+	}
+	public void setChargeDate(String chargeDate) {
+		ChargeDate = chargeDate;
+	}
 	public int getChargeNum() {
 		return chargeNum;
 	}
@@ -25,10 +30,5 @@ public class AllChargeList {
 	public void setChargePrice(int chargePrice) {
 		this.chargePrice = chargePrice;
 	}
-	public Date getChargeDate() {
-		return ChargeDate;
-	}
-	public void setChargeDate(Date chargeDate) {
-		ChargeDate = chargeDate;
-	}
-}
+	
+}//
