@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
 import service.ChargeCoin;
+import service.Delete;
 import service.LogOut;
 import service.Login;
 import service.Main;
@@ -66,9 +67,10 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/dropmember": //회원탈퇴
+			Delete delete = new Delete(request, response);
+			System.out.println("회원탈퇴1");
+			fw=delete.dropmember();
 			break;
-			
-			
 			
 			
 		case "/searchboard": //통합검색

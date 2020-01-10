@@ -14,15 +14,7 @@
  margin-top:20px;
  }
 </style>
-<script type="text/javascript">
-        // 비밀번호 미입력시 경고창
-        function checkValue(){
-            if(!document.deleteform.password.value){
-                alert("비밀번호를 입력하지 않았습니다.");
-                return false;
-            }
-        }
-    </script>
+
 </head>
 <body>
 <div class="memberdrop"></div>
@@ -47,7 +39,7 @@
 <li>마지막 수정일 : 2020년 01월 08일</li>
 </ul>
 </div>
-<form name="deleteFrm" method="post" onsubmit="return checkValue()">
+<form name="deleteFrm" method="post" onsubmit="return checkValue()" action="dropmember">
 <div class="agree">
 <h4>탈퇴동의</h4>
 <label for="memberLeaveAgree">
@@ -60,7 +52,7 @@
 <input type="password" name="pw" class="text" placeholder="비밀번호를 입력하세요." required="required"/>
 </div>
 <div class="twobutton">
-<input type="submit" value="확인" class="a button" formaction="dropmember"/>
+<input type="submit" value="확인" class="a button"/>
 <input type="submit" value="취소" class="tow button" formaction="main"/>
 </div>
 </form>
