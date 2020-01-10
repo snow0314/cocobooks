@@ -41,6 +41,35 @@ table{
 	height: 100%;
 	text-align: center;
 }
+.myButton {
+	box-shadow:inset 0px 1px 0px 0px #97c4fe;
+	background:linear-gradient(to bottom, #3d94f6 5%, #1e62d0 100%);
+	background-color:#3d94f6;
+	border-radius:6px;
+	border:3px solid #337fed;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:15px;
+	font-weight:bold;
+	padding:12px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #1570cd;
+	position:   relative;
+	left:       400px;
+	
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #1e62d0 5%, #3d94f6 100%);
+	background-color:#1e62d0;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+
 </style>
 </head>
 <body>
@@ -73,7 +102,7 @@ table{
     
     function genreInfo() { //DB에 저장된 장르 보기
     	$.ajax({
-    		url: "genreadd",
+    		url: "genreshow",
     		type: "post",
     		dataType: 'json',
     		success: function(data) {
@@ -89,12 +118,54 @@ table{
     				str+="<tr>";
     				str+="<th>"+(i+1)+"</th>";
     				str+="<th>"+json[i]+"</th>";
-    				str+="<th><input type=>";
+
+    				str+="<th><input type='button' value='삭제' onclick='genreDelete("+"\""+json[i]+"\""+")'>";
     				str+="</tr>";
     			}
     			str+="</table>";
     			$("#content").html(str);
-    			$("#bottom").html();
+    			genreAddButton();
+    		},
+    		error: function(error) {
+    			alert(error);
+    			console.log(error);
+    		}
+    	}); //ajax End
+	}
+    
+    function genreAddButton() { //장르 추가하는 버튼 보여주는 메소드
+		var str="";
+    	str+="<input type='text' class='form-control' id='genreAddText' name='genreName' maxlength='10'>";
+		str+="<input type='button' class='myButton' id='genreAddButton' onclick='genreAdd()' value='장르 추가하기'>";
+    	$("#bottom").html(str);
+    }
+    
+	function genreAdd() { //장르 추가하는 메소드
+		$.ajax({
+    		url: "genreadd",
+    		type: "post",
+    		data: {"genreName":$("#genreAddText").val()},
+    		dataType: 'text',
+    		success: function(data) {
+    			alert(data);
+    			genreInfo();
+    		},
+    		error: function(error) {
+    			alert(error);
+    			console.log(error);
+    		}
+    	}); //ajax End
+	}
+    
+    function genreDelete(genreName) { //장르 삭제 메소드
+    	$.ajax({
+    		url: "genredelete",
+    		type: "post",
+    		data: {"genreName":genreName},
+    		dataType: 'text',
+    		success: function(data) {
+    			alert(data);
+    			genreInfo();
     		},
     		error: function(error) {
     			alert(error);
@@ -185,7 +256,7 @@ table{
 		str2+="<li class='page-item'><a class='page-link' onclick='newpage("+-1+")'>Next</a></li></ul>";
 		str2+="</ul>";
 		
-		$("#bottom").append(str2);
+		$("#bottom").html(str2);
 		
 	} 
 	

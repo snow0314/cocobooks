@@ -19,7 +19,7 @@ import service.UserInfo;
 
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
-			,"/singoinfo","/noblelimit","/genreadd","/checkid","/checkemail"})
+			,"/singoinfo","/noblelimit","/checkid","/checkemail","/genredelete","/genreshow","/genreadd"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -93,23 +93,35 @@ public class RestController extends HttpServlet {
 			
 			
 			break;
-		case "/genreadd": //관리자기능, 장르 추가 기능
+		case "/genreshow": //관리자기능, 장르 추가 기능
 			Genre genre=new Genre();
 			json=genre.genreShow();
 			
 			break;
 			
-		case "/checkid":
+		case "/checkid": //아이디 중복 검사
 			Signup sign=new Signup(request, response);
 			json=sign.checkid(request.getParameter("idcheck"));
 			
 			break;
 			
-		case "/checkemail":
+		case "/checkemail": //이메일 중복 검사
 			Signup sign2=new Signup(request, response);
 			json=sign2.checkemail(request.getParameter("idcheck"));
 			
 			break;
+			
+		case "/genredelete":
+			Genre genre2=new Genre(request,response);
+			json=genre2.genreDelete();
+			
+			break;
+			
+		case "/genreadd":
+			Genre genre3=new Genre(request,response);
+			json=genre3.genreAdd();
+			
+			break;	
 		default:
 			break;
 		}
