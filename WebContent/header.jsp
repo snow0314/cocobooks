@@ -44,7 +44,7 @@ background-color: #F2F2F2;}
 		
 		}
 		.menu{
-			padding-left: 370px;
+			padding-left: 320px;
 			font-size: 20px;
 			font-family:sans-serif;
 			font-weight: 600;
@@ -60,10 +60,19 @@ background-color: #F2F2F2;}
 			color: #EFF5FB;
 			border: 0.5px solid #2E9AFE;
 		}
+		.freeWeb{
+			font-size: 20px;
+			font-family:sans-serif;
+			font-weight: 600;
+			border: 0px;
+			background-color:#2E9AFE;
+			color: #EFF5FB;
+		}
 	</style>
 </head>
 <body>
-<div class="header_menu">
+	<form method="post">
+	<div class="header_menu">
 	<div class="header_item">&#124; 로그인</div>
 	<div class="header_item">&#124; 회원가입</div>
 	<div class="header_item">&#124; 결제하기 </div>
@@ -79,9 +88,10 @@ background-color: #F2F2F2;}
 	</div>
    
 	<div class="main_menu">
-		<div class="menu">무료 웹소설</div>
+		<div class="menu"><input type="submit" value="무료 웹소설" class="freeWeb" formaction="freewebfiction"></div>
 		<div class="menu">유료 웹소설</div>
 		<div class="menu">독자 게시판</div>
 	</div>
+	</form>
 </body>
 </html>

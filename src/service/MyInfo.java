@@ -32,6 +32,7 @@ public class MyInfo {
 			Gson gson=new Gson();
 			json=gson.toJson(mb);
 			System.out.println("프로필 불러오기 성공");
+			System.out.println(json);
 			return json;
 		}else {
 			System.out.println("프로필 불러오기 실패");

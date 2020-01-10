@@ -30,6 +30,7 @@ public class ShowMyInfoDao {
 				mb=new Member();
 				mb.setId(rs.getNString("MB_ID"));
 				mb.setName(rs.getNString("MB_NAME"));
+				mb.setAge(rs.getInt("MB_AGE"));
 				mb.setEmail(rs.getNString("MB_EMAIL"));
 				mb.setKind(rs.getNString("MB_KIND_NUM"));
 				mb.setCoin(rs.getInt("MB_COIN"));
