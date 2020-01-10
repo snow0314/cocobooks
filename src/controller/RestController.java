@@ -36,7 +36,7 @@ public class RestController extends HttpServlet {
 			
 			break;
 
-		case "/noveldetaillist": //작품 목록
+		case "/noveldetaillist": //작품화 목록
 			
 			
 			

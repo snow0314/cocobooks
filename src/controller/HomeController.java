@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
+import service.Authorchange;
 import service.ChargeCoin;
 import service.Genre;
 import service.LogOut;
@@ -21,7 +22,7 @@ import service.Write;
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
 				"/noveldetail","/buynovel","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
-				,"/logout","/chargecoin","/admin"})
+				,"/logout","/chargecoin","/admin","/authorchangeinsert"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -137,9 +138,15 @@ public class HomeController extends HttpServlet {
 			
 		
 		case "/authorchange": //유료작가로 전환 신청
+			Authorchange aC= new Authorchange();
+			fw=aC.move();
 			break;
 			
+		case "/authorchangeinsert":
 			
+			
+			
+			break;
 			
 		case "/signcompleted": //회원가입 DB에 저장	
 			Signup sign = new Signup(request,response);
