@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 
 import service.Charge;
 import service.Genre;
+import service.MyInfo;
 import service.Signup;
 import service.UserInfo;
 
@@ -51,8 +52,9 @@ public class RestController extends HttpServlet {
 			
 			break;	
 		case "/myinfo": //회원가입시 입력한 정보 출력
-	
-	
+			MyInfo myinfo=new MyInfo(request,response);
+			json=myinfo.showMyInfo();
+			
 	
 			break;	
 		case "/contents": //그동안 구매한 작품 목록

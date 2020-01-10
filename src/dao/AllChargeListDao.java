@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class AllChargeListDao {
 		JdbcUtill.close(rs, pstmt, con);
 	}
 	public List<AllChargeList> allList(String id) {
+		SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd hh:mm");
 		String sql="SELECT RANK,CR_NUM,CR_ID,CR_PRICE,CR_DATE\r\n" + 
 				"FROM\r\n" + 
 				"(SELECT ROWNUM RANK,CR_NUM,CR_ID,CR_PRICE,CR_DATE\r\n" + 
@@ -40,7 +42,8 @@ public class AllChargeListDao {
 				allList.setChargeNum(rs.getInt("RANK"));
 				allList.setChargeId(rs.getNString("CR_ID"));
 				allList.setChargePrice(rs.getInt("CR_PRICE"));
-				allList.setChargeDate(rs.getDate("CR_DATE"));
+				String crDate=sdf.format(rs.getTimestamp("CR_DATE"));
+				allList.setChargeDate(crDate);
 				allCList.add(allList);
 			}
 			return allCList;

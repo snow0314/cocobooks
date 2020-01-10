@@ -118,6 +118,7 @@ table{
     				str+="<tr>";
     				str+="<th>"+(i+1)+"</th>";
     				str+="<th>"+json[i]+"</th>";
+
     				str+="<th><input type='button' value='삭제' onclick='genreDelete("+"\""+json[i]+"\""+")'>";
     				str+="</tr>";
     			}
