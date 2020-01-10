@@ -11,7 +11,14 @@ public class Member {
 	String kind;
 	String apply;
 	int blackList;
+	int totalView;
 	
+	public int getTotalView() {
+		return totalView;
+	}
+	public void setTotalView(int totalView) {
+		this.totalView = totalView;
+	}
 	public int getBlackList() {
 		return blackList;
 	}

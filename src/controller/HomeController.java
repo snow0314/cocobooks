@@ -11,6 +11,7 @@ import bean.Forward;
 import service.AuthorChangeInsert;
 import service.Authorchange;
 import service.ChargeCoin;
+import service.Delete;
 import service.Genre;
 import service.LogOut;
 import service.Login;

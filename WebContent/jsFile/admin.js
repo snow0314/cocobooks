@@ -190,7 +190,7 @@ var json;
 		$.ajax({
     		url: "blacklistshow",
     		type: "post",
-    		dataType: 'json',
+    		dataType: "json",
     		success: function(data) {
     			json=data;
     			blackListPageShow(json,1);
@@ -248,14 +248,14 @@ var json;
 		$("#content").html(str);
 	}
  	
-	function authorChangeShow() {
+	function authorChangeShow() { //전환신청한 작가들 보여주는 메소드
 		$.ajax({
     		url: "authorchangeshow",
     		type: "post",
     		dataType: 'json',
     		success: function(data) {
     			json=data;
-    			pageShow(json,1);
+    			authorChangeShowPage(json,1);
     			pageNum(json);
     			
     		},
@@ -266,8 +266,9 @@ var json;
     	}); //ajax End
 	}
 	
-	function blackDelete() {
+	function blackDelete() { //선택한 아이디의 블랙리스트 해제하는 기능
 		var lists = [];
+		$.ajaxSettings.traditional = true;
 		$("input[name='black']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
 			   lists.push($(this).val());
 			  });
@@ -276,12 +277,13 @@ var json;
 		$.ajax({
     		url: "blacklistdelete",
     		type: "post",
-    		data:{'black':lists},
-    		dataType: 'json',
+    		data:{"black":lists},
+    		dataType: 'text',
     		success: function(data) {
-    			alert(data);
+    			var msg=data;
+    			console.log(msg);
+    			alert(msg);
     			blacklistshow();
-    			
     		},
     		error: function(error) {
     			alert(error);
@@ -290,5 +292,47 @@ var json;
     	}); //ajax End	
 		
 	}
- 	
+	
+	function authorChangeShowPage(json,num) {
+		index=num;
+		
+		var str="";
+		str+="<table class='table-striped'>";
+		str+="<tr>";
+		str+="<th>아이디</th>";
+		str+="<th>이름</th>";
+		str+="<th>나이</th>";
+		str+="<th>성별</th>";
+		str+="<th>이메일</th>";
+		str+="<th>총 조회수</th>";
+		str+="<th>전환버튼</th>";
+		str+="</tr>";
+		
+		for(var i=(num - 1) *10;i<(num*10);i++){
+			if(i<json.length){
+			str+="<tr>";
+			str+="<th>"+json[i].id+"</th>";
+			str+="<th>"+json[i].name+"</th>";
+			str+="<th>"+json[i].age+"</th>";
+			str+="<th>"+json[i].gender+"</th>";
+			str+="<th>"+json[i].email+"</th>";
+			str+="<th>"+json[i].totalView+"</th>";
+			str+="<th><input type='button' value='전환'></th>";
+			str+="</tr>";
+		}else{
+			str+="<tr>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="</tr>";
+		}
+			
+		}
+		str+="</table>";
+		
+		$("#content").html(str);
+	} 
+	
  	

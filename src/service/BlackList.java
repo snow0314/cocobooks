@@ -1,6 +1,7 @@
 package service;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -38,11 +39,12 @@ public class BlackList {
 
 	public String blackListDelete() {
 		BlackListDao bDao=new BlackListDao();
+		
 		String[] black=request.getParameterValues("black");
-		System.out.println("블랙:"+black[0]);
-//		for(int i=0;i<black.length;i++) {
-//			System.out.println("블랙:"+black[i]);
-//		}
+		
+		for(int i=0;i<black.length;i++) {
+			System.out.println("블랙리스트:"+black[i]);
+		}
 		
 		boolean result=bDao.blackListDelete(black);
 		
