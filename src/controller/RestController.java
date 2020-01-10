@@ -11,12 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import service.Author;
+import service.BlackList;
+import service.Charge;
+import service.Genre;
+import service.MyInfo;
 import service.Signup;
 import service.UserInfo;
 
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
-			,"/singoinfo","/noblelimit","/genreadd","/checkid","/checkemail"})
+			,"/singoinfo","/noblelimit","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
+			,"/blacklistdelete"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,7 +39,7 @@ public class RestController extends HttpServlet {
 			
 			break;
 
-		case "/noveldetaillist": //작품 목록
+		case "/noveldetaillist": //작품화 목록
 			
 			
 			
@@ -49,8 +55,9 @@ public class RestController extends HttpServlet {
 			
 			break;	
 		case "/myinfo": //회원가입시 입력한 정보 출력
-	
-	
+			MyInfo myinfo=new MyInfo(request,response);
+			json=myinfo.showMyInfo();
+			
 	
 			break;	
 		case "/contents": //그동안 구매한 작품 목록
@@ -59,8 +66,8 @@ public class RestController extends HttpServlet {
 			
 			break;		
 		case "/charge": //그동안 충전한 내역
-			
-			
+			Charge charge=new Charge(request,response);
+			json=charge.allChargeList();
 			
 			break;		
 		case "/userinfo": //관리자기능, 회원보기
@@ -69,8 +76,8 @@ public class RestController extends HttpServlet {
 			
 			break;	
 		case "/blacklistshow": //관리자기능, 블랙리스트 보기
-			
-			
+			BlackList bList=new BlackList(request,response);
+			json=bList.blacklistshow();
 			
 			break;	
 		case "/authorchange": //관리자기능, 전환신청한 작가들 보기,변경
@@ -89,21 +96,46 @@ public class RestController extends HttpServlet {
 			
 			
 			break;
-		case "/genreadd": //관리자기능, 장르 추가 기능
-			
-			
+		case "/genreshow": //관리자기능, 장르 추가 기능
+			Genre genre=new Genre();
+			json=genre.genreShow();
 			
 			break;
 			
-		case "/checkid":
+		case "/checkid": //아이디 중복 검사
 			Signup sign=new Signup(request, response);
 			json=sign.checkid(request.getParameter("idcheck"));
 			
 			break;
 			
-		case "/checkemail":
+		case "/checkemail": //이메일 중복 검사
 			Signup sign2=new Signup(request, response);
 			json=sign2.checkemail(request.getParameter("idcheck"));
+			
+			break;
+			
+		case "/genredelete":
+			Genre genre2=new Genre(request,response);
+			json=genre2.genreDelete();
+			
+			break;
+			
+		case "/genreadd":
+			Genre genre3=new Genre(request,response);
+			json=genre3.genreAdd();
+			
+			break;	
+			
+		case "/authorchangeshow":
+			Author author=new Author(request,response);
+			json=author.authorShow();
+			
+			break;
+			
+		case "/blacklistdelete": //블랙리스트 해제 기능
+			BlackList bList2=new BlackList(request,response);
+			json=bList2.blackListDelete();
+			
 			
 			break;
 		default:

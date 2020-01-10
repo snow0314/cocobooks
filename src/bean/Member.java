@@ -10,8 +10,14 @@ public class Member {
 	int coin;
 	String kind;
 	String apply;
-	String blackList;
+	int blackList;
 	
+	public int getBlackList() {
+		return blackList;
+	}
+	public void setBlackList(int blackList) {
+		this.blackList = blackList;
+	}
 	public int getCoin() {
 		return coin;
 	}
@@ -30,12 +36,7 @@ public class Member {
 	public void setApply(String apply) {
 		this.apply = apply;
 	}
-	public String getBlackList() {
-		return blackList;
-	}
-	public void setBlackList(String blackList) {
-		this.blackList = blackList;
-	}
+	
 	public String getId() {
 		return id;
 	}

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import bean.Forward;
 import dao.ChargeCoinDao;
+import dao.ChargeCoinInsertDao;
 
 public class ChargeCoin {
 	HttpServletRequest request; 
@@ -23,10 +24,18 @@ public class ChargeCoin {
 		System.out.println("선택 코인"+coin);
 		ChargeCoinDao cDao=new ChargeCoinDao();
 		boolean result=cDao.ChargeCoin(id,coin);
+		cDao.close();
 		if (result) {
-			fw.setPath("/main");
-			fw.setRedirect(false);
+			ChargeCoinInsertDao ciDao=new ChargeCoinInsertDao();
+			boolean insertResult=ciDao.insert(id,coin);
+			if(insertResult) {
+				System.out.println("충전내역 INSERT성공");
+				fw.setPath("/main");
+				fw.setRedirect(false);
+				cDao.close();
+			}
 		}else {
+			System.out.println("충전내역 INSERT실패");
 			fw.setPath("payMent.jsp");
 			fw.setRedirect(false);
 		}
