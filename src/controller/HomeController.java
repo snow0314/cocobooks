@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
+import service.AuthorChangeInsert;
 import service.Authorchange;
 import service.ChargeCoin;
 import service.Genre;
@@ -143,8 +144,8 @@ public class HomeController extends HttpServlet {
 			break;
 			
 		case "/authorchangeinsert":
-			
-			
+			AuthorChangeInsert aChangeInsert=new AuthorChangeInsert(request,response);
+			fw=aChangeInsert.upDate();
 			
 			break;
 			

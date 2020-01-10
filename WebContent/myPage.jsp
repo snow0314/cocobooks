@@ -72,7 +72,7 @@
 	<div><input type="submit" value="구매목록" class="buyList"></div>
 	<div><input type="button" value="충전내역" class="chargeList" id="chargeList"></div>
 	<div><input type="submit" value="결제하기" class="chargeCoin" formaction="payment"></div>
-	<div><input type="button" value="전환신청" class="changeKind" id="changeKind"></div>
+	<div><input type="submit" value="전환신청" class="changeKind" id="changeKind" formaction="authorchange"></div>
 	</div>
 	<div class="contentsbox">
 	<div class="contents" id="content"></div>
@@ -83,6 +83,12 @@
 	<script type="text/javascript" src="jsFile/chargeList.js">
 	</script>
 	<script type="text/javascript" src="jsFile/profile.js">
+	</script>
+	<script type="text/javascript">
+	var msg="${msg}";
+	if(msg=="신청이 완료 되었습니다."){
+		alert("${msg}");
+	}
 	</script>
 </body>
 </html>
