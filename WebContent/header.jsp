@@ -83,17 +83,22 @@ background-color: #F2F2F2;}
 	</div>
 	
 	<div class="header_search">
-		<input type="text" placehold
-		
-		er="작품명,작가명" class="search_text">
-		<input type="submit" value="통합검색" class="search_button">
+		<input type="text" placeholder="작품명,작가명" class="search_text">
+		<input type="submit" value="통합검색" class="search_button" formaction="#">
 	</div>
    
 	<div class="main_menu">
 		<div class="menu"><input type="submit" value="무료 웹소설" class="freeWeb" formaction="freewebfiction"></div>
-		<div class="menu">유료 웹소설</div>
+		<div class="menu"><input type="submit" value="유료 웹소설" class="freeWeb" formaction="faidewebfiction"></div>
 		<div class="menu">독자 게시판</div>
 	</div>
 	</form>
+	<script type="text/javascript">
+	var login="${login}"
+	console.log("${login}");
+	if(login=="로그인후 이용해주세요"){
+		alert("${login}");
+	}
+	</script>
 </body>
 </html>

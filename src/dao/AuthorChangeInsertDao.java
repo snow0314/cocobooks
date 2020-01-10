@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import bean.Member;
 import common.JdbcUtill;
 
 public class AuthorChangeInsertDao {
@@ -35,6 +36,23 @@ public class AuthorChangeInsertDao {
 		}
 		
 		return false;
+	}
+	public Member check(String id) {
+		Member mb=null;
+		String sql="SELECT MB_APPLY FROM MEMBER WHERE MB_ID=?";
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, id);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				mb= new Member();
+				mb.setApply(rs.getNString("MB_APPLY"));
+			}
+			return mb;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return mb;
 	}
 	
 	
