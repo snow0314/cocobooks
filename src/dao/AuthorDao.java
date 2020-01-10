@@ -16,7 +16,13 @@ public class AuthorDao {
 	ResultSet rs;
 	
 	public List<Member> authorShow() {
-		String sql="SELECT * FROM MEMBER WHERE MB_APPLY='신청'";
+		String sql="SELECT member.mb_id, member.mb_name, member.mb_age, member.mb_gender,member.mb_email,SUM(STORY.SR_VIEW_NUM) \r\n" + 
+				"FROM MEMBER\r\n" + 
+				"JOIN STORY\r\n" + 
+				"ON member.mb_id=story.sr_id\r\n" + 
+				"WHERE MB_APPLY='신청'\r\n" + 
+				"GROUP BY member.mb_id, member.mb_age, member.mb_name, member.mb_gender, member.mb_email;\r\n";
+				
 		List<Member> mbList=new ArrayList<Member>();
 		con=JdbcUtill.getConnection();
 		
@@ -35,11 +41,12 @@ public class AuthorDao {
 				mb.setCoin(rs.getInt("MB_COIN"));
 				mb.setBlackList(rs.getInt("MB_BLACKLIST"));
 				mb.setApply(rs.getNString("MB_APPLY"));
+				mb.setTotalView(Integer.parseInt(rs.getNString("SUM(STORY.SR_VIEW_NUM)")));
 				mbList.add(mb);
 			}
-			JdbcUtill.close(rs, pstmt, con);
-			System.out.println("전환신청한 작가들 보임 ");
 			
+			System.out.println("전환신청한 작가들 보임 ");
+			JdbcUtill.close(rs, pstmt, con);
 		} catch (SQLException e) {
 			System.out.println("전환신청한 작가들 오류 ");
 			e.printStackTrace();

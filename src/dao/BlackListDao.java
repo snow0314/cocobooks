@@ -50,19 +50,19 @@ public class BlackListDao {
 	}
 
 	public boolean blackListDelete(String[] black) {
-		String sql="UPDATE MEMBER\r\n" + 
-				"SET MB_BLACKLIST=0\r\n" + 
-				"WHERE MB_BLACKLIST=?";
+		String sql="UPDATE MEMBER SET MB_BLACKLIST=0 WHERE MB_ID=?";
 		con=JdbcUtill.getConnection();
 		int result=0;
-		System.out.println("블랙:"+black[0]);
+		
 		try {
 			pstmt=con.prepareStatement(sql);
-			for(int i=0;i<black.length;i++) {
-				
-				pstmt.setNString(1, black[i]);
-				result=pstmt.executeUpdate();
-			}
+			
+				for(int i=0;i<black.length;i++) {
+					System.out.println("블랙리스트 포문");
+					System.out.println("블랙원:"+black[i]);
+					pstmt.setNString(1, black[i]);
+					result=pstmt.executeUpdate();
+				}
 			JdbcUtill.close(rs, pstmt, con);
 			System.out.println("블랙리스트 해제 성공");
 			
