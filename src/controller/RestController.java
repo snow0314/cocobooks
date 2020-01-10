@@ -21,7 +21,8 @@ import service.UserInfo;
 
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
-			,"/singoinfo","/noblelimit","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"})
+			,"/singoinfo","/noblelimit","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
+			,"/blacklistdelete"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -128,6 +129,13 @@ public class RestController extends HttpServlet {
 		case "/authorchangeshow":
 			Author author=new Author(request,response);
 			json=author.authorShow();
+			
+			break;
+			
+		case "/blacklistdelete": //블랙리스트 해제 기능
+			BlackList bList2=new BlackList(request,response);
+			json=bList2.blackListDelete();
+			
 			
 			break;
 		default:

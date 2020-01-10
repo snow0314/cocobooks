@@ -158,8 +158,8 @@ var json;
 		str2+="</ul>";
 		
 		if(kind=="black"){ //블랙리스트 해제 버튼 출력
-			str2+="<input id='blackbutton' class='myButton' type='submit' value='블랙리스트 해제' formaction='blacklistdelete'>";
-			str2+="</form'>"
+			str2+="<input id='blackbutton' class='myButton' type='button' onclick='blackDelete()' value='블랙리스트 해제'>";
+			
 		}
 		
 		
@@ -208,7 +208,6 @@ var json;
 		index=num;
 	
 		var str="";
-		str+="<form>"
 		str+="<table class='table-striped'>";
 		str+="<tr>";
 		str+="<th><input type='checkbox' id='allCheck'>아이디</th>";
@@ -223,7 +222,7 @@ var json;
 		for(var i=(num - 1) *10;i<(num*10);i++){
 			if(i<json.length){
 			str+="<tr>";
-			str+="<th><input type='checkbox' name='Checked' value='"+json[i].id+"'>"+json[i].id+"</th>";
+			str+="<th><input type='checkbox' name='black' value='"+json[i].id+"'>"+json[i].id+"</th>";
 			str+="<th>"+json[i].name+"</th>";
 			str+="<th>"+json[i].age+"</th>";
 			str+="<th>"+json[i].gender+"</th>";
@@ -265,6 +264,31 @@ var json;
     			console.log(error);
     		}
     	}); //ajax End
+	}
+	
+	function blackDelete() {
+		var lists = [];
+		$("input[name='black']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
+			   lists.push($(this).val());
+			  });
+		
+		console.log(lists);
+		$.ajax({
+    		url: "blacklistdelete",
+    		type: "post",
+    		data:{'black':lists},
+    		dataType: 'json',
+    		success: function(data) {
+    			alert(data);
+    			blacklistshow();
+    			
+    		},
+    		error: function(error) {
+    			alert(error);
+    			console.log(error);
+    		}
+    	}); //ajax End	
+		
 	}
  	
  	

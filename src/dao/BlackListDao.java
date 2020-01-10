@@ -49,4 +49,36 @@ public class BlackListDao {
 		return mbList;
 	}
 
+	public boolean blackListDelete(String[] black) {
+		String sql="UPDATE MEMBER\r\n" + 
+				"SET MB_BLACKLIST=0\r\n" + 
+				"WHERE MB_BLACKLIST=?";
+		con=JdbcUtill.getConnection();
+		int result=0;
+		System.out.println("블랙:"+black[0]);
+		try {
+			pstmt=con.prepareStatement(sql);
+			for(int i=0;i<black.length;i++) {
+				
+				pstmt.setNString(1, black[i]);
+				result=pstmt.executeUpdate();
+			}
+			JdbcUtill.close(rs, pstmt, con);
+			System.out.println("블랙리스트 해제 성공");
+			
+			if(result!=0) {
+				return true;
+			}else {
+				return false;
+			}
+			
+			
+		} catch (SQLException e) {
+			System.out.println("블랙리스트 해제 오류");
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
 }

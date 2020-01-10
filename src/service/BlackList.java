@@ -35,6 +35,23 @@ public class BlackList {
 		
 		return json;
 	}
+
+	public String blackListDelete() {
+		BlackListDao bDao=new BlackListDao();
+		String[] black=request.getParameterValues("black");
+		System.out.println("블랙:"+black[0]);
+//		for(int i=0;i<black.length;i++) {
+//			System.out.println("블랙:"+black[i]);
+//		}
+		
+		boolean result=bDao.blackListDelete(black);
+		
+		if(result) {
+			return "해제 성공";
+		}else {
+			return "해제 실패";
+		}
+	}
 	
 
 }
