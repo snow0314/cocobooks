@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
 import service.ChargeCoin;
+import service.Genre;
 import service.LogOut;
 import service.Login;
 import service.Main;
@@ -161,8 +162,8 @@ public class HomeController extends HttpServlet {
 		case "/admin":
 			fw.setPath("admin.jsp");
 			
-			
 			break;
+		
 		default:
 
 			break;
