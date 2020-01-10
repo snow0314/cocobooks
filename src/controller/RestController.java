@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import service.Author;
+import service.BlackList;
 import service.Charge;
 import service.Genre;
 import service.MyInfo;
@@ -19,7 +21,7 @@ import service.UserInfo;
 
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
-			,"/singoinfo","/noblelimit","/checkid","/checkemail","/genredelete","/genreshow","/genreadd"})
+			,"/singoinfo","/noblelimit","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -73,8 +75,8 @@ public class RestController extends HttpServlet {
 			
 			break;	
 		case "/blacklistshow": //관리자기능, 블랙리스트 보기
-			
-			
+			BlackList bList=new BlackList(request,response);
+			json=bList.blacklistshow();
 			
 			break;	
 		case "/authorchange": //관리자기능, 전환신청한 작가들 보기,변경
@@ -122,6 +124,12 @@ public class RestController extends HttpServlet {
 			json=genre3.genreAdd();
 			
 			break;	
+			
+		case "/authorchangeshow":
+			Author author=new Author(request,response);
+			json=author.authorShow();
+			
+			break;
 		default:
 			break;
 		}
