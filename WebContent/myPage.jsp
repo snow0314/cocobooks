@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<style>
+		<style>
 		body{
 			background-color: #F2F2F2;
 		}
@@ -24,16 +24,18 @@
 		}
 		.myPageMainText{
 			font-size: 50px;
-			margin-left: 680px;
+			margin-left: 300px;
 			font-family: fantasy;
 			font-weight: 700;
+			padding-top: 30px;
 		}
 		.contents{
-			border: 2px solid black;
+			border: 2px solid #2E9AFE;
 			width: 1500px;
 			height: 880px;
 			margin-top: 20px;
 			margin-left: 30px;
+			border-radius: 10px;
 		}
 		.totalBox{
 			display: flex;
@@ -58,11 +60,21 @@
 			padding: 30px;
 		}
 		a{ cursor: pointer;}
-		
+			
+		.myPageimg{
+			width: 290px;
+			margin-left: 50px;
+			}
+			.mainBox{
+				display: flex;
+			}
 	</style>
 </head>
 <body>
-<div class="myPageMainText">${id}님의 마이 페이지</div>
+<div class="mainBox">
+	<a href="main"><img src="image/logo.png" class="myPageimg"></a>
+	<div class="myPageMainText">${id}님의 마이 페이지</div>
+	</div>
 <form method="post">
 	<div class="totalBox">
 	<div class="BtnBox">
@@ -87,6 +99,8 @@
 	<script type="text/javascript">
 	var msg="${msg}";
 	if(msg=="신청이 완료 되었습니다."){
+		alert("${msg}");
+	}else if(msg=="이미 신청된 회원입니다."){
 		alert("${msg}");
 	}
 	</script>
