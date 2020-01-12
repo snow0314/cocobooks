@@ -173,9 +173,18 @@ border: 1px solid #cfcfcf; vertical-align:middle; line-height:29px; }
  </div>
  </div>
 <!-- 상세검색 테이블 종료 -->
-<script language="javascript">
+
+<!-- 등록버튼 시작 -->
+<div id="freewebfiction_add_button_table">
+    <div class="freewebfiction_add_button">
+        <p class="add_button" onClick="onPopup();">작품 만들기</p>
+        <ul></ul>
+    </div>
+</div>
+<!-- 등록버튼 종료 -->
+<script>
 function onPopup(){
-    popup = window.open('/boardCSS/boardcss_write.jsp', 'boardcss_write','width=600,height=600,scrolling=no, scrollbars=no');
+    popup = window.open('/board/freewrite.jsp', 'freewrite','width=2000,height=2000,scrolling=no, scrollbars=no');
     popup.focus();
 }
 </script>
