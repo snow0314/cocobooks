@@ -21,7 +21,7 @@ public class AuthorDao {
 				"JOIN STORY\r\n" + 
 				"ON member.mb_id=story.sr_id\r\n" + 
 				"WHERE MB_APPLY='신청'\r\n" + 
-				"GROUP BY member.mb_id, member.mb_age, member.mb_name, member.mb_gender, member.mb_email;\r\n";
+				"GROUP BY member.mb_id, member.mb_age, member.mb_name, member.mb_gender, member.mb_email;";
 				
 		List<Member> mbList=new ArrayList<Member>();
 		con=JdbcUtill.getConnection();
@@ -37,10 +37,6 @@ public class AuthorDao {
 				mb.setAge(rs.getInt("MB_AGE"));
 				mb.setGender(rs.getNString("MB_GENDER"));
 				mb.setEmail(rs.getNString("MB_EMAIL"));
-				mb.setKind(rs.getNString("MB_KIND_NUM"));
-				mb.setCoin(rs.getInt("MB_COIN"));
-				mb.setBlackList(rs.getInt("MB_BLACKLIST"));
-				mb.setApply(rs.getNString("MB_APPLY"));
 				mb.setTotalView(Integer.parseInt(rs.getNString("SUM(STORY.SR_VIEW_NUM)")));
 				mbList.add(mb);
 			}
