@@ -20,12 +20,14 @@ import service.Genre;
 import service.MyInfo;
 import service.NovelGradeChange;
 import service.Signup;
+import service.SingoInfo;
+import service.StoryDelete;
 import service.UserInfo;
 
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
 			,"/singoinfo","/novelgradechange","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
-			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch"})
+			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch","/storydelete","/blacklistadd"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -88,9 +90,9 @@ public class RestController extends HttpServlet {
 			json=author.authorchange();
 			
 			break;
-		case "/singoinfo": //관리자기능, 1회 이상 신고받은 모든 글 보기 및 확인 후 삭제 해준다
-	
-	
+		case "/singoinfo": //관리자기능, 1회 이상 신고받은 모든 글 보기
+			SingoInfo si=new SingoInfo(request,response);
+			json=si.singoinfo();
 	
 			break;
 			
@@ -150,6 +152,19 @@ public class RestController extends HttpServlet {
 		
 			
 			break;
+			
+		case "/storydelete": //신고받은 글 삭제 및 블랙리스트 추가
+			StoryDelete sDelete =new StoryDelete(request,response);
+			json=sDelete.delete();
+			
+			break;
+			
+		case "/blacklistadd":
+			BlackList bAdd=new BlackList(request,response);
+			json=bAdd.blackListAdd();
+		
+			break;
+				
 		default:
 			break;
 		}

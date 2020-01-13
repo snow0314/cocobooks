@@ -81,4 +81,54 @@ public class BlackListDao {
 		return false;
 	}
 
+	public int blackListAdd(String id) {
+		String sql="UPDATE MEMBER SET MB_BLACKLIST=1 WHERE MB_ID=?";
+		con=JdbcUtill.getConnection();
+		int result=0;
+		
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, id);
+			result=pstmt.executeUpdate();
+			
+			if(result!=0) {
+				System.out.println("블랙리스트 추가 성공");
+				return 1;
+			}else {
+				System.out.println("블랙리스트 추가 실패");
+				return -1;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("블랙리스트 추가 오류");
+			e.printStackTrace();
+		}
+
+		return 0;
+	}
+
+	public int blackListCheck(String id) {
+		String sql="SELECT * FROM MEMBER WHERE MB_ID=? AND MB_BLACKLIST=1";
+		con=JdbcUtill.getConnection();
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				System.out.println("이미 블랙리스트임");
+				return -1;
+			}else {
+				System.out.println("블랙리스트 추가 가능");
+				return 1;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("블랙리스트 체크 오류");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
 }

@@ -15,9 +15,7 @@ public class UserInfoDao {
 	Connection con;
 	PreparedStatement pstmt;
 	ResultSet rs;
-	
-	
-	
+
 	public List<Member> allUserInfo() {
 		String sql="SELECT * FROM MEMBER";
 		List<Member> mbList=new ArrayList<Member>();

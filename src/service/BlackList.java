@@ -54,6 +54,29 @@ public class BlackList {
 			return "해제 실패";
 		}
 	}
+
+	public String blackListAdd() { //블랙리스트 추가하는 메소드
+		BlackListDao bDao=new BlackListDao();
+		String id=request.getParameter("blackId");
+		int result;
+		result=bDao.blackListCheck(id); //리턴값이 -1이면 이미 블랙리스트,1이면 블랙리스트 추가가능 
+		if(result==1) {
+			result= bDao.blackListAdd(id);
+			return "블랙리스트 추가 성공했습니다.";
+		}else if(result==-1){
+			return "이미 블랙리스트 추가된 인물입니다.";
+		}
+		return null;
+	}
+	
+	public int blackListCheck() { //블랙리스트인지 검사하는 메소드
+		BlackListDao bDao=new BlackListDao();
+		String id=request.getParameter("blackId");
+		int result= bDao.blackListCheck(id);
+		
+		return result;
+	}
+	
 	
 
 }

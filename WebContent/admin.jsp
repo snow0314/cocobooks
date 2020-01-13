@@ -88,7 +88,7 @@ table{
   <a class="list-group-item list-group-item-action" onclick="userinfo()">회원보기</a><br>
   <a class="list-group-item list-group-item-action" onclick="blacklistshow()">블랙리스트 보기</a><br>
   <a class="list-group-item list-group-item-action" onclick="authorChangeShow()">유료 작가 전환</a><br>
-  <a class="list-group-item list-group-item-action">신고받은 글 보기 및 삭제</a><br>
+  <a class="list-group-item list-group-item-action" onclick="singoInfoShow()">신고받은 글 보기 및 삭제</a><br>
   <a class="list-group-item list-group-item-action" onclick="allNovelShow()">작품 등급 제한 걸기</a><br>
   <a class="list-group-item list-group-item-action" onclick="genreInfo()">장르 추가 기능</a><br>
   </div>
