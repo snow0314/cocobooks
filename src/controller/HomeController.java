@@ -116,7 +116,8 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/write": //글쓰기
-			Write write= new Write();
+			Write write= new Write(request, response);
+			fw=write.add();
 			break;
 			
 			
