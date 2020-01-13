@@ -38,6 +38,7 @@ public class AllChargeListDao {
 			pstmt.setNString(2, id);
 			rs=pstmt.executeQuery();
 			while(rs.next()){
+				System.out.println("충전내역 와일문 안으로 들어옴");
 				AllChargeList allList=new AllChargeList();
 				allList.setChargeNum(rs.getInt("RANK"));
 				allList.setChargeId(rs.getNString("CR_ID"));

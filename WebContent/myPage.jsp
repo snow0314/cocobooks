@@ -81,7 +81,7 @@
 	<div><input type="submit" value="내 작품" class="myNovel"></div>
 	<div><input type="submit" value="선호작" class="Favorites"></div>
 	<div><input type="button" value="프로필" class="profile" id="profile"></div>
-	<div><input type="submit" value="구매목록" class="buyList"></div>
+	<div><input type="button" value="구매목록" class="buyList" id="buyList"></div>
 	<div><input type="button" value="충전내역" class="chargeList" id="chargeList"></div>
 	<div><input type="submit" value="결제하기" class="chargeCoin" formaction="payment"></div>
 	<div><input type="submit" value="전환신청" class="changeKind" id="changeKind" formaction="authorchange"></div>
@@ -92,9 +92,9 @@
 	</div>
 	</div>
 	</form>
-	<script type="text/javascript" src="jsFile/chargeList.js">
+	<script type="text/javascript" src="jsFile/chargeList.js?ver1">
 	</script>
-	<script type="text/javascript" src="jsFile/profile.js">
+	<script type="text/javascript" src="jsFile/profile.js?ver1">
 	</script>
 	<script type="text/javascript">
 	var msg="${msg}";
@@ -104,5 +104,6 @@
 		alert("${msg}");
 	}
 	</script>
+	<script type="text/javascript" src="jsFile/buyList.js"></script>
 </body>
 </html>
