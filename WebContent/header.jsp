@@ -62,6 +62,7 @@ background-color: #F2F2F2;}
 			font-weight: 550;
 			color: #EFF5FB;
 			border: 0.5px solid #2E9AFE;
+			border-radius: 10px;
 		}
 		.freeWeb{
 			font-size: 20px;

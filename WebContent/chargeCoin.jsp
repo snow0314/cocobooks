@@ -13,6 +13,7 @@
 			font-weight: 900;
 			width: 370px;
 			height: 200px;
+			border-radius: 14px;
 		}
 	</style>
 </head>

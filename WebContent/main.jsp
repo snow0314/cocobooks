@@ -30,7 +30,6 @@ margin-top: 40px;
 background-color: #F2F2F2;
 }
 .cash{
-border: 2px solid grey;
 width: 500px;
 height: 200px;
 margin-left: 60px;
