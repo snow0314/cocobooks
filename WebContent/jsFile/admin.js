@@ -84,7 +84,7 @@ var json;
     		success: function(data) {
     			json=data;
     			pageShow(json,1);
-    			pageNum(json);
+    			pageNum(json,"userInfo");
     			
     		},
     		error: function(error) {
@@ -94,7 +94,7 @@ var json;
     	}); //ajax End
 	} //userinfo End
 	
-	function pageShow(json,num) { //페이지 안의 내용 보여주는 함수
+	function pageShow(json,num) { //페이지 안의 내용 보여주는 함수(회원정보)
 		index=num;
 	
 		var str="";
@@ -140,7 +140,7 @@ var json;
 	
  	function pageNum(json,kind) { //페이지 넘버 보여주는 함수
 		var totalpage;
-		
+		console.log(kind);
 		totalPages = json.length/10;
 		if (json.length/10 > 0) {
 		totalPages++;
@@ -148,13 +148,13 @@ var json;
 		maxindex=Math.floor(totalPages);
 		var str2="";
 		str2+="<ul class='pagination justify-content-center'>";
-		str2+="<li class='page-item'><a class='page-link' onclick='newpage("+0+")'>Previous</a></li>";
+		str2+="<li class='page-item'><a class='page-link' onclick='newpage("+0+",\""+kind+"\""+")'>Previous</a></li>";
 		
 		for(var k=1; k<totalPages;k++){
-			str2+="<li class='page-item'><a class='page-link' onclick='newpage("+k+")'>"+k+"</a></li>";
+			str2+="<li class='page-item'><a class='page-link' onclick='newpage("+k+",\""+kind+"\""+")'>"+k+"</a></li>";
 			str2+="<input type='hidden' class='page' value='"+k+"'>";
 		}
-		str2+="<li class='page-item'><a class='page-link' onclick='newpage("+-1+")'>Next</a></li></ul>";
+		str2+="<li class='page-item'><a class='page-link' onclick='newpage("+-1+",\""+kind+"\""+")'>Next</a></li></ul>";
 		str2+="</ul>";
 		
 		if(kind=="black"){ //블랙리스트 해제 버튼 출력
@@ -167,23 +167,71 @@ var json;
 		
 	} 
 	
- 	function newpage(num) { //페이지 이전, 다음 버튼 누를시 이동 제어하는 함수
- 		if(num===0){
- 			if(index==1){
- 				pageShow(json,1);
- 			}else{
- 				pageShow(json,index-1);
- 			}
- 		}else if(num===-1){
- 			console.log(maxindex);
- 			if(index==maxindex){
- 				pageShow(json,maxindex);
- 			}else{
- 				pageShow(json,index+1);
- 			}
- 		}else{
- 			pageShow(json,num);
- 		}
+ 	function newpage(num,kind) { //페이지 이전, 다음 버튼 누를시 이동 제어하는 함수
+ 					//페이지 넘버, 종류
+ 		console.log(kind);
+ 		switch (kind) {
+		case "userInfo": //
+			if(num===0){
+	 			if(index==1){
+	 				pageShow(json,1);
+	 			}else{
+	 				pageShow(json,index-1);
+	 			}
+	 		}else if(num===-1){
+	 			console.log(maxindex);
+	 			if(index==maxindex){
+	 				pageShow(json,maxindex);
+	 			}else{
+	 				pageShow(json,index+1);
+	 			}
+	 		}else{
+	 			pageShow(json,num);
+	 		}
+			break;
+
+		case "black":
+			if(num===0){
+	 			if(index==1){
+	 				blackListPageShow(json,1);
+	 			}else{
+	 				blackListPageShow(json,index-1);
+	 			}
+	 		}else if(num===-1){
+	 			console.log(maxindex);
+	 			if(index==maxindex){
+	 				blackListPageShow(json,maxindex);
+	 			}else{
+	 				blackListPageShow(json,index+1);
+	 			}
+	 		}else{
+	 			blackListPageShow(json,num);
+	 		}
+			break;
+			
+		case "author":
+			if(num===0){
+	 			if(index==1){
+	 				authorChangeShowPage(json,1);
+	 			}else{
+	 				authorChangeShowPage(json,index-1);
+	 			}
+	 		}else if(num===-1){
+	 			console.log(maxindex);
+	 			if(index==maxindex){
+	 				authorChangeShowPage(json,maxindex);
+	 			}else{
+	 				authorChangeShowPage(json,index+1);
+	 			}
+	 		}else{
+	 			authorChangeShowPage(json,num);
+	 		}
+			break;
+
+		default:
+			break;
+		}
+ 		
 	}
  	
  	function blacklistshow() { //블랙리스트 보기
@@ -248,25 +296,7 @@ var json;
 		$("#content").html(str);
 	}
  	
-	function authorChangeShow() { //전환신청한 작가들 보여주는 메소드
-		$.ajax({
-    		url: "authorchangeshow",
-    		type: "post",
-    		dataType: 'json',
-    		success: function(data) {
-    			json=data;
-    			authorChangeShowPage(json,1);
-    			pageNum(json);
-    			
-    		},
-    		error: function(error) {
-    			alert(error);
-    			console.log(error);
-    		}
-    	}); //ajax End
-	}
-	
-	function blackDelete() { //선택한 아이디의 블랙리스트 해제하는 기능
+ 	function blackDelete() { //선택한 아이디의 블랙리스트 해제하는 기능
 		var lists = [];
 		$.ajaxSettings.traditional = true;
 		$("input[name='black']:checked").each(function(i){   //jQuery로 for문 돌면서 check 된값 배열에 담는다
@@ -292,8 +322,28 @@ var json;
     	}); //ajax End	
 		
 	}
+ 	
+	function authorChangeShow() { //전환신청한 작가들 보여주는 메소드
+		$.ajax({
+    		url: "authorchangeshow",
+    		type: "post",
+    		dataType: 'json',
+    		success: function(data) {
+    			json=data;
+    			authorChangeShowPage(json,1);
+    			pageNum(json,"author");
+    			
+    		},
+    		error: function(error) {
+    			alert(error);
+    			console.log(error);
+    		}
+    	}); //ajax End
+	}
 	
-	function authorChangeShowPage(json,num) {
+	
+	
+	function authorChangeShowPage(json,num) { //유료 작가 전환 페이지
 		index=num;
 		
 		var str="";
@@ -317,10 +367,13 @@ var json;
 			str+="<th>"+json[i].gender+"</th>";
 			str+="<th>"+json[i].email+"</th>";
 			str+="<th>"+json[i].totalView+"</th>";
-			str+="<th><input type='button' value='전환'></th>";
+			str+="<th><button class='transform' onclick='authorchangecomplete(\""+json[i].id+"\")'>전환</button></th>"; 
+					//"<input type='hidden' class='transformValue' value='"+json[i].id+"'></th>";
 			str+="</tr>";
 		}else{
 			str+="<tr>";
+			str+="<th></th>";
+			str+="<th></th>";
 			str+="<th></th>";
 			str+="<th></th>";
 			str+="<th></th>";
@@ -335,4 +388,97 @@ var json;
 		$("#content").html(str);
 	} 
 	
- 	
+	function authorchangecomplete(id) { //전환버튼, 누르면 유료작가로 전환
+		$.ajax({
+    		url: "authorchangecomplete",
+    		type: "post",
+    		data: {"authorId":id},
+    		dataType: 'text',
+    		success: function(data) {
+    			var msg=data;
+    			alert(msg);
+    			authorChangeShow();
+    			
+    		},
+    		error: function(error) {
+    			alert(error);
+    			console.log(error);
+    		}
+    	}); //ajax End
+	}
+	
+	function allNovelShow() { //모든 작품 리스트 불러오기
+		$.ajax({
+    		url: "allnovelshow",
+    		type: "post",
+    		dataType: 'json',
+    		success: function(data) {
+    			json=data;
+    			allNovelShowPage(json,1);
+    			pageNum(json,"novel");
+    		},
+    		error: function(error) {
+    			alert(error);
+    			console.log(error);
+    		}
+    	}); //ajax End
+		
+	}
+	
+	function allNovelShowPage(json,num) { //모든 작품 리스트 HTML
+		index=num;
+		
+		var str="";
+		str+="<table class='table-striped'>";
+		str+="<tr>";
+		str+="<th>아이디</th>";
+		str+="<th>작품 제목</th>";
+		str+="<th>현재 등급</th>";
+		str+="<th>전환버튼</th>";
+		str+="</tr>";
+		
+		for(var i=(num - 1) *10;i<(num*10);i++){
+			if(i<json.length){
+			str+="<tr>";
+			str+="<th>"+json[i].id+"</th>";
+			str+="<th>"+json[i].title+"</th>";
+			str+="<th>"+json[i].grade+"</th>";
+			str+="<th><button onclick='novelGradeChange(\""+json[i].novel_num+"\")'>전환</button></th>"; 
+			str+="</tr>";
+		}else{
+			str+="<tr>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="<th></th>";
+			str+="</tr>";
+		}
+			
+		}
+		str+="</table>";
+		
+		$("#content").html(str);
+	} 
+	
+	function novelGradeChange() {
+		.ajax({
+    		url: "authorchangecomplete",
+    		type: "post",
+    		data: {"authorId":id},
+    		dataType: 'text',
+    		success: function(data) {
+    			var msg=data;
+    			alert(msg);
+    			authorChangeShow();
+    			
+    		},
+    		error: function(error) {
+    			alert(error);
+    			console.log(error);
+    		}
+    	}); //ajax End
+	}
+	
+	
+	
+	

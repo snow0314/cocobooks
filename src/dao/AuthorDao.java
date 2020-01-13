@@ -21,7 +21,7 @@ public class AuthorDao {
 				"JOIN STORY\r\n" + 
 				"ON member.mb_id=story.sr_id\r\n" + 
 				"WHERE MB_APPLY='신청'\r\n" + 
-				"GROUP BY member.mb_id, member.mb_age, member.mb_name, member.mb_gender, member.mb_email;";
+				"GROUP BY member.mb_id, member.mb_age, member.mb_name, member.mb_gender, member.mb_email";
 				
 		List<Member> mbList=new ArrayList<Member>();
 		con=JdbcUtill.getConnection();
@@ -37,7 +37,7 @@ public class AuthorDao {
 				mb.setAge(rs.getInt("MB_AGE"));
 				mb.setGender(rs.getNString("MB_GENDER"));
 				mb.setEmail(rs.getNString("MB_EMAIL"));
-				mb.setTotalView(Integer.parseInt(rs.getNString("SUM(STORY.SR_VIEW_NUM)")));
+				mb.setTotalView(rs.getInt("SUM(STORY.SR_VIEW_NUM)"));
 				mbList.add(mb);
 			}
 			
@@ -49,6 +49,41 @@ public class AuthorDao {
 		}
 		
 		return mbList;
+	}
+
+	public boolean authorchange(String id) {
+		String sql="UPDATE MEMBER\r\n" + 
+				"SET MB_APPLY='완료'\r\n" + 
+				"WHERE MB_ID=?";
+		con=JdbcUtill.getConnection();
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, id);
+			int result=pstmt.executeUpdate();
+			System.out.println("전환3");
+			
+		String sql2="UPDATE MEMBER\r\n" + 
+				"SET MB_KIND_NUM='유료'\r\n" + 
+				"WHERE MB_ID=?"	;
+			pstmt=con.prepareStatement(sql2);
+			pstmt.setNString(1, id);
+			result=pstmt.executeUpdate();
+			System.out.println("전환4");
+			
+			if(result!=0) {
+				System.out.println("전환성공");
+				return true;
+			}else {
+				System.out.println("전환실패");
+				return false;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("전환오류");
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 
 }

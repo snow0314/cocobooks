@@ -35,6 +35,20 @@ public class Author {
 		return json;
 		
 	}
+
+	public String authorchange() {
+		AuthorDao aDao=new AuthorDao();
+		String id=request.getParameter("authorId");
+		System.out.println("전환2:"+id);
+		boolean result=aDao.authorchange(id);
+		
+		if(result) {
+			return "전환성공";
+		}else {
+			return "전환실패";
+		}
+	
+	}
 	
 
 }

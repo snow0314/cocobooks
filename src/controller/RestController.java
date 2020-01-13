@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import bean.Novel;
+import service.AllNovelShow;
 import service.Author;
 import service.BlackList;
 import service.Charge;
@@ -22,7 +24,7 @@ import service.UserInfo;
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
 			,"/singoinfo","/noblelimit","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
-			,"/blacklistdelete"})
+			,"/blacklistdelete","/authorchangecomplete","/allnovelshow"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -80,9 +82,9 @@ public class RestController extends HttpServlet {
 			json=bList.blacklistshow();
 			
 			break;	
-		case "/authorchange": //관리자기능, 전환신청한 작가들 보기,변경
-			
-			
+		case "/authorchangecomplete": //관리자기능, 전환신청한 작가들 변경
+			Author author=new Author(request,response);
+			json=author.authorchange();
 			
 			break;
 		case "/singoinfo": //관리자기능, 1회 이상 신고받은 모든 글 보기 및 확인 후 삭제 해준다
@@ -127,8 +129,8 @@ public class RestController extends HttpServlet {
 			break;	
 			
 		case "/authorchangeshow":
-			Author author=new Author(request,response);
-			json=author.authorShow();
+			Author author2=new Author(request,response);
+			json=author2.authorShow();
 			
 			break;
 			
@@ -138,6 +140,10 @@ public class RestController extends HttpServlet {
 			
 			
 			break;
+		case "/allnovelshow": //모든 작품리스트 보기
+			AllNovelShow novelShow=new AllNovelShow(request,response);
+			json=novelShow.allnovelshow();
+			
 		default:
 			break;
 		}
