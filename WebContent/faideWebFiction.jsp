@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<style>
 		.maintxt{
 			font-size: 50px;
@@ -20,7 +21,7 @@
 			font-size: 20px;
 		}
 		td{
-			border: 2px solid black;
+			border: 1px solid black;
 		}
 		.selectBox{
 			width: 200px;
@@ -51,52 +52,22 @@
 </head>
 <body>
 <form>
+	<jsp:include page="header.jsp"></jsp:include>
+	
 	<div class="maintxt">유료 웹소설</div>
 	
 	
 	
-	<table>
+	<table id="board">
 		<tr>
 			<td>작품 번호</td>
 			<td>작가</td>
 			<td>작품 제목</td>
 			<td>작품 소개</td>
+			<td>등급</td>
 			<td>장르</td>
-			<td>추천</td>
+			<td>총 추천수</td>
 		</tr>
-		<tr>
-			<td >123</td>
-			<td>aa123</td>
-			<td>아ㅏ아아아아 div 개짜증나는 모험</td>
-			<td>ㅁ주이ㅟㅏㅁㅈ위ㅏㅟㅏㅁㅇ쥐ㅏ윚뮈asdlwanldnawlnasddlnlawndaw</td>
-			<td>판타지</td>
-			<td>21321321</td>
-		</tr>
-		<tr>
-			<td >123</td>
-			<td>aa123</td>
-			<td>아ㅏ아아아아 div 개짜증나는 모험</td>
-			<td>ㅁ주이ㅟㅏㅁㅈ위ㅏㅟㅏㅁㅇ쥐ㅏ윚뮈asdlwanldnawlnasddlnlawndaw</td>
-			<td>판타지</td>
-			<td>21321321</td>
-		</tr>
-		<tr>
-			<td >123</td>
-			<td>aa123</td>
-			<td>아ㅏ아아아아 div 개짜증나는 모험</td>
-			<td>ㅁ주이ㅟㅏㅁㅈ위ㅏㅟㅏㅁㅇ쥐ㅏ윚뮈asdlwanldnawlnasddlnlawndaw</td>
-			<td>판타지</td>
-			<td>21321321</td>
-		</tr>
-		<tr>
-			<td >123</td>
-			<td>aa123</td>
-			<td>아ㅏ아아아아 div 개짜증나는 모험</td>
-			<td>ㅁ주이ㅟㅏㅁㅈ위ㅏㅟㅏㅁㅇ쥐ㅏ윚뮈asdlwanldnawlnasddlnlawndaw</td>
-			<td>판타지</td>
-			<td>21321321</td>
-		</tr>
-		
 	</table>
 	
 	<div>
@@ -111,5 +82,8 @@
 	<input type="submit" value="작품등록" class="createNovel">
 	</div>
 	</form>
+	<script type="text/javascript">
+		$("#board").append("${list}");
+	</script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Header</title>
-<style>
+	<style>
 body{
 background-color: #F2F2F2;}
 		.header_logo{
@@ -23,9 +23,12 @@ background-color: #F2F2F2;}
 			font-size: 15px;
 			padding-left: 1200px;
 			font-family: fantasy;
+			
 		}
 		.header_item{
 			padding-left: 9px;
+			border: 0;
+			font-size: 15px;
 		}
 		.header_search
 		{
@@ -73,6 +76,7 @@ background-color: #F2F2F2;}
 <body>
 	<form method="post">
 	<div class="header_menu">
+		<div class="header_item"><input type="submit" value="&#124; 메인으로" formaction="main" class="header_item"></div>
 	<div class="header_item">&#124; 로그인</div>
 	<div class="header_item">&#124; 회원가입</div>
 	<div class="header_item">&#124; 결제하기 </div>
@@ -81,7 +85,6 @@ background-color: #F2F2F2;}
 	<div class="header_logo">
 	<img src="image/logo.png" class="header_image" alt="logo">
 	</div>
-	
 	<div class="header_search">
 		<input type="text" placeholder="작품명,작가명" class="search_text">
 		<input type="submit" value="통합검색" class="search_button" formaction="#">
@@ -98,6 +101,12 @@ background-color: #F2F2F2;}
 	console.log("${login}");
 	if(login=="로그인후 이용해주세요"){
 		alert("${login}");
+	}
+	</script>
+	
+	<script type="text/javascript">
+	function img_main(){
+		location.href="main";
 	}
 	</script>
 </body>
