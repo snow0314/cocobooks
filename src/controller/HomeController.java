@@ -96,6 +96,7 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/noveldetail": //작품 상세 페이지
+			
 			break;
 			
 			
