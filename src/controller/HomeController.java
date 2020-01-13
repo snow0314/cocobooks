@@ -100,7 +100,6 @@ public class HomeController extends HttpServlet {
 		case "/noveldetail": //작품 상세 페이지
 			NovelDetail nDetail=new NovelDetail(request,response);
 			fw=nDetail.novelDetailShow();
-			
 			break;
 		case "/buynovel": //작품 구매 페이지, 라이트박스 이용
 			break;
