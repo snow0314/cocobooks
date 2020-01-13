@@ -19,6 +19,7 @@ import service.Charge;
 import service.Genre;
 import service.MyInfo;
 import service.NovelGradeChange;
+import service.PaidNovelSearch;
 import service.Signup;
 import service.SingoInfo;
 import service.StoryDelete;
@@ -148,8 +149,8 @@ public class RestController extends HttpServlet {
 			json=novelShow.allnovelshow();
 			break;
 		case "/paidnovelsearch":
-		
-		
+			PaidNovelSearch pNS=new PaidNovelSearch(request,response);
+			json=pNS.search();
 			
 			break;
 			
