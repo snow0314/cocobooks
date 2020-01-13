@@ -18,13 +18,14 @@ import service.BlackList;
 import service.Charge;
 import service.Genre;
 import service.MyInfo;
+import service.NovelGradeChange;
 import service.Signup;
 import service.UserInfo;
 
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
-			,"/singoinfo","/noblelimit","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
-			,"/blacklistdelete","/authorchangecomplete","/allnovelshow"})
+			,"/singoinfo","/novelgradechange","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
+			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -93,9 +94,9 @@ public class RestController extends HttpServlet {
 	
 			break;
 			
-		case "/noblelimit": //관리자기능, 성인등급 제한
-			
-			
+		case "/novelgradechange": //관리자기능, 작품등급 변환하는 기능
+			NovelGradeChange nChange=new NovelGradeChange(request,response);
+			json=nChange.novelgradechange();
 			
 			break;
 		case "/genreshow": //관리자기능, 장르 추가 기능
@@ -116,19 +117,19 @@ public class RestController extends HttpServlet {
 			
 			break;
 			
-		case "/genredelete":
+		case "/genredelete": //장르 삭제하기
 			Genre genre2=new Genre(request,response);
 			json=genre2.genreDelete();
 			
 			break;
 			
-		case "/genreadd":
+		case "/genreadd": //장르 추가하기
 			Genre genre3=new Genre(request,response);
 			json=genre3.genreAdd();
 			
 			break;	
 			
-		case "/authorchangeshow":
+		case "/authorchangeshow": //전환신청한 작가들 보기
 			Author author2=new Author(request,response);
 			json=author2.authorShow();
 			
@@ -143,7 +144,12 @@ public class RestController extends HttpServlet {
 		case "/allnovelshow": //모든 작품리스트 보기
 			AllNovelShow novelShow=new AllNovelShow(request,response);
 			json=novelShow.allnovelshow();
+			break;
+		case "/paidnovelsearch":
+		
+		
 			
+			break;
 		default:
 			break;
 		}

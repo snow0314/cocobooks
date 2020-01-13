@@ -460,16 +460,16 @@ var json;
 		$("#content").html(str);
 	} 
 	
-	function novelGradeChange() {
-		.ajax({
-    		url: "authorchangecomplete",
+	function novelGradeChange(num) {
+		$.ajax({
+    		url: "novelgradechange",
     		type: "post",
-    		data: {"authorId":id},
+    		data: {"novelNum":num},
     		dataType: 'text',
     		success: function(data) {
     			var msg=data;
     			alert(msg);
-    			authorChangeShow();
+    			allNovelShow();
     			
     		},
     		error: function(error) {
