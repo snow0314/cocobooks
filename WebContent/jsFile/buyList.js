@@ -1,44 +1,50 @@
-$("#chargeList").click(function () {
+$("#buyList").click(function () {
 			$.ajax({
-	    		url: "charge",
+	    		url: "contents",
 	    		type: "post",
 	    		//data: {"page":$("page").value},
 	    		dataType: 'json',
 	    		success: function(data) {
 	    			console.log(data);
 	    			json=data;
-	    			pageShow(json,1);
-	    			pageNum(json);
+	    			pageShow3(json,1);
+	    			pageNum3(json);
 	    			
 	    		},
 	    		error: function(error) {
-	    			alert("충전 내역이 없습니다.");
+	    			alert("구매한 작품이 없습니다");
 	    		}
 	    	}); //ajax End
 	});
 		
-		function pageShow(json,num) { //페이지 안의 내용 보여주는 함수
+		function pageShow3(json,num) { //페이지 안의 내용 보여주는 함수
 			index=num;
 		
 			var str="";
 			str+="<table class='table-striped'>";
 			str+="<tr>";
-			str+="<th>충전번호</th>";
-			str+="<th>아이디</th>";
-			str+="<th>충전금액</th>";
-			str+="<th>충전날짜</th>";
+			str+="<th>구매자아이디</th>";
+			str+="<th>구매소설번호</th>";
+			str+="<th>구매소설제목</th>";
+			str+="<th>구매작품</th>";
+			str+="<th>구매날짜</th>";
+			str+="<th>구매가격</th>";
 			str+="</tr>";
 			
 			for(var i=(num - 1) *10;i<(num*10);i++){
 				if(i<json.length){
 				str+="<tr>";
-				str+="<th>"+json[i].chargeNum+"</th>";
-				str+="<th>"+json[i].chargeId+"</th>";
-				str+="<th>"+json[i].chargePrice+"</th>";
-				str+="<th>"+json[i].ChargeDate+"</th>";
+				str+="<th>"+json[i].buyId+"</th>";
+				str+="<th>"+json[i].storyNum+"</th>";
+				str+="<th>"+json[i].storyTitle+"</th>";
+				str+="<th>"+json[i].novelTitle+"</th>";
+				str+="<th>"+json[i].buyDate+"</th>";
+				str+="<th>"+json[i].price+"</th>";
 				str+="</tr>";
 			}else{
 				str+="<tr>";
+				str+="<th></th>";
+				str+="<th></th>";
 				str+="<th></th>";
 				str+="<th></th>";
 				str+="<th></th>";
@@ -52,7 +58,7 @@ $("#chargeList").click(function () {
 		}
 		
 		
-	 	function pageNum(json) { //페이지 넘버 보여주는 함수
+	 	function pageNum3(json) { //페이지 넘버 보여주는 함수
 			var totalpage;
 			
 			totalPages = json.length/10;
@@ -78,19 +84,19 @@ $("#chargeList").click(function () {
 	 	function newpage(num) { //페이지 이전, 다음 버튼 누를시 이동 제어하는 함수
 	 		if(num===0){
 	 			if(index==1){
-	 				pageShow(json,1);
+	 				pageShow3(json,1);
 	 			}else{
-	 				pageShow(json,index-1);
+	 				pageShow3(json,index-1);
 	 			}
 	 		}else if(num===-1){
 	 			console.log(maxindex);
 	 			if(index==maxindex){
-	 				pageShow(json,maxindex);
+	 				pageShow3(json,maxindex);
 	 			}else{
-	 				pageShow(json,index+1);
+	 				pageShow3(json,index+1);
 	 			}
 	 		}else{
-	 			pageShow(json,num);
+	 			pageShow3(json,num);
 	 		}
 		}
 

@@ -16,6 +16,7 @@ import service.AllNovelShow;
 import service.Author;
 import service.BlackList;
 import service.Charge;
+import service.Contents;
 import service.Genre;
 import service.MyInfo;
 import service.NovelGradeChange;
@@ -67,8 +68,8 @@ public class RestController extends HttpServlet {
 	
 			break;	
 		case "/contents": //그동안 구매한 작품 목록
-			
-			
+			Contents ct=new Contents(request,response);
+			json=ct.buyList();
 			
 			break;		
 		case "/charge": //그동안 충전한 내역
