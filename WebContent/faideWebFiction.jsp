@@ -98,7 +98,7 @@
 	<script type="text/javascript">
 	
 	
-	$("#paidnovelsearch").click(function () {
+	$("#paidnovelsearch").click(function () { //작품 검색 기능
 		var lists=[];
 		var selectBoxVal=$("#selectBox option:selected").val();
 		var txtBoxVal=$("#txtBox").val();
