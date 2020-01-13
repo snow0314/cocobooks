@@ -50,13 +50,13 @@ public class FaideWebFiction {
 		return fw;
 	}
 
-	private String makehtml(List<FaideWebFictionBean> fwfList) {
+	private String makehtml(List<FaideWebFictionBean> fwfList) { //작품 목록 리스트 HTML
 		StringBuilder sb= new StringBuilder();
 		for(int i=0 ;i<fwfList.size();i++) {
 			sb.append("<tr>");
 			sb.append("<td>"+fwfList.get(i).getNovel_num()+"</td>");
 			sb.append("<td>"+fwfList.get(i).getUser_id()+"</td>");
-			sb.append("<td><a href='noveldetail?"+fwfList.get(i).getNovel_num()+"'>"+fwfList.get(i).getTitle()+"</a></td>");
+			sb.append("<td><a href='noveldetail?novelNum="+fwfList.get(i).getNovel_num()+"'>"+fwfList.get(i).getTitle()+"</a></td>");
 			sb.append("<td>"+fwfList.get(i).getIntro()+"</td>");
 			sb.append("<td>"+fwfList.get(i).getGrade()+"</td>");
 			sb.append("<td>"+fwfList.get(i).getGenre()+"</td>");

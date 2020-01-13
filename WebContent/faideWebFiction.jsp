@@ -95,7 +95,8 @@
 		$("#board").append("${list}");
 	</script>
 	
-	<script type="text/javascript" src="jsFile/searchList.js">
-	</script>
+
+<script type="text/javascript" src="jsFile/searchList.js">
+</script>
 </body>
 </html>
