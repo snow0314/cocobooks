@@ -28,20 +28,28 @@ public class Viewer {
 		//리턴값이 true면 유료, false면 무료
 		boolean result=vDao.kindCheck(story_num);
 		//일단 유료,무료 작품인지 구별
+		st=vDao.read(story_num);
+		
 		if(result) {
 			result=vDao.paidCheck(id,story_num);
 			//구매목록 검사하여 구매한 작품이면 true, 아니면 false
 			if(result) {
-				//뷰어로 간다
-				st=vDao.read(story_num);
+				//유료작품, 뷰어로 간다
 				request.setAttribute("contents", st.getSR_CONTENTS());
 				request.setAttribute("rec",st.getRec());
 				fw.setPath("viewer.jsp");
 				fw.setRedirect(false);
 			}else {
+				//작품을 구매해야한다
+				request.setAttribute("message", "작품을 구매하세요");
+				fw.setPath("noveldetail?novelNum="+st.getSR_NOBLE_NUM());
+				fw.setRedirect(false);
 				//작품 구매하라고 해야한다
 			}
 		}else {
+			//무료작품, 뷰어로 간다
+			request.setAttribute("contents", st.getSR_CONTENTS());
+			request.setAttribute("rec",st.getRec());
 			fw.setPath("viewer.jsp");
 			fw.setRedirect(false);
 		}

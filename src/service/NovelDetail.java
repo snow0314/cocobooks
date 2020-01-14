@@ -62,7 +62,7 @@ public class NovelDetail {
 		}else {
 			sb.append("<div id='bottom'>");
 			sb.append("<input type='button' value='선호작 추가'>");
-			sb.append("<input type='button' value='구매'>");
+			sb.append("<input type='button' id='modalopen' value='구매'>");
 			sb.append("</div>");
 		}
 		sb.append("<div id=\"contents_container\">");
@@ -85,7 +85,10 @@ public class NovelDetail {
 		Gson gson =new Gson();
 		Type shapeType = new TypeToken<List<Story>>() {}.getType(); 
 		json=gson.toJson(slist,shapeType);
-
+		
+		
+		
+	
 		return json;
 	}
 
