@@ -21,6 +21,7 @@ import service.MyPage;
 import service.NovelDetail;
 import service.PayMent;
 import service.Signup;
+import service.Viewer;
 import service.Write;
 
 
@@ -107,10 +108,10 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/viewer": //작품 보기
+			Viewer view=new Viewer(request,response);
+			fw=view.view();
+			
 			break;
-			
-			
-			
 		case "/report": //신고하기
 			break;
 			

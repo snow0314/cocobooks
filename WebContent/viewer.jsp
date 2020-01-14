@@ -61,23 +61,14 @@
   <div class="modal-dialog modal-notify modal-info" role="document">
     <!--Content-->
     <div class="modal-content text-center">
-      <!--Header-->
-      <div class="modal-header d-flex justify-content-center">
-       <div class="header">
-        <input type="submit" value="〈">
-        <p class="heading">페이지 수</p>
-        <input type="submit" value="〉">
-        </div>
-      </div>
-
       <!--Body-->
       <div class="modal-body">
 
         <i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
 
-        <p> 소설 내용 내용 여기에 입력 되면 됨</p>
+        <p> ${contents}</p>
 		<input type="submit" value="추천">
-     	<input type="text" class="like" value="0" disabled> 
+     	<input type='text' class='like' value='${rec}' disabled> 
       </div>
 
       <!--Footer-->

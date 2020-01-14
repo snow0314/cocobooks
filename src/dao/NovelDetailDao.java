@@ -33,7 +33,7 @@ public class NovelDetailDao {
 				novel.setNovel_num(rs.getInt("NO_NUM"));
 				novel.setId(rs.getNString("NO_ID"));
 				novel.setTitle(rs.getNString("NO_TITLE"));
-				novel.setIntro(rs.getNString("NO_TITLE"));
+				novel.setIntro(rs.getNString("NO_INTRO"));
 				novel.setGrade(rs.getNString("NO_GRADE"));
 				novel.setGenre(rs.getNString("GE_NAME"));
 				novel.setPay_n_free(rs.getNString("PAY_N_FREE"));
@@ -57,7 +57,7 @@ public class NovelDetailDao {
 				"ON story.sr_num=recommendation.rt_story_num\r\n" + 
 				"GROUP BY story.sr_num, story.sr_title, sr_date, sr_view_num, story.sr_nobel_num\r\n" + 
 				"HAVING story.sr_nobel_num=?\r\n" + 
-				"ORDER BY SR_NUM desc";
+				"ORDER BY SR_NUM";
 		
 		List<Story> slist=new ArrayList<Story>();
 		con=JdbcUtill.getConnection();
@@ -74,6 +74,7 @@ public class NovelDetailDao {
 				st.setSR_VIEW_NUM(rs.getInt("VIEW_NUM"));
 				st.setSR_PRICE(100);
 				st.setRec(rs.getInt("REC"));
+				st.setSR_NUM(rs.getInt("STORY_NUM"));
 				slist.add(st);
 			}
 			

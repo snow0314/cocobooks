@@ -1,5 +1,6 @@
 package service;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import bean.Forward;
+import bean.Member;
 import bean.Novel;
 import bean.Story;
 import dao.NovelDetailDao;
@@ -41,6 +46,7 @@ public class NovelDetail {
 		sb.append("<div id='author'>"+novel.getId()+"</div>");
 		sb.append("<div id='title'>"+novel.getTitle()+"</div>");
 		sb.append("<div id='novel_num'>"+novel.getNovel_num()+"</div>");
+		sb.append("<input type='hidden' id='novelNum' value='"+novel.getNovel_num()+"'>");
 		sb.append("</div>");
 		sb.append("<div id='sub_title'>"+novel.getIntro()+"</div>");
 		
@@ -61,7 +67,6 @@ public class NovelDetail {
 		}
 		sb.append("<div id=\"contents_container\">");
 		sb.append("<div id=\"contents\">");
-		//sb.append(NovelDetailList(novel.getNovel_num()));
 		sb.append("</div>");
 		sb.append("<div id=\"paging\">");
 		sb.append("페이징 버튼");
@@ -71,14 +76,17 @@ public class NovelDetail {
 		return sb.toString();
 	}
 
-	private String NovelDetailList(int novel_num) {
+	public String NovelDetailList() {
 		NovelDetailDao nDao=new NovelDetailDao();
 		List<Story> slist=new ArrayList<Story>();
 		
-		slist=nDao.NovelDetailList(novel_num);
-		
-		
-		return null;
+		slist=nDao.NovelDetailList(Integer.parseInt(request.getParameter("novelNum")));
+		String json;
+		Gson gson =new Gson();
+		Type shapeType = new TypeToken<List<Story>>() {}.getType(); 
+		json=gson.toJson(slist,shapeType);
+
+		return json;
 	}
 
 }

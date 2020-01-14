@@ -19,6 +19,7 @@ import service.Charge;
 import service.Contents;
 import service.Genre;
 import service.MyInfo;
+import service.NovelDetail;
 import service.NovelGradeChange;
 import service.PaidNovelSearch;
 import service.Signup;
@@ -29,7 +30,8 @@ import service.UserInfo;
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
 			,"/singoinfo","/novelgradechange","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
-			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch","/storydelete","/blacklistadd"})
+			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch","/storydelete","/blacklistadd"
+			})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,8 +49,8 @@ public class RestController extends HttpServlet {
 			break;
 
 		case "/noveldetaillist": //작품화 목록
-			
-			
+			NovelDetail novel=new NovelDetail(request, response);
+			json=novel.NovelDetailList();
 			
 			break;	
 		case "/mynoble": //내가 쓴 작품 목록
@@ -166,7 +168,7 @@ public class RestController extends HttpServlet {
 			json=bAdd.blackListAdd();
 		
 			break;
-				
+	
 		default:
 			break;
 		}
