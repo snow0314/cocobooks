@@ -8,17 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
-import service.Admin;
 import service.AuthorChangeInsert;
 import service.Authorchange;
 import service.ChargeCoin;
 import service.Delete;
 import service.FaideWebFiction;
+import service.Idsearch;
 import service.LogOut;
 import service.Login;
 import service.Main;
 import service.MyPage;
-import service.NovelDetail;
 import service.PayMent;
 import service.Searchboard;
 import service.Signup;
@@ -62,6 +61,8 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/idsearch": //아이디 찾기
+			Idsearch idsearch = new Idsearch(request, response);
+			fw=idsearch.idsearch();
 			break;
 			
 			
@@ -76,7 +77,6 @@ public class HomeController extends HttpServlet {
 			
 		case "/dropmember": //회원탈퇴
 			Delete delete = new Delete(request, response);
-			System.out.println("회원탈퇴1");
 			fw=delete.dropmember();
 			break;
 			
@@ -102,8 +102,8 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/noveldetail": //작품 상세 페이지
-			NovelDetail nDetail=new NovelDetail(request,response);
-			fw=nDetail.novelDetailShow();
+			//NovelDetail nDetail=new NovelDetail(request,response);
+			//fw=nDetail.novelDetailShow();
 			break;
 		case "/buynovel": //작품 구매 페이지, 라이트박스 이용
 			break;
@@ -178,8 +178,8 @@ public class HomeController extends HttpServlet {
 			
 			break;
 		case "/admin":
-			Admin admin=new Admin(request,response);
-			fw=admin.adminCheck();
+			//Admin admin=new Admin(request,response);
+			//fw=admin.adminCheck();
 			
 			
 			break;
