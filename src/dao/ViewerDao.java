@@ -80,7 +80,9 @@ public class ViewerDao {
 			
 			if(rs.next()){
 				Story st=new Story();
-				st.setSR_CONTENTS("SR_CONTENTS");
+				st.setSR_CONTENTS(rs.getNString("SR_CONTENTS"));
+				st.setSR_NOBLE_NUM(rs.getInt("SR_NOBEL_NUM"));
+				
 				String sql2="SELECT STORY.SR_NUM,COUNT(rt_story_num)\r\n" + 
 						"FROM STORY\r\n" + 
 						"JOIN recommendation\r\n" + 

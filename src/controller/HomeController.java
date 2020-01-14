@@ -32,6 +32,7 @@ import service.Writing;
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
 				"/noveldetail","/buynovel","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
 				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert"})
+
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -109,11 +110,7 @@ public class HomeController extends HttpServlet {
 			NovelDetail nDetail=new NovelDetail(request,response);
 			fw=nDetail.novelDetailShow();
 			break;
-		case "/buynovel": //작품 구매 페이지, 라이트박스 이용
-			break;
-			
-			
-			
+	
 		case "/viewer": //작품 보기
 			Viewer view=new Viewer(request,response);
 			fw=view.view();
@@ -145,7 +142,7 @@ public class HomeController extends HttpServlet {
 			
 			
 			
-		case "/payment": //결제하기
+		case "/payment": //결제창으로 이동
 			PayMent payment=new PayMent(request, response);
 			fw=payment.move();
 			break;

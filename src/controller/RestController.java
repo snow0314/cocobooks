@@ -21,7 +21,9 @@ import service.Genre;
 import service.MyInfo;
 import service.NovelDetail;
 import service.NovelGradeChange;
+import service.PaidCheck;
 import service.PaidNovelSearch;
+import service.Purchase;
 import service.Signup;
 import service.SingoInfo;
 import service.StoryDelete;
@@ -31,7 +33,7 @@ import service.UserInfo;
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
 			,"/singoinfo","/novelgradechange","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
 			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch","/storydelete","/blacklistadd"
-			})
+			,"/buynovel","/paidCheck"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -169,6 +171,16 @@ public class RestController extends HttpServlet {
 		
 			break;
 	
+		case "/buynovel":
+			Purchase p=new Purchase(request,response);
+			json=p.buynovel();
+			
+			break;
+		case "/paidCheck":
+			PaidCheck check=new PaidCheck(request,response);
+			json=check.paidCheck();
+			
+			break;
 		default:
 			break;
 		}
