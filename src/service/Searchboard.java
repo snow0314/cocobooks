@@ -39,7 +39,8 @@ public class Searchboard {
 		for(int i=0;i<totdata.size();i++) {
 			sb.append("<tr>");
 			sb.append("<td>"+totdata.get(i).get("num")+"</td>");
-			sb.append("<td><input type='button' value='"+totdata.get(i).get("title")+"' class='borderList' id='searchName'></td>");
+			sb.append("<input type='hidden' name='novelNum' class='storynum' value="+totdata.get(i).get("num")+">");			
+			sb.append("<td><input type='button' value='"+totdata.get(i).get("title")+"' class='borderList' onclick='submitt("+totdata.get(i).get("num")+")'></td>");
 			sb.append("<td>"+totdata.get(i).get("id")+"</td>");
 			sb.append("<td>"+totdata.get(i).get("like")+"</td>");
 			sb.append("<td>"+totdata.get(i).get("pNf")+"</td>");
