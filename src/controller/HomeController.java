@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
+import service.Admin;
 import service.AuthorChangeInsert;
 import service.Authorchange;
 import service.ChargeCoin;
@@ -18,16 +19,19 @@ import service.LogOut;
 import service.Login;
 import service.Main;
 import service.MyPage;
+import service.NovelDetail;
+import service.NovelInsert;
 import service.PayMent;
 import service.Searchboard;
 import service.Signup;
 import service.Viewer;
 import service.Write;
+import service.Writing;
 
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
 				"/noveldetail","/buynovel","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
-				,"/logout","/chargecoin","/admin","/authorchangeinsert"})
+				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -102,8 +106,8 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/noveldetail": //작품 상세 페이지
-			//NovelDetail nDetail=new NovelDetail(request,response);
-			//fw=nDetail.novelDetailShow();
+			NovelDetail nDetail=new NovelDetail(request,response);
+			fw=nDetail.novelDetailShow();
 			break;
 		case "/buynovel": //작품 구매 페이지, 라이트박스 이용
 			break;
@@ -178,12 +182,21 @@ public class HomeController extends HttpServlet {
 			
 			break;
 		case "/admin":
-			//Admin admin=new Admin(request,response);
-			//fw=admin.adminCheck();
+			Admin admin=new Admin(request,response);
+			fw=admin.adminCheck();
 			
 			
 			break;
 		
+		case "/writing"	: //작품등록 페이지 이동 and 여건 확인
+			Writing wt=new Writing(request,response);
+			
+			fw=wt.check();
+			break;
+		case "/novelinsert":
+			NovelInsert nInsert=new NovelInsert(request,response);
+			fw=nInsert.insert();
+			break;
 		default:
 
 			break;

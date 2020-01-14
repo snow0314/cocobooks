@@ -57,12 +57,18 @@
 			padding-top: 7px;
 			font-size: 18px;
 		}
+		.insertnovel{
+		border: 1.5px solid grey;
+		text-decoration: none;
+		height: 40px;
+			width: 90px; 
+		}
 	</style>
 </head>
 <body>
-<form>
-	<jsp:include page="header.jsp"></jsp:include>
-	
+
+<jsp:include page="header.jsp"></jsp:include>
+<form method="post">	
 	<div class="maintxt">유료 웹소설</div>
 	
 	
@@ -88,7 +94,7 @@
 	</select>
 	<input type="text" class="txtBox" id="txtBox">
 	<input type="button" value="검색" class="search" id="paidnovelsearch">
-	<input type="submit" value="작품등록" class="createNovel">
+	<input type="submit" value="작품 등록" class="createNovel" formaction="writing">
 	</div>
 	</form>
 	<script type="text/javascript">
