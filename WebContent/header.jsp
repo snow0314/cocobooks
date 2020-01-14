@@ -87,8 +87,8 @@ background-color: #F2F2F2;}
 	<img src="image/logo.png" class="header_image" alt="logo">
 	</div>
 	<div class="header_search">
-		<input type="text" placeholder="작품명,작가명" class="search_text">
-		<input type="submit" value="통합검색" class="search_button" formaction="#">
+		<input type="text" placeholder="작품명,작가명" class="search_text" name="search_box" id="search_box" value="">
+		<input type="submit" value="통합검색" class="search_button" formaction="searchboard">
 	</div>
    
 	<div class="main_menu">
