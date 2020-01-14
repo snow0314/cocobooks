@@ -11,7 +11,14 @@ public class Story {
 	private int SR_PRICE;
 	private Date SR_DATE;
 	private int SR_VIEW_NUM;
+	private int rec; //추천수
 	
+	public int getRec() {
+		return rec;
+	}
+	public void setRec(int rec) {
+		this.rec = rec;
+	}
 	public int getSR_NUM() {
 		return SR_NUM;
 	}
