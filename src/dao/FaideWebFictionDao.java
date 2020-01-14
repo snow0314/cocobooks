@@ -23,7 +23,12 @@ public class FaideWebFictionDao {
 	}
 	public List<FaideWebFictionBean> FaideWebFictionList() {
 		List<FaideWebFictionBean> fwfList=null;
-		String sql="SELECT * FROM WEB_PAY_LIST";
+		String sql="SELECT nb.NO_NUM,nb.NO_ID,nb.NO_TITLE,nb.NO_INTRO,nb.NO_GRADE,ge.GE_NAME,COUNT(re.RT_STORY_NUM) LIKECOUNT\r\n" + 
+				"from nobel nb INNER join GENRE ge on nb.NO_GENRE_NUM=ge.GE_NUM \r\n" + 
+				"LEFT join story sr on nb.NO_NUM=sr.SR_NOBEL_NUM \r\n" + 
+				"LEFT join RECOMMENDATION re on sr.SR_NUM=re.RT_STORY_NUM\r\n" + 
+				"where nb.PAY_N_FREE='유료'\r\n" + 
+				"GROUP by nb.NO_NUM,nb.NO_ID,nb.NO_TITLE,nb.NO_INTRO,nb.NO_GRADE,ge.GE_NAME,sr.SR_NOBEL_NUM ORDER by nb.NO_NUM";
 		try {
 			fwfList=new ArrayList<FaideWebFictionBean>();
 			pstmt=con.prepareStatement(sql);

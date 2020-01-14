@@ -20,6 +20,7 @@ import service.Main;
 import service.MyPage;
 import service.NovelDetail;
 import service.PayMent;
+import service.Searchboard;
 import service.Signup;
 import service.Write;
 
@@ -80,6 +81,8 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/searchboard": //통합검색
+			Searchboard searchB= new Searchboard(request, response);
+			fw=searchB.totalSearch();
 			break;
 			
 			
