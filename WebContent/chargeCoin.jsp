@@ -18,6 +18,7 @@
 	</style>
 </head>
 <body>
+
 <form>
 	<div><input type="submit" value="COIN 충전하기" class="charge" formaction="payment"></div>
 	</form>

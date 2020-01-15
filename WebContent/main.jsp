@@ -57,13 +57,50 @@ padding-top: 50px;
 </style>
 </head>
 <body>
+<script type="text/javascript">
+	function callList() {
+		$.ajax({
+    		url: "bestfreewebnovel",
+    		type: "get",
+    		async: false,
+    		//data: {"page":$("page").value},
+    		dataType: 'html',
+    		success: function(data) {
+    			console.log(data);
+    			$("#free_best").html(data);
+    			
+    			
+    		},
+    		error: function(error) {
+    			alert("실패");
+    		}
+    	}); //ajax End
+    	$.ajax({
+    		url: "bestpaywebnovel",
+    		type: "get",
+    		async: false,
+    		//data: {"page":$("page").value},
+    		dataType: 'html',
+    		success: function(data) {
+    			console.log(data);
+    			$("#pay_best").html(data);
+    			
+    			
+    		},
+    		error: function(error) {
+    			alert("실패");
+    		}
+    	}); //ajax End
+	}
+	window.onload=callList;
+</script>
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="novel_category">
-	<div class="free_best">
-	<jsp:include page="bestFreeNovel.jsp"></jsp:include>
+	<div class="free_best" id="free_best">
+	
 	</div>
-	<div class="pay_best">
-	<jsp:include page="bestPayNovel.jsp"></jsp:include>
+	<div class="pay_best" id="pay_best">
+	
 	</div>
 	<div class="right">
 	<div class="tot">

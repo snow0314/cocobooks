@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 		body {
 			background-color: #F2F2F2;
@@ -42,13 +43,11 @@
 			<td>총 조회수</td>
 		</tr>
 	</table>
-	<table class="listTable">
-		<tr>
-			<td>작품 번호</td>
-			<td>작품 제목</td>
-			<td>작가 </td>
-			<td>총 조회수</td>
-		</tr>
+	<table class="listTable2" id="listTable2">
+		
 	</table>
+	<script type="text/javascript">
+		$("#listTable2").append("${list}");
+	</script>
 </body>
 </html>

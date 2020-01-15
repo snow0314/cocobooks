@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import bean.Forward;
 import bean.Story;
 import dao.ViewerDao;
 

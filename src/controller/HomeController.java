@@ -27,7 +27,7 @@ import service.PayMent;
 import service.Pwsearch;
 import service.Searchboard;
 import service.Signup;
-import service.Viewer;
+
 import service.Write;
 import service.Writing;
 
@@ -117,8 +117,7 @@ public class HomeController extends HttpServlet {
 
 		case "/report": //신고하기
 			break;
-			
-			
+
 			
 		case "/write": //글쓰기
 			Write write= new Write(request, response);

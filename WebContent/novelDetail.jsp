@@ -145,6 +145,7 @@ table {
 
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
 	${novelDetail}
 	<input type="hidden" id="novelNum" value="">
 	<!--Modal: 구매하는 모달-->

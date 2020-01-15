@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<style>
 		body {
 			background-color: #F2F2F2;
@@ -33,6 +34,7 @@
 	</style>
 </head>
 <body>
+	
 <div class="mainTxt">Best 무료 웹 소설 </div>
 	<table>
 		<tr>
@@ -42,13 +44,11 @@
 			<td>총 조회수</td>
 		</tr>
 	</table>
-	<table class="listTable">
-		<tr>
-			<td>작품 번호</td>
-			<td>작품 제목</td>
-			<td>작가 </td>
-			<td>총 조회수</td>
-		</tr>
+	<table class="listTable" id="listTable">
+	
 	</table>
+	<script type="text/javascript">
+		$("#listTable").append("${list}");
+	</script>
 </body>
 </html>

@@ -80,9 +80,7 @@ table{
 </style>
 </head>
 <body>
- <div class="bottom">
-  top
-  </div>
+	<jsp:include page="header.jsp"></jsp:include>
   <div class="left">
   <div class="list-group">
   <a class="list-group-item list-group-item-action" onclick="userinfo()">회원보기</a><br>

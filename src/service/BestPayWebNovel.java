@@ -22,9 +22,22 @@ public class BestPayWebNovel {
 		BestListDao bDao= new BestListDao();
 		List<NovelList> payList=bDao.payList();
 		if(payList!=null&&payList.size()!=0) {
-			System.out.println(payList);
+			request.setAttribute("list", makeHtml(payList));
+			fw.setPath("bestPayNovel.jsp");
+			fw.setRedirect(false);
 		}
 		return fw;
 	}
-
+	private String makeHtml(List<NovelList> payList) {
+		StringBuilder sb= new StringBuilder();
+		for(int i=0;i<payList.size();i++) {
+			sb.append("<tr>");
+			sb.append("<td>"+payList.get(i).getNum()+"</td>");
+			sb.append("<td><a href='noveldetail?novelNum="+payList.get(i).getNum()+"'>"+payList.get(i).getTitle()+"</a></td>");
+			sb.append("<td>"+payList.get(i).getId()+"</td>");
+			sb.append("<td>"+payList.get(i).getTotalView()+"</td>");
+			sb.append("</tr>");
+		}
+		return sb.toString();
+	}
 }
