@@ -115,13 +115,9 @@ public class HomeController extends HttpServlet {
 			fw=nDetail.novelDetailShow();
 			break;
 
-
-	
-		
 		case "/report": //신고하기
 			break;
-			
-			
+
 			
 		case "/write": //글쓰기
 			Write write= new Write(request, response);

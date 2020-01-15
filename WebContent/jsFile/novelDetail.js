@@ -246,7 +246,7 @@
 		}); // ajax End
 	}
 	
-	function recommendation(){
+	function recommendation(){ //추천하는 메소드
 		$.ajax({
 			url : "recommendation",
 			type : "post",
