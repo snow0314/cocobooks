@@ -30,7 +30,7 @@ import service.Writing;
 
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
-				"/noveldetail","/buynovel","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
+				"/noveldetail","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
 				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert"})
 
 public class HomeController extends HttpServlet {
