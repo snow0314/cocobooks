@@ -109,6 +109,16 @@
 	<script type="text/javascript">
 	$(".genreBox").append("${category}");
 	</script>
+	<script type="text/javascript">
+	if("${genreMessage}"!=""){
+		alert("${genreMessage}")
+	}
+	if("${insertMessage}"!=""){
+		alert("${insertMessage}");
+		location.href="main";
+	}
+	
+	</script>
 	</form>
 </body>
 

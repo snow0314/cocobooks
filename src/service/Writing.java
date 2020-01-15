@@ -26,9 +26,9 @@ public class Writing {
 		CheckDao cDao = new CheckDao();
 		List<String> list = cDao.categoryCheck();
 		Member mb = cDao.check(id);
-		if (mb.getKind().equals("무료")) {
+		if (mb.getKind().equals("일반")) {
 			request.setAttribute("category", makeHtml(list));
-			request.setAttribute("info", "무료");
+			request.setAttribute("info", "일반");
 			fw.setPath("novelPush.jsp");
 			fw.setRedirect(false);
 		} else if (mb.getKind().equals("유료")) {
