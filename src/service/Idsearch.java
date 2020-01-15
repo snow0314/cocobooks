@@ -22,12 +22,13 @@ public class Idsearch {
 		String email=request.getParameter("email");
 		String name=request.getParameter("name");
 		String id=dao.idsearch(name,email);
-		request.setAttribute("id", id);
+		request.setAttribute("idsearch", id);
+		System.out.println("id는"+id);
 		if(id==null) {
 			search.setPath("idsearch.jsp");
 			
 	}else {
-		search.setPath("main.jsp");
+		search.setPath("idsearchafter.jsp");
 	}
 		return search;
 	}

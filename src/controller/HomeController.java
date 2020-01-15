@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.Forward;
+import service.Admin;
 import service.AuthorChangeInsert;
 import service.Authorchange;
 import service.ChargeCoin;
@@ -18,7 +19,9 @@ import service.LogOut;
 import service.Login;
 import service.Main;
 import service.MyPage;
+import service.NovelDetail;
 import service.PayMent;
+import service.Pwsearch;
 import service.Searchboard;
 import service.Signup;
 import service.Viewer;
@@ -70,6 +73,8 @@ public class HomeController extends HttpServlet {
 			
 		
 		case "/pwsearch": //비밀번호 찾기
+			Pwsearch pwsearch = new Pwsearch(request, response);
+			fw=pwsearch.pwsearch();
 			break;
 			
 			
@@ -102,8 +107,8 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/noveldetail": //작품 상세 페이지
-			//NovelDetail nDetail=new NovelDetail(request,response);
-			//fw=nDetail.novelDetailShow();
+			NovelDetail nDetail=new NovelDetail(request,response);
+			fw=nDetail.novelDetailShow();
 			break;
 		case "/buynovel": //작품 구매 페이지, 라이트박스 이용
 			break;
@@ -178,8 +183,8 @@ public class HomeController extends HttpServlet {
 			
 			break;
 		case "/admin":
-			//Admin admin=new Admin(request,response);
-			//fw=admin.adminCheck();
+			Admin admin=new Admin(request,response);
+			fw=admin.adminCheck();
 			
 			
 			break;
