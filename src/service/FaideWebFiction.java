@@ -52,6 +52,15 @@ public class FaideWebFiction {
 
 	private String makehtml(List<FaideWebFictionBean> fwfList) { //작품 목록 리스트 HTML
 		StringBuilder sb= new StringBuilder();
+		sb.append("<tr>");
+		sb.append("<td>작품 번호</td>");
+		sb.append("<td>작가</td>");
+		sb.append("<td>작품 제목</td>");
+		sb.append("<td>작품 소개</td>");
+		sb.append("<td>등급</td>");
+		sb.append("<td>장르</td>");
+		sb.append("<td>총 추천수</td>");
+		sb.append("</tr>");
 		for(int i=0 ;i<fwfList.size();i++) {
 			sb.append("<tr>");
 			sb.append("<td>"+fwfList.get(i).getNovel_num()+"</td>");

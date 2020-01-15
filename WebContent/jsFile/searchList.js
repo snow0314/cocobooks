@@ -36,7 +36,15 @@
 		index=num;
 	
 		var str="";
-		
+		str+="<tr>";
+		str+="<td>작품 번호</td>";
+		str+="<td>작가</td>";
+		str+="<td>작품 제목</td>";
+		str+="<td>작품 소개</td>";
+		str+="<td>등급</td>";
+		str+="<td>장르</td>";
+		str+="<td>총 추천수</td>";
+		str+="</tr>";
 		for(var i=(num - 1) *10;i<(num*10);i++){
 			if(i<json.length){
 			str+="<tr>";
@@ -50,7 +58,7 @@
 			str+="</tr>";
 			}
 	
-			
+		console.log(str);
 		}
 		$("#board").html(str);
 	}

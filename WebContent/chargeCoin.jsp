@@ -11,7 +11,7 @@
 			color: gold;
 			background-color: #2E9AFE;
 			font-weight: 900;
-			width: 470px;
+			width: 440px;
 			height: 200px;
 			border-radius: 16px;
 		}

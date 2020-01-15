@@ -12,7 +12,6 @@
 	<style>
 		.maintxt{
 			font-size: 30px;
-			margin-left: 740px;
 			margin-top: 60px;
 			margin-bottom: 70px;
 			background-color: #2E9AFE;
@@ -21,6 +20,7 @@
 			font-family: fantasy;
 			width: 100%;
 			border-radius: 10px;
+			text-align: center;
 		}
 		table{
 			width: 100%;
@@ -74,15 +74,7 @@
 	
 	
 	<table id="board">
-		<tr>
-			<td>작품 번호</td>
-			<td>작가</td>
-			<td>작품 제목</td>
-			<td>작품 소개</td>
-			<td>등급</td>
-			<td>장르</td>
-			<td>총 추천수</td>
-		</tr>
+		
 	</table>
 	<div id="bottom"></div>
 	<div>
@@ -102,7 +94,7 @@
 	</script>
 	
 
-<script type="text/javascript" src="jsFile/searchList.js">
+<script type="text/javascript" src="jsFile/searchList.js?ver1">
 </script>
 </body>
 </html>
