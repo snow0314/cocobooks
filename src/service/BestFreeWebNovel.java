@@ -32,6 +32,12 @@ public class BestFreeWebNovel {
 
 	private String makeHtml(List<NovelList> freeList) {
 		StringBuilder sb= new StringBuilder();
+		sb.append("<tr>");
+		sb.append("<td>작품 번호</td>");
+		sb.append("<td>작품 제목</td>");
+		sb.append("<td>작가 </td>");
+		sb.append("<td>총 조회수</td>");
+		sb.append("</tr>");
 		for(int i=0;i<freeList.size();i++) {
 			sb.append("<tr>");
 			sb.append("<td>"+freeList.get(i).getNum()+"</td>");

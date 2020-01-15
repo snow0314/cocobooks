@@ -12,17 +12,18 @@
 	.txt{
 		background-color: #2E9AFE;
 		font-size: 80px;
-		margin-left: 630px;
 		margin-top: 170px;
+		color: white;
+		text-align: center;
 		
 	}
 		.maintxt{
 			font-size: 40px;
-			margin-left: 500px;
 			margin-top: 200px;
+			text-align: center;
 		}
 		.btnBox{
-			margin-left: 750px;
+			margin-left: 620px;
 			margin-top: 200px;
 		}
 		.btn1{
