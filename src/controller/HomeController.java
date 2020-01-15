@@ -30,7 +30,7 @@ import service.Writing;
 
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
-				"/noveldetail","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
+				"/noveldetail","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
 				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert"})
 
 public class HomeController extends HttpServlet {
@@ -111,11 +111,7 @@ public class HomeController extends HttpServlet {
 			fw=nDetail.novelDetailShow();
 			break;
 	
-		case "/viewer": //작품 보기
-			Viewer view=new Viewer(request,response);
-			fw=view.view();
-			
-			break;
+		
 		case "/report": //신고하기
 			break;
 			

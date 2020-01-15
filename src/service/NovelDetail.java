@@ -86,10 +86,7 @@ public class NovelDetail {
 		Gson gson =new Gson();
 		Type shapeType = new TypeToken<List<Story>>() {}.getType(); 
 		json=gson.toJson(slist,shapeType);
-		
-		
-		
-	
+
 		return json;
 	}
 
