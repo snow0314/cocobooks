@@ -12,7 +12,7 @@
     src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
     integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
     crossorigin="anonymous"></script>
-<title>아이디찾기 결과창</title>
+<title>비밀번호 찾기 결과창</title>
 <meta charset="UTF-8">
 <style type="text/css">
     .login-box{
@@ -36,10 +36,10 @@
             <div class="col-md-3">
                 <div class="login-box">
                     <form role="form">
-                        <legend>아이디 검색 결과</legend>
-                        <label>회원님의 아이디는</label>
+                        <legend>비밀번호 검색 결과</legend>
+                        <label>회원님의 비밀번호는</label>
                         <div class="form-group">
-                            <label>${idsearch}</label>
+                            <label>${pwsearch}</label>
                         </div>
                         <div class="form-group">
                              <a href="main.jsp" class="btn btn-primary">메인으로</a>

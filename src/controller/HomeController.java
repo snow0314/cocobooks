@@ -22,6 +22,7 @@ import service.MyPage;
 import service.NovelDetail;
 import service.NovelInsert;
 import service.PayMent;
+import service.Pwsearch;
 import service.Searchboard;
 import service.Signup;
 import service.Viewer;
@@ -75,6 +76,8 @@ public class HomeController extends HttpServlet {
 			
 		
 		case "/pwsearch": //비밀번호 찾기
+			Pwsearch pwsearch = new Pwsearch(request, response);
+			fw=pwsearch.pwsearch();
 			break;
 			
 			
@@ -109,6 +112,12 @@ public class HomeController extends HttpServlet {
 		case "/noveldetail": //작품 상세 페이지
 			NovelDetail nDetail=new NovelDetail(request,response);
 			fw=nDetail.novelDetailShow();
+			break;
+
+		case "/viewer": //작품 보기
+			Viewer view=new Viewer(request,response);
+			fw=view.view();
+			
 			break;
 	
 		
