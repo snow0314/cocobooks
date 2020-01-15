@@ -47,6 +47,7 @@
 	</style>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 	<form method="post">
 	<div class="maintxt">신청하시면 관리자 검열 후 유료 작가로 전환 됩니다.</div>
 	<div class="txt">신청하시겠습니까?</div>

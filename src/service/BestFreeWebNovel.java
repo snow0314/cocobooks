@@ -24,20 +24,22 @@ public class BestFreeWebNovel {
 		List<NovelList> freeList=bDao.freeList();
 		if(freeList!=null&&freeList.size()!=0) {
 			request.setAttribute("list", makeHtml(freeList));
+			fw.setPath("bestFreeNovel.jsp");
+			fw.setRedirect(false);
 		}
 		return fw;
 	}
 
 	private String makeHtml(List<NovelList> freeList) {
 		StringBuilder sb= new StringBuilder();
-		sb.append("<tr>");
 		for(int i=0;i<freeList.size();i++) {
-			System.out.println(freeList.get(i).getTitle());
-			
+			sb.append("<tr>");
+			sb.append("<td>"+freeList.get(i).getNum()+"</td>");
+			sb.append("<td><a href='noveldetail?novelNum="+freeList.get(i).getNum()+"'>"+freeList.get(i).getTitle()+"</a></td>");
+			sb.append("<td>"+freeList.get(i).getId()+"</td>");
+			sb.append("<td>"+freeList.get(i).getTotalView()+"</td>");
+			sb.append("</tr>");
 		}
-		
-		
-		sb.append("</tr>");
 		return sb.toString();
 	}
 
