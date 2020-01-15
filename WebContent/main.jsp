@@ -11,12 +11,13 @@ body{
 background-color: #F2F2F2;
 }
   .free_best{
-  border: 2px solid grey;
+  border: 2.5px solid #2E9AFE;
   width: 650px;
   height: 1000px;
 }
 .pay_best{
-border: 2px solid grey;
+margin-left :4px;
+border: 2.5px solid #2E9AFE;
   width: 650px;
   height: 1000px;
 }
@@ -45,10 +46,9 @@ font-weight: 700;
 padding-top: 50px;
 }
 .tot{
- border: 1px solid black;
- width: 470px;
- margin-left: 47px;
- margin-top: 5px;
+ border: 5px solid #2E9AFE;
+ width: 490px;
+ margin-left: 40px;
  border-radius: 8px; 
 }
 .msg{
@@ -60,10 +60,10 @@ padding-top: 50px;
 	<jsp:include page="header.jsp"></jsp:include>
 	<div class="novel_category">
 	<div class="free_best">
-	베스트 무료 웹 소설 목록
+	<jsp:include page="bestFreeNovel.jsp"></jsp:include>
 	</div>
 	<div class="pay_best">
-	베스트 유료 웹 소설 목록
+	<jsp:include page="bestPayNovel.jsp"></jsp:include>
 	</div>
 	<div class="right">
 	<div class="tot">

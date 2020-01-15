@@ -8,13 +8,14 @@
 <style>
 		.loginbox{
 		display: flex;
-			padding-top: 50px;
+		padding-top: 50px;
+		
 		}
 		.text{
 			width: 280px;
 			height: 60px;
 			border-radius: 8px;
-			margin-left: 20px;
+	
 			font-size: 25px;
 		}
 		.loginbtn{
@@ -27,7 +28,7 @@
 		.loginfooter{
 			display: flex;
 			margin-top: 20px;
-			margin-left: 20px;
+	
 		}
 		.signup,.find{
 			width: 110px;
@@ -40,13 +41,6 @@
 			border :1px solid grey;
 			font-family: fantasy;
 			font-weight: 500;
-		}
-		.loginboxtotal{
-			border: 2px solid #F2F2F2;
-			width: 400px;
-			margin-left: 20px;
-			background-color: #F2F2F2;
-			height: 300px
 		}
 		
 	</style>

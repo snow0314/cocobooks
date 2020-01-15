@@ -49,7 +49,6 @@ public class Writing {
 	private String makeHtml(List<String> list) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<select name='genre' class='gradeTxt'>");
-		sb.append("<option value=''>장르</option>");
 		for (int i = 0; i < list.size(); i++) {
 			sb.append("<option value='"+list.get(i)+"'>"+list.get(i)+"</option>");
 		}

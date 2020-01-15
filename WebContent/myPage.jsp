@@ -92,9 +92,9 @@
 	</div>
 	</div>
 	</form>
-	<script type="text/javascript" src="jsFile/chargeList.js?ver1">
+	<script type="text/javascript" src="jsFile/chargeList.js?ver2">
 	</script>
-	<script type="text/javascript" src="jsFile/profile.js?ver1">
+	<script type="text/javascript" src="jsFile/profile.js?ver2">
 	</script>
 	<script type="text/javascript">
 	var msg="${msg}";
