@@ -182,7 +182,8 @@ table {
 						<input type="hidden" name="story_num" id='likebtn' value=""> <input
 							type="button" onclick="recommendation()" value="추천"> <input type='text' class='like'
 							value='' disabled>
-				
+						<input
+							type="button" onclick="recommendation()" value="신고">
 				</div>
 				<!--Footer-->
 				<div class="modal-footer flex-center">
