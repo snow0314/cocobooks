@@ -1,3 +1,7 @@
+var json;
+var index;
+var maxindex;
+var totalpage;
 $("#chargeList").click(function () {
 			$.ajax({
 	    		url: "charge",
@@ -7,8 +11,8 @@ $("#chargeList").click(function () {
 	    		success: function(data) {
 	    			console.log(data);
 	    			json=data;
-	    			pageShow(json,1);
-	    			pageNum(json);
+	    			pageShow2(json,1);
+	    			pageNum2(json);
 	    			
 	    		},
 	    		error: function(error) {
@@ -17,7 +21,7 @@ $("#chargeList").click(function () {
 	    	}); //ajax End
 	});
 		
-		function pageShow(json,num) { //페이지 안의 내용 보여주는 함수
+		function pageShow2(json,num) { //페이지 안의 내용 보여주는 함수
 			index=num;
 		
 			var str="";
@@ -52,8 +56,8 @@ $("#chargeList").click(function () {
 		}
 		
 		
-	 	function pageNum(json) { //페이지 넘버 보여주는 함수
-			var totalpage;
+	 	function pageNum2(json) { //페이지 넘버 보여주는 함수
+			
 			
 			totalPages = json.length/10;
 			if (json.length/10 > 0) {
@@ -62,35 +66,35 @@ $("#chargeList").click(function () {
 			maxindex=Math.floor(totalPages);
 			var str2="";
 			str2+="<ul class='pagination justify-content-center'>";
-			str2+="<li class='page-item'><a class='page-link' onclick='newpage("+0+")'>Previous</a></li>";
+			str2+="<li class='page-item'><a class='page-link' onclick='newpage1("+0+")'>Previous</a></li>";
 			
 			for(var k=1; k<totalPages;k++){
-				str2+="<li class='page-item'><a class='page-link' onclick='newpage("+k+")'>"+k+"</a></li>";
+				str2+="<li class='page-item'><a class='page-link' onclick='newpage1("+k+")'>"+k+"</a></li>";
 				str2+="<input type='hidden' class='page' value='"+k+"'>";
 			}
-			str2+="<li class='page-item'><a class='page-link' onclick='newpage("+-1+")'>Next</a></li></ul>";
+			str2+="<li class='page-item'><a class='page-link' onclick='newpage1("+-1+")'>Next</a></li></ul>";
 			str2+="</ul>";
 			
 			$("#bottom").html(str2);
 			
 		} 
 		
-	 	function newpage(num) { //페이지 이전, 다음 버튼 누를시 이동 제어하는 함수
+	 	function newpage1(num) { //페이지 이전, 다음 버튼 누를시 이동 제어하는 함수
 	 		if(num===0){
 	 			if(index==1){
-	 				pageShow(json,1);
+	 				pageShow2(json,1);
 	 			}else{
-	 				pageShow(json,index-1);
+	 				pageShow2(json,index-1);
 	 			}
 	 		}else if(num===-1){
 	 			console.log(maxindex);
 	 			if(index==maxindex){
-	 				pageShow(json,maxindex);
+	 				pageShow2(json,maxindex);
 	 			}else{
-	 				pageShow(json,index+1);
+	 				pageShow2(json,index+1);
 	 			}
 	 		}else{
-	 			pageShow(json,num);
+	 			pageShow2(json,num);
 	 		}
 		}
 

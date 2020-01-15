@@ -11,9 +11,9 @@
 			color: gold;
 			background-color: #2E9AFE;
 			font-weight: 900;
-			width: 370px;
+			width: 470px;
 			height: 200px;
-			border-radius: 14px;
+			border-radius: 16px;
 		}
 	</style>
 </head>

@@ -11,6 +11,8 @@ import bean.Forward;
 import service.Admin;
 import service.AuthorChangeInsert;
 import service.Authorchange;
+import service.BestFreeWebNovel;
+import service.BestPayWebNovel;
 import service.ChargeCoin;
 import service.Delete;
 import service.FaideWebFiction;
@@ -31,9 +33,8 @@ import service.Writing;
 
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
-				"/noveldetail","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
-				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert"})
-
+				"/noveldetail","/viewer","/report","/write","/bestfreewebnovel","/myPage","/payment","/authorchange","/signcompleted"
+				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert","/bestpaywebnovel"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -133,10 +134,15 @@ public class HomeController extends HttpServlet {
 			
 			
 			
-		case "/bestwebnovel": //베스트 소설 목록
+		case "/bestfreewebnovel": //베스트 무료 소설 목록
+			BestFreeWebNovel bWnovel= new BestFreeWebNovel(request, response);
+			fw=bWnovel.freeWeblist();
 			break;
 			
-			
+		case "/bestpaywebnovel": //베스트 유료 소설 목록
+			BestPayWebNovel bPWnovel= new BestPayWebNovel(request, response);
+			fw=bPWnovel.freeWeblist();
+			break;
 			
 			
 		case "/myPage": //마이페이지 
