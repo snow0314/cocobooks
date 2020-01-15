@@ -21,17 +21,22 @@ import service.Genre;
 import service.MyInfo;
 import service.NovelDetail;
 import service.NovelGradeChange;
+import service.PaidCheck;
 import service.PaidNovelSearch;
+import service.PreferenceAction;
+import service.Purchase;
+import service.Recommendation;
 import service.Signup;
 import service.SingoInfo;
 import service.StoryDelete;
 import service.UserInfo;
+import service.Viewer;
 
 
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
 			,"/singoinfo","/novelgradechange","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
 			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch","/storydelete","/blacklistadd"
-			})
+			,"/buynovel","/paidCheck","/preferenceadd","/viewer","/recommendation"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -151,24 +156,49 @@ public class RestController extends HttpServlet {
 			AllNovelShow novelShow=new AllNovelShow(request,response);
 			json=novelShow.allnovelshow();
 			break;
-		case "/paidnovelsearch":
+		case "/paidnovelsearch": //구입한 작품 보기
 			PaidNovelSearch pNS=new PaidNovelSearch(request,response);
 			json=pNS.search();
 			
 			break;
 			
-		case "/storydelete": //신고받은 글 삭제 및 블랙리스트 추가
+		case "/storydelete": //신고받은 글 삭제
 			StoryDelete sDelete =new StoryDelete(request,response);
 			json=sDelete.delete();
 			
 			break;
 			
-		case "/blacklistadd":
+		case "/blacklistadd": //블랙리스트에 추가
 			BlackList bAdd=new BlackList(request,response);
 			json=bAdd.blackListAdd();
 		
 			break;
 	
+		case "/buynovel": //소설 화수 구매
+			Purchase p=new Purchase(request,response);
+			json=p.buynovel();
+			
+			break;
+		case "/paidCheck": //구매했는지 체크
+			PaidCheck check=new PaidCheck(request,response);
+			json=check.paidCheck();
+			
+			break;
+		case "/preferenceadd": //선호작에 추가하는 기능
+			PreferenceAction pa=new PreferenceAction(request,response);
+			json=pa.preferenceAdd();
+			break;
+			
+		case "/viewer": //작품 보기
+			Viewer view=new Viewer(request,response);
+			json=view.view();
+			
+			break;	
+		case "/recommendation":
+			Recommendation rc=new Recommendation(request,response);
+			json=rc.recAdd();
+			
+			break;
 		default:
 			break;
 		}

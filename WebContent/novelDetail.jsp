@@ -21,6 +21,7 @@ div {
 #container {
 	width: 1000px;
 	height: 1000px;
+	margin-left: 450px;
 }
 
 table {
@@ -82,121 +83,124 @@ table {
 	width: 200px;
 	margin-left: 750px;
 }
+
+#listBtn {
+	margin-left: 750px;
+}
+
+#viewercontents {
+	width: 450px;
+	height: 800px;
+}
+
+.modal {
+	text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+	.modal:before {
+		display: inline-block;
+		vertical-align: middle;
+		content: " ";
+		height: 100%;
+	}
+}
+
+.modal-dialog {
+	display: inline-block;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.modal-dialog.modal-fullsize {
+	width: 80%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.modal-content.modal-fullsize {
+	height: auto;
+	min-height: 100%;
+	border-radius: 0;
+}
+
+.like {
+	width: 30px;
+	background-color: white;
+	border: 1px solid grey;
+}
+
+.singo {
+	width: 200px;
+	height: 100px;
+	border-radius: 5px;
+}
+
+#show, .btn btn-primary {
+	width: 200px;
+	margin-left: 700px;
+}
 </style>
 
 </head>
 <body>
 	${novelDetail}
 	<input type="hidden" id="novelNum" value="">
-</body>
-<script type="text/javascript">
+	<!--Modal: 구매하는 모달-->
+	<div class="modal fade" id="Modal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modaltitle">구입확인창</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">X</span>
+					</button>
+				</div>
+				<div class="modal-body" id="modalcontents">내용 입력 !!</div>
+				<div class="modal-footer">
+					<a class="btn" onclick='selectPurchase()'>예</a>
+					<button class="btn" type="button" data-dismiss="modal">아니요</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	var json;
-	var index;
-	
-	 window.onload=function(){
-		$.ajax({
-			url : "noveldetaillist",
-			type : "post",
-			data : {
-				"novelNum" : $("#novelNum").val()
-			},
-			dataType : 'json',
-			success : function(data) {
-				json=data;
-				novelDetailListShow(json,1);
-				pageNum(json);
+	<!--Modal: 소설보는 모달-->
+	<div class="modal fade" id="readModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullsize" role="document">
+			<!--Content-->
+			<div class="modal-content modal-fullsize">
+				<!--Body-->
+				<div class="modal-body">
+					<i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
+					<div id='viewercontents'>내용</div>
+					
+						<input type="hidden" name="story_num" id='likebtn' value=""> <input
+							type="button" onclick="recommendation()" value="추천"> <input type='text' class='like'
+							value='' disabled>
 				
-			},
-			error : function(error) {
-				alert(error);
-				console.log(error);
-			}
-		}); // ajax End
-	} 
-	
-	 function novelDetailListShow(json, num) { // 작품 화수 보여주는 메소드
-			index = num;
-
-			var str = "";
-			str += "<table class='table-striped'>";
-			str += "<tr>";
-			str += "<th>화수</th>";
-			str += "<th>제목</th>";
-			str += "<th>날짜</th>";
-			str += "<th>조회수</th>";
-			str += "<th>추천수</th>";
-			str += "</tr>";
-			var j=9;
-			for (var i = (num - 1) * 10; i < (num * 10); i++) {
-				if (i < json.length) {
-					str += "<tr>";
-					str += "<th>" + (i+1) + "</th>";
-					str += "<th><a href='viewer?story_num="+json[i].SR_NUM+"'>" + json[i].SR_TITLE + "</a></th>";
-					str += "<th>" + json[i].SR_DATE + "</th>";
-					str += "<th>" + json[i].SR_VIEW_NUM + "</th>";
-					str += "<th>" + json[i].rec + "</th>";
-					str += "</tr>";
-				} else {
-					str += "<tr>";
-					str += "<th></th>";
-					str += "<th></th>";
-					str += "<th></th>";
-					str += "<th></th>";
-					str += "<th></th>";
-					str += "</tr>";
-				}
-
-			}
-			str += "</table>";
-			$("#contents").html(str);
-		} 
-	 
-	 function pageNum(json) { // 페이지 넘버 보여주는 함수
-			var totalpage;
-			
-			totalPages = json.length / 10;
-			if (json.length / 10 > 0) {
-				totalPages++;
-			}
-			maxindex = Math.floor(totalPages);
-			var str2 = "";
-			str2 += "<ul class='pagination justify-content-center'>";
-			str2 += "<li class='page-item'><a class='page-link' onclick='newpage(" + 0
-					 + ")'>Previous</a></li>";
-
-			for (var k = 1; k < totalPages; k++) {
-				str2 += "<li class='page-item'><a class='page-link' onclick='newpage("
-						+ k +")'>" + k + "</a></li>";
-				str2 += "<input type='hidden' class='page' value='" + k + "'>";
-			}
-			str2 += "<li class='page-item'><a class='page-link' onclick='newpage(" + -1
-					+ ")'>Next</a></li></ul>";
-			str2 += "</ul>";
-
-			$("#paging").html(str2);
-
-		}
-	 
-	 function newpage(num) { // 페이지 이전, 다음 버튼 누를시 이동 제어하는 함수
-
-				if (num === 0) {
-					if (index == 1) {
-						novelDetailListShow(json, 1);
-					} else {
-						novelDetailListShow(json, index - 1);
-					}
-				} else if (num === -1) {
-					console.log(maxindex);
-					if (index == maxindex) {
-						novelDetailListShow(json, maxindex);
-					} else {
-						novelDetailListShow(json, index + 1);
-					}
-				} else {
-					novelDetailListShow(json, num);
-				}
-	 }
+				</div>
+				<!--Footer-->
+				<div class="modal-footer flex-center">
+					<a type="button" class="btn btn-outline-info waves-effect"
+						data-dismiss="modal">끄기</a>
+				</div>
+			</div>
+			<!--/.Content-->
+		</div>
+	</div>
+	<!--Modal: modalPush-->
+</body>
+<script type="text/javascript" src="jsFile/novelDetail.js">
+	var message = "${message}"; //구매하라는 메세지
+	if (message != "") {
+		alert(message);
+	}
 </script>
+
 
 </html>

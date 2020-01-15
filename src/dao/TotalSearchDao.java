@@ -24,11 +24,12 @@ public class TotalSearchDao {
 	public List<LinkedHashMap<String, Object>> totalSearch(String val) {
 		
 		List<LinkedHashMap<String, Object>> list = new ArrayList<LinkedHashMap<String, Object>>();
-		String sql="SELECT nb.NO_NUM,nb.NO_TITLE,nb.NO_ID,COUNT(re.RT_STORY_NUM) LIKECOUNT,nb.PAY_N_FREE\r\n" + 
+		String sql="\r\n" + 
+				"SELECT nb.NO_NUM,nb.NO_TITLE,nb.NO_ID,COUNT(re.RT_STORY_NUM) LIKECOUNT,nb.PAY_N_FREE\r\n" + 
 				"from nobel nb INNER join GENRE ge on nb.NO_GENRE_NUM=ge.GE_NUM \r\n" + 
 				"LEFT join story sr on nb.NO_NUM=sr.SR_NOBEL_NUM \r\n" + 
 				"LEFT join RECOMMENDATION re on sr.SR_NUM=re.RT_STORY_NUM\r\n" + 
-				"where nb.NO_TITLE=? or nb.NO_ID=?\r\n" + 
+				"where nb.NO_TITLE like '%'||?||'%' or nb.NO_ID like '%'||?||'%'\r\n" + 
 				"GROUP by nb.NO_NUM, nb.NO_ID, nb.NO_TITLE, nb.NO_GRADE, \r\n" + 
 				"sr.SR_NOBEL_NUM, nb.PAY_N_FREE\r\n" + 
 				"ORDER by nb.NO_NUM";

@@ -61,8 +61,8 @@ public class NovelDetail {
 			sb.append("</div>");
 		}else {
 			sb.append("<div id='bottom'>");
-			sb.append("<input type='button' value='선호작 추가'>");
-			sb.append("<input type='button' value='구매'>");
+			sb.append("<input type='button' onclick='preferenceAdd("+novel.getNovel_num()+")' value='선호작 추가'>");
+			sb.append("<input type='button' id='modalopen' value='구매'>");
 			sb.append("</div>");
 		}
 		sb.append("<div id=\"contents_container\">");
@@ -71,6 +71,7 @@ public class NovelDetail {
 		sb.append("<div id=\"paging\">");
 		sb.append("페이징 버튼");
 		sb.append("</div>"); 
+		sb.append("<input type='button' id='listBtn' onclick='history.back(-1)' value='작품 목록으로'>");
 		sb.append("</div>"); //container End
 		
 		return sb.toString();

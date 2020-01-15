@@ -38,6 +38,7 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
+<form action="noveldetail">
 <table class="mainTable">
 		<tr>
 			<td>작품번호</td>
@@ -48,13 +49,17 @@
 		</tr>
 	</table>
 	<table class="listTable">
-	
+
 	</table>
+	</form>
+	
 	<script type="text/javascript">
 	$(".listTable").append("${data}");
 	</script>
 	<script type="text/javascript">
-	$("#")
+	function submitt(num) {
+		location.href="noveldetail?novelNum="+num;
+	}
 	</script>
 </body>
 </html>

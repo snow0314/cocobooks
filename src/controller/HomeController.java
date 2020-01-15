@@ -20,17 +20,20 @@ import service.Login;
 import service.Main;
 import service.MyPage;
 import service.NovelDetail;
+import service.NovelInsert;
 import service.PayMent;
 import service.Pwsearch;
 import service.Searchboard;
 import service.Signup;
 import service.Viewer;
 import service.Write;
+import service.Writing;
 
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
-				"/noveldetail","/buynovel","/viewer","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
-				,"/logout","/chargecoin","/admin","/authorchangeinsert"})
+				"/noveldetail","/report","/write","/bestwebnovel","/myPage","/payment","/authorchange","/signcompleted"
+				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert"})
+
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -110,16 +113,14 @@ public class HomeController extends HttpServlet {
 			NovelDetail nDetail=new NovelDetail(request,response);
 			fw=nDetail.novelDetailShow();
 			break;
-		case "/buynovel": //작품 구매 페이지, 라이트박스 이용
-			break;
-			
-			
-			
+
 		case "/viewer": //작품 보기
 			Viewer view=new Viewer(request,response);
 			fw=view.view();
 			
 			break;
+	
+		
 		case "/report": //신고하기
 			break;
 			
@@ -146,7 +147,7 @@ public class HomeController extends HttpServlet {
 			
 			
 			
-		case "/payment": //결제하기
+		case "/payment": //결제창으로 이동
 			PayMent payment=new PayMent(request, response);
 			fw=payment.move();
 			break;
@@ -189,6 +190,15 @@ public class HomeController extends HttpServlet {
 			
 			break;
 		
+		case "/writing"	: //작품등록 페이지 이동 and 여건 확인
+			Writing wt=new Writing(request,response);
+			
+			fw=wt.check();
+			break;
+		case "/novelinsert":
+			NovelInsert nInsert=new NovelInsert(request,response);
+			fw=nInsert.insert();
+			break;
 		default:
 
 			break;
