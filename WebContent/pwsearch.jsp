@@ -13,7 +13,7 @@
     integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
     crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<title>아이디 조회</title>
+<title>비밀번호 조회</title>
 </head>
 
 <style type="text/css">
@@ -26,7 +26,7 @@
     	margin:150px 0 0 200px;
     	padding:10px 0 0 15px;
     }
-    #name{
+    #idinput{
     	width : 200px;
     
     }
@@ -35,19 +35,19 @@
     }
 </style>
 <body>
-<form class = "formsearch" method="post" action="idsearch">
+<form class = "formsearch" method="post" action="pwsearch">
 <div class="container">
  <div class="row">
   <div class="col-md-3">
    <div class="login-box">
-    <legend>아이디 찾기</legend>
+    <legend>비밀번호 찾기</legend>
      <div class="form-group">
-      <label>이름</label><input type="text" name="name" class="form-control" id="name"
-      placeholder="이름을 입력하세요"/>
+      <label>아이디</label><input type="text" name="id" class="form-control" id="idinput"
+      placeholder="아이디를 입력하세요"/>
 <div class="form-group">
  <label>Email</label> <input type="text" name="email" class="form-control" id="email"
  placeholder="이메일을 입력하세요"/>
-  <button type="submit" class="btn btn-primary" onclick='msg()' >조회</button>
+  <button type="submit" class="btn btn-primary">조회</button>
 </div>
  </div>
   </div>
@@ -55,14 +55,5 @@
     </div>
      </div>
 </form>
-<script type="text/javascript">
-function msg() {
-	var msg=${idsearch};
-	if(msg==""){
-		 alert("일치하는 아이디가 없습니다.");
-	}	
-}
-
-</script>
 </body>
 </html>

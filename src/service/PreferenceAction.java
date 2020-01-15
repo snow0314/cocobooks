@@ -21,8 +21,11 @@ public class PreferenceAction {
 		String id=(String)session.getAttribute("id");
 		int num=Integer.parseInt(request.getParameter("Novel_num"));
 		
-		boolean result=paDao.preferenceAdd(id,num);
-		
+		boolean result=paDao.preferenceCheck(id,num);
+		if(result) {
+			result=paDao.preferenceAdd(id,num);
+		}
+
 		if(result) {
 			return "등록 성공했습니다.";
 		}else {
@@ -30,5 +33,7 @@ public class PreferenceAction {
 		}
 		
 	}
+	
+
 
 }

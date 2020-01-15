@@ -8,12 +8,43 @@
 			lists.push($(this).val());
 		});
 		var cnt = lists.length;
-		var str = "";
-		str += "총 " + (cnt * 100) + "원 구입하시겠습니까?"
-		$("#modalcontents").html(str);
+		if(cnt!=0){
+			var str = "";
+			str += "총 " + (cnt * 100) + "원 구입하시겠습니까?"
+			$("#modalcontents").html(str);
+			
+			$('#Modal').modal("show");
+		}else{
+			alert("화수를 선택하세요");
+		}
 		
-		$('#Modal').modal("show");
 	});
+	
+	function viewerOpen(num) {//화수 클릭시 뜨는 모달 메소드
+		$.ajax({
+			url : "viewer",
+			type : "post",
+			data : {
+				"story_num" : num
+			},
+			dataType : 'json',
+			success : function(data) {
+				var contents = data;
+				console.log(contents);
+				var str=contents.SR_CONTENTS;
+				$("#viewercontents").html(str);
+				$(".like").attr("value",contents.rec);
+				$("#likebtn").attr("value",contents.SR_NUM);
+				$('#readModal').modal("show");
+			},
+			error : function(error) {
+				alert(error);
+				console.log(error);
+			}
+		}); // ajax End
+		
+		
+	}
 
 	window.onload = noveldetaillist();
 		
@@ -95,7 +126,7 @@
 				}
 
 				str += "<th>" + (i + 1) + "</th>";
-				str += "<th><a href='viewer?story_num=" + json[i].SR_NUM + "'>"
+				str += "<th><a class='novel' onclick='viewerOpen("+json[i].SR_NUM+")'>"
 						+ json[i].SR_TITLE + "</a></th>";
 				str += "<th>" + json[i].SR_DATE + "</th>";
 				str += "<th>" + json[i].SR_VIEW_NUM + "</th>";
@@ -205,7 +236,6 @@
 			dataType : 'text',
 			success : function(data) {
 				var msg = data;
-				noveldetaillist();
 				alert(msg);
 				
 			},
@@ -216,6 +246,24 @@
 		}); // ajax End
 	}
 	
-	
+	function recommendation(){
+		$.ajax({
+			url : "recommendation",
+			type : "post",
+			data : {
+				"story_num" : $("#likebtn").val()
+			},
+			dataType : 'text',
+			success : function(data) {
+				var msg = data;
+				alert(msg);
+				
+			},
+			error : function(error) {
+				alert(error);
+				console.log(error);
+			}
+		}); // ajax End
+	}
 	
 	
