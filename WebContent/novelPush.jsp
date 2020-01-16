@@ -100,7 +100,6 @@ body {
 		<div class="footerBox">
 			<div class="gradeBox">
 				<select name="grade" class="gradeTxt">
-					<option value="">등급</option>
 					<option value="일반">일반</option>
 					<option value="성인" class="oldPerson">성인</option>
 				</select>

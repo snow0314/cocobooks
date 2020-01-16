@@ -20,6 +20,7 @@ import service.DeleteFavoritesNovel;
 import service.FreeNovelSearch;
 import service.Genre;
 import service.MyInfo;
+import service.MyNovel;
 import service.NovelDetail;
 import service.NovelGradeChange;
 import service.PaidCheck;
@@ -35,7 +36,7 @@ import service.UserInfo;
 import service.Viewer;
 
 
-@WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
+@WebServlet({"/noveldetaillist","/list","/mynovel","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
 			,"/singoinfo","/novelgradechange","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
 			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch","/storydelete","/blacklistadd"
 			,"/buynovel","/paidCheck","/preferenceadd","/viewer","/recommendation","/freenovelsearch","/deleteFavoritesNovel","/report"
@@ -62,9 +63,9 @@ public class RestController extends HttpServlet {
 			json=novel.NovelDetailList();
 			
 			break;	
-		case "/mynoble": //내가 쓴 작품 목록
-			
-			
+		case "/mynovel": //내가 쓴 작품 목록
+			MyNovel mynovel=new MyNovel(request, response);
+			json=mynovel.check();
 			
 			break;	
 		case "/preference": //선호작 목록

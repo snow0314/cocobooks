@@ -57,6 +57,86 @@ a:visited {
 a:hover {
 	color: #2E9AFE;
 }
+		img{
+			width: 90px;
+			height: 70px;
+		}
+		.oneViewBox{
+			display: flex;
+			margin-left: 84px;
+			margin-top: 10px;
+		}
+		.oneImg{
+			margin-left: 119px;
+		}
+		.one{
+			margin-left: 90px;
+			margin-top: 10px;
+			font-weight: 700;
+			width: 140px;
+		}
+		.oneViewNum{
+			padding-left: 5px;
+			background-color: gold;
+			font-weight: 700;
+			color: red;
+		}
+		.oneViewTxt{
+			border-bottom: 1px solid gold;
+			background-color: gold;
+			font-weight: 700;
+		}
+		.twoViewBox{
+			display: flex;
+		}
+		.twoImg{
+			margin-left: 30px;
+			margin-top: 7px;
+		}
+		.two{
+			margin-left: 42px;
+			margin-top: 5px;
+			font-weight: bold;
+			width: 140px;
+		}
+		.twoViewTxt{
+			display: flex;
+			font-weight: bolder;
+			background-color: silver;
+		}
+		.twoViewNum{
+			background-color: silver;
+			font-weight: bold;
+			color: red;
+		}
+		.twoAndthree{
+			display: flex;
+		}
+		.threeImg{
+			margin-top: 4px;
+			margin-left: 73px;
+		}
+		.three{
+			display: flex;
+			font-weight: bolder;
+			margin-left: 82px;
+			margin-top: 8px;
+			width: 140px;
+		}
+		.threeViewTxt{
+			margin-left: 38px;
+			font-weight: bold;
+			background-color: saddlebrown;
+			color: currentColor;
+		}
+		.threeBox{
+			display: flex;
+		}
+		.threeViewNum{
+			font-weight: bold;
+			background-color: saddlebrown;
+			color: red;
+		}
 </style>
 </head>
 <body>

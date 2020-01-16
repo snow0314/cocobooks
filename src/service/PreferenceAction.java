@@ -53,7 +53,6 @@ public class PreferenceAction {
 			Type shapeType = new TypeToken<List <Preference>>() {}.getType(); 
 			json=gson.toJson(listData,shapeType);
 			System.out.println("선호작 불러오기 성공");
-			System.out.println("선호작 json"+json);
 			return json;
 		}
 		System.out.println("선호작 불러오기 실패");
