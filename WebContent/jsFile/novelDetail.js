@@ -1,6 +1,7 @@
 	var json;
 	var index;
 	var paid;
+
 	$('#modalopen').click(function(e) { //구매창 클릭시 뜨는 모달 메소드
 		var lists = [];
 		$("input[name='purchase']:checked").each(function(i) { // jQuery로 for문 돌면서
@@ -31,8 +32,10 @@
 			success : function(data) {
 				var contents = data;
 				console.log(contents);
+				console.log(contents.SR_TITLE);
 				var str=contents.SR_CONTENTS;
 				$("#viewercontents").html(str);
+				$("#story_title").text(contents.SR_TITLE);
 				$(".like").attr("value",contents.rec);
 				$("#likebtn").attr("value",contents.SR_NUM);
 				$('#readModal').modal("show");
@@ -104,6 +107,7 @@
 		str += "<th>날짜</th>";
 		str += "<th>조회수</th>";
 		str += "<th>추천수</th>";
+		str += "<th>신고하기</th>";
 		str += "</tr>";
 	
 		for (var i = (num - 1) * 10; i < (num * 10); i++) {
@@ -131,9 +135,11 @@
 				str += "<th>" + json[i].SR_DATE + "</th>";
 				str += "<th>" + json[i].SR_VIEW_NUM + "</th>";
 				str += "<th>" + json[i].rec + "</th>";
+				str += "<th><input type='button' value='신고' onclick='reportShow("+json[i].SR_NUM+")'> "
 				str += "</tr>";
 			} else {
 				str += "<tr>";
+				str += "<th></th>";
 				str += "<th></th>";
 				str += "<th></th>";
 				str += "<th></th>";
@@ -226,7 +232,7 @@
 		$('#Modal').modal("hide"); //모달 닫기
 	}
 	
-	function preferenceAdd(Novel_num) {
+	function preferenceAdd(Novel_num) { //선호작 추가하는 메소드
 		$.ajax({
 			url : "preferenceadd",
 			type : "post",
@@ -265,5 +271,55 @@
 			}
 		}); // ajax End
 	}
+	
+	function reportShow(num) { //신고 모달 보여주는 메소드
+		var str="<input type='hidden' value='"+num+"' class='report_num' >";
+		$("#report_num").html(str);
+		$('#Modal_report').modal("show");
+		
+	}
+	
+	function report() { //작가아이디, 글번호, 신고 카테고리, 내용을 가지고 신고 하는 메소드
+		var radioVal = $('input[name="radioChk"]:checked').val();
+		var list=[];
+		$.ajaxSettings.traditional = true;
+		
+		list.push($("#author").text()); //작가 아이디
+		list.push($(".report_num").val()); //글번호, 
+		list.push(radioVal); //신고 카테고리
+		list.push($("#report_contents").val()); //자세한 내용
+		console.log(list);
+		
+		
+		$.ajax({
+		url : "report",
+		type : "post",
+		data : {
+			"reportCol" : list
+		},
+		dataType : 'text',
+		success : function(data) {
+			var msg = data;
+			alert(msg);
+			$('#Modal_report').modal("hide");
+		},
+		error : function(error) {
+			alert(error);
+			console.log(error);
+		}
+	});// ajax End
+	}
+	
+	
+	$('textarea').on('keyup', function() { //텍스트 에어리어 글자수 제한
+		if($(this).val().length > 200) {
+
+			alert("글자수는 200자로 이내로 제한됩니다.");
+			$(this).val($(this).val().substring(0, 200));
+
+		}
+
+	});
+
 	
 	

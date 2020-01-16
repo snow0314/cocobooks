@@ -14,14 +14,18 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <style>
-div {
+.root {
 	border: solid 1px black;
+}
+
+a {
+	cursor: pointer;
 }
 
 #container {
 	width: 1000px;
 	height: 1000px;
-	margin-left: 450px;
+	margin-left: 350px;
 }
 
 table {
@@ -91,6 +95,7 @@ table {
 #viewercontents {
 	width: 450px;
 	height: 800px;
+	border-bottom: 1px solid gray;
 }
 
 .modal {
@@ -141,13 +146,25 @@ table {
 	width: 200px;
 	margin-left: 700px;
 }
+
+#rec_btn {
+	margin-left: 200px;
+}
+
+textarea {
+	width: 400px;
+	height: 100px;
+	resize: none; /* 크기고정 */
+}
 </style>
+
 
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 	${novelDetail}
 	<input type="hidden" id="novelNum" value="">
+
 	<!--Modal: 구매하는 모달-->
 	<div class="modal fade" id="Modal" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -169,35 +186,67 @@ table {
 		</div>
 	</div>
 
-	<!--Modal: 소설보는 모달-->
+
+	<!-- Modal 스크롤바 -->
 	<div class="modal fade" id="readModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullsize" role="document">
-			<!--Content-->
-			<div class="modal-content modal-fullsize">
-				<!--Body-->
-				<div class="modal-body">
-					<i class="fas fa-bell fa-4x animated rotateIn mb-4"></i>
-					<div id='viewercontents'>내용</div>
-					
-						<input type="hidden" name="story_num" id='likebtn' value=""> <input
-							type="button" onclick="recommendation()" value="추천"> <input type='text' class='like'
-							value='' disabled>
-						<input
-							type="button" onclick="recommendation()" value="신고">
+		aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-scrollable" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="story_title">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
 				</div>
-				<!--Footer-->
-				<div class="modal-footer flex-center">
-					<a type="button" class="btn btn-outline-info waves-effect"
-						data-dismiss="modal">끄기</a>
+				<div class="modal-body">
+					<div id='viewercontents'>내용</div>
+					<div id='rec_btn'>
+						<input type="hidden" name="story_num" id='likebtn' value="">
+						<input type="button" class='btn btn-primary'
+							onclick="recommendation()" value="추천"> <input type='text'
+							class='like' value='' disabled>
+					</div>
 				</div>
 			</div>
-			<!--/.Content-->
+			<div class="modal-footer">
+				
+			</div>
 		</div>
 	</div>
-	<!--Modal: modalPush-->
+
+	<!--Modal: 신고하는 모달-->
+	<div class="modal fade" id="Modal_report" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modaltitle">신고하시겠습니까?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">X</span>
+					</button>
+				</div>
+				<div class="modal-body" id="modalcontents_report">
+					<input type="radio" name="radioChk" value="abuse" checked="checked">욕설<br> <input
+						type="radio"  name="radioChk" value="hateSpeech">혐오표현<br>
+					<input type="radio"  name="radioChk" value="inapposite">부적절한
+					콘텐츠<br> <input type="radio"  name="radioChk" value="mistake">잘못
+					분류된 콘텐츠<br> <br>
+					<h5>자세한 내용을 입력해주세요(200자 이내)</h5>
+					<textarea id="report_contents" rows="" cols=""></textarea>
+				</div>
+				<div class="modal-footer">
+					<a class="btn" onclick='report()'>예</a>
+					<div id="report_num"></div>
+					<button class="btn" type="button" data-dismiss="modal">아니요</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
-<script type="text/javascript" src="jsFile/novelDetail.js">
+<script type="text/javascript" src="jsFile/novelDetail.js?ver5">
 	var message = "${message}"; //구매하라는 메세지
 	if (message != "") {
 		alert(message);

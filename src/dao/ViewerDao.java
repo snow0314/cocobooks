@@ -30,8 +30,10 @@ public class ViewerDao {
 			
 			if(rs.next()) {
 				if("유료".equals(rs.getNString("PAY_N_FREE"))) {
+					JdbcUtill.close(rs, pstmt, con);
 					return true;
 				}else {
+					JdbcUtill.close(rs, pstmt, con);
 					return false;
 				}
 			}
@@ -56,9 +58,11 @@ public class ViewerDao {
 			
 			if(rs.next()) {
 				System.out.println("이미 구매한 작품");
+				JdbcUtill.close(rs, pstmt, con);
 				return true;
 			}else {
 				System.out.println("작품을 구매하세요");
+				JdbcUtill.close(rs, pstmt, con);
 				return false;
 			}
 			
@@ -66,6 +70,7 @@ public class ViewerDao {
 			
 			e.printStackTrace();
 		}
+		JdbcUtill.close(rs, pstmt, con);
 		return false;
 	}
 
@@ -83,6 +88,7 @@ public class ViewerDao {
 				st.setSR_CONTENTS(rs.getNString("SR_CONTENTS"));
 				st.setSR_NOBLE_NUM(rs.getInt("SR_NOBEL_NUM"));
 				st.setSR_NUM(rs.getInt("SR_NUM"));
+				st.setSR_TITLE(rs.getNString("SR_TITLE"));
 				String sql2="SELECT STORY.SR_NUM,COUNT(rt_story_num)\r\n" + 
 						"FROM STORY\r\n" + 
 						"JOIN recommendation\r\n" + 
@@ -95,6 +101,7 @@ public class ViewerDao {
 				if(rs.next()) {
 					st.setRec(rs.getInt("COUNT(rt_story_num)"));
 				}
+				JdbcUtill.close(rs, pstmt, con);
 				return st;
 			}
 			
@@ -105,6 +112,26 @@ public class ViewerDao {
 		}
 		
 		return null;
+	}
+
+	public void viewUp(int story_num) {
+		String sql="UPDATE STORY SET SR_VIEW_NUM=SR_VIEW_NUM+1 WHERE SR_NUM=?";
+		con=JdbcUtill.getConnection();
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, story_num);
+			int result=pstmt.executeUpdate();
+			
+			if(result!=0) {
+				System.out.println("조회수 증가 성공");
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("조회수 증가 오류");
+			e.printStackTrace();
+		}
+		
+		JdbcUtill.close(rs, pstmt, con);
 	}
 	
 	

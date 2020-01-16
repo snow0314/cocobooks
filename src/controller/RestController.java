@@ -26,6 +26,7 @@ import service.PaidNovelSearch;
 import service.PreferenceAction;
 import service.Purchase;
 import service.Recommendation;
+import service.ReportAction;
 import service.Signup;
 import service.SingoInfo;
 import service.StoryDelete;
@@ -36,7 +37,7 @@ import service.Viewer;
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
 			,"/singoinfo","/novelgradechange","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
 			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch","/storydelete","/blacklistadd"
-			,"/buynovel","/paidCheck","/preferenceadd","/viewer","/recommendation"})
+			,"/buynovel","/paidCheck","/preferenceadd","/viewer","/recommendation","/report"})
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -197,6 +198,11 @@ public class RestController extends HttpServlet {
 		case "/recommendation":
 			Recommendation rc=new Recommendation(request,response);
 			json=rc.recAdd();
+			
+			break;
+		case "/report":
+			ReportAction report=new ReportAction(request,response);
+			json=report.reportAdd();
 			
 			break;
 		default:
