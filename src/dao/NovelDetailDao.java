@@ -87,4 +87,46 @@ public class NovelDetailDao {
 		return slist;
 	}
 
+	public int novelDetailCheck(String id) {
+		String sql="SELECT * FROM MB WHERE MB_ID=?";
+		con=JdbcUtill.getConnection();
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getInt("MB_AGE");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
+
+	public String novelDetailGradeCheck(int novelNum) {
+		String sql="SELECT * FROM NOBEL WHERE NO_NUM=?";
+		con=JdbcUtill.getConnection();
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, novelNum);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				return rs.getNString("NO_GRADE");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return null;
+	}
+
 }

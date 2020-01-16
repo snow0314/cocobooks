@@ -17,7 +17,10 @@
 .root {
 	border: solid 1px black;
 }
-
+p{
+	margin-left: 50px;
+	font: bold;
+}
 a {
 	cursor: pointer;
 }
@@ -246,7 +249,7 @@ textarea {
 	</div>
 
 </body>
-<script type="text/javascript" src="jsFile/novelDetail.js?ver5">
+<script type="text/javascript" src="jsFile/novelDetail.js?ver7">
 	var message = "${message}"; //구매하라는 메세지
 	if (message != "") {
 		alert(message);

@@ -59,10 +59,32 @@ public class Viewer {
 				}
 
 			} else {
-				// 작품을 구매해야한다
-				request.setAttribute("message", "작품을 구매하세요");
+				
+				if(vDao.authorCheck(id,story_num)) {//자신이 쓴 글인지 체크
+					Gson gson = new Gson();
+					json = gson.toJson(st); // 제이슨으로 내용을 날려준다
+					if (cookies != null) {
+						for (Cookie c : cookies) {//
+							// story_num 쿠키가 있는 경우
+							if (c.getName().equals(Integer.toString(story_num))) {
+								isGet = true;
+							}
+						}
+					}
+					if (!isGet) {
+						vDao.viewUp(story_num);// 조회수증가
+						Cookie c1 = new Cookie(Integer.toString(story_num), Integer.toString(story_num));
+						c1.setMaxAge(60 * 60);// 한시간 저장
+						response.addCookie(c1);
+					}
+					
+					
+				}else {// 작품 구매하라고 해야한다
+					return "작품을 구매하세요";
 
-				// 작품 구매하라고 해야한다
+					
+				}
+				
 			}
 		} else
 

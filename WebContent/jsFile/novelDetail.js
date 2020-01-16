@@ -41,7 +41,8 @@
 				$('#readModal').modal("show");
 			},
 			error : function(error) {
-				alert(error);
+				var msg=error.responseText
+				alert(msg);
 				console.log(error);
 			}
 		}); // ajax End
@@ -321,5 +322,32 @@
 
 	});
 
+	function gradeChangeApply(Novel_num) {
+		$.ajax({
+			url : "novelgradechange",
+			type : "post",
+			data : {
+				"novelNum" : Novel_num
+			},
+			dataType : 'text',
+			success : function(data) {
+				var msg = data;
+				alert(msg);
+				
+			},
+			error : function(error) {
+				alert(error);
+				console.log(error);
+			}
+		});// ajax End
+	}
+	
+	function writemove(novelNum) {
+		location.href="writemove?novelNum="+novelNum;
+	}
+	
+	function moveMain() {
+		location.href="main.jsp";
+	}
 	
 	
