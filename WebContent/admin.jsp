@@ -31,7 +31,7 @@
   width:70%;
   left:200px;
   height: 100px;
-  border: 1px solid black;
+  
 }
 a{
 	cursor:pointer;
@@ -56,8 +56,8 @@ table{
 	padding:12px 24px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #1570cd;
-	position:   relative;
-	left:       400px;
+	margin-left: 300px;
+	margin-top: -100px;
 	
 }
 .myButton:hover {
@@ -75,7 +75,15 @@ table{
   background-color: #2E9AFE;
 
 }
-
+#genretext{
+	width: 500px;
+	float: left;
+}
+#genreAddButton{
+	margin-top: 0px;
+	margin-left: 250px;
+	
+}
 
 </style>
 </head>
@@ -86,7 +94,7 @@ table{
   <a class="list-group-item list-group-item-action" onclick="userinfo()">회원보기</a><br>
   <a class="list-group-item list-group-item-action" onclick="blacklistshow()">블랙리스트 보기</a><br>
   <a class="list-group-item list-group-item-action" onclick="authorChangeShow()">유료 작가 전환</a><br>
-  <a class="list-group-item list-group-item-action" onclick="singoInfoShow()">신고받은 글 보기 및 삭제</a><br>
+  <a class="list-group-item list-group-item-action" onclick="singoInfoShow()">신고받은 글 보기 및 블랙리스트 추가</a><br>
   <a class="list-group-item list-group-item-action" onclick="allNovelShow()">작품 등급 제한 걸기</a><br>
   <a class="list-group-item list-group-item-action" onclick="genreInfo()">장르 추가 기능</a><br>
   </div>
@@ -98,7 +106,7 @@ table{
   </div>
 
 </body>
-<script src="jsFile/admin.js">
+<script src="jsFile/admin.js?ver2">
 
 
 </script>

@@ -21,7 +21,6 @@ function genreInfo() { // DB에 저장된 장르 보기
 						str += "<tr>";
 						str += "<th>" + (i + 1) + "</th>";
 						str += "<th>" + json[i] + "</th>";
-
 						str += "<th><input type='button' value='삭제' onclick='genreDelete("
 								+ "\"" + json[i] + "\"" + ")'>";
 						str += "</tr>";
@@ -39,8 +38,10 @@ function genreInfo() { // DB에 저장된 장르 보기
 
 function genreAddButton() { // 장르 추가하는 버튼 보여주는 메소드
 	var str = "";
+	str += "<div id='genretext'>"; 
 	str += "<input type='text' class='form-control' id='genreAddText' name='genreName' maxlength='10'>";
-	str += "<input type='button' class='myButton' id='genreAddButton' onclick='genreAdd()' value='장르 추가하기'>";
+	str += "</div>"; 
+	str += "<input type='button' class='myButton pull-right' id='genreAddButton' onclick='genreAdd()' value='장르 추가하기'>";
 	$("#bottom").html(str);
 }
 
@@ -251,7 +252,24 @@ function newpage(num, kind) { // 페이지 이전, 다음 버튼 누를시 이�
 		} else {
 			allNovelShowPage(json, num);
 		}
-		
+		break;
+	case "singo":
+		if (num === 0) {
+			if (index == 1) {
+				singoInfoShowPage(json, 1);
+			} else {
+				singoInfoShowPage(json, index - 1);
+			}
+		} else if (num === -1) {
+			console.log(maxindex);
+			if (index == maxindex) {
+				singoInfoShowPage(json, maxindex);
+			} else {
+				singoInfoShowPage(json, index + 1);
+			}
+		} else {
+			singoInfoShowPage(json, num);
+		}
 		
 		break;
 	default:
@@ -284,7 +302,8 @@ function blackListPageShow(json, num) { // 페이지 안의 내용 보여주는 
 	var str = "";
 	str += "<table class='table-striped'>";
 	str += "<tr>";
-	str += "<th><input type='checkbox' id='allCheck'>아이디</th>";
+	str += "<th><input type='checkbox' id='allCheck'></th>";
+	str += "<th>아이디</th>";
 	str += "<th>이름</th>";
 	str += "<th>나이</th>";
 	str += "<th>성별</th>";
@@ -297,7 +316,8 @@ function blackListPageShow(json, num) { // 페이지 안의 내용 보여주는 
 		if (i < json.length) {
 			str += "<tr>";
 			str += "<th><input type='checkbox' name='black' value='"
-					+ json[i].id + "'>" + json[i].id + "</th>";
+					+ json[i].id + "'></th>";
+			str += "<th>" + json[i].id + "</th>";
 			str += "<th>" + json[i].name + "</th>";
 			str += "<th>" + json[i].age + "</th>";
 			str += "<th>" + json[i].gender + "</th>";
@@ -307,6 +327,7 @@ function blackListPageShow(json, num) { // 페이지 안의 내용 보여주는 
 			str += "</tr>";
 		} else {
 			str += "<tr>";
+			str += "<th></th>";
 			str += "<th></th>";
 			str += "<th></th>";
 			str += "<th></th>";
@@ -522,7 +543,7 @@ function singoInfoShow() {
 		success : function(data) {
 			json = data;
 			singoInfoShowPage(json, 1);
-			pageNum(json, "novel");
+			pageNum(json, "singo");
 			
 		},
 		error : function(error) {
@@ -543,7 +564,6 @@ function singoInfoShowPage(json, num) { // 신고받은 글 모두 보기
 	str += "<th>신고받은 아이디</th>";
 	str += "<th>카테고리</th>";
 	str += "<th>내용</th>";
-	str += "<th>글 삭제</th>";
 	str += "<th>블랙리스트 추가</th>";
 	str += "</tr>";
 
@@ -555,14 +575,11 @@ function singoInfoShowPage(json, num) { // 신고받은 글 모두 보기
 			str += "<th>" + json[i].id + "</th>";
 			str += "<th>" + json[i].cartegory + "</th>";
 			str += "<th>" + json[i].diteil + "</th>";
-			str += "<th><button onclick='storyDelete(\""
-					+ json[i].story_num + "\")'>삭제</button></th>";
 			str += "<th><button onclick='blackListAdd(\""
 				+ json[i].id + "\")'>블랙리스트</button></th>";
 			str += "</tr>";
 		} else {
 			str += "<tr>";
-			str += "<th></th>";
 			str += "<th></th>";
 			str += "<th></th>";
 			str += "<th></th>";

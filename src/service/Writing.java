@@ -28,7 +28,7 @@ public class Writing {
 		Member mb = cDao.check(id);
 		if (mb.getKind().equals("일반")) {
 			request.setAttribute("category", makeHtml(list));
-			request.setAttribute("info", "일반");
+			request.setAttribute("info", "무료");
 			fw.setPath("novelPush.jsp");
 			fw.setRedirect(false);
 		} else if (mb.getKind().equals("유료")) {
