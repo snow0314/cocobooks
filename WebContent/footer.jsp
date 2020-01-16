@@ -7,7 +7,7 @@
 <title>footer</title>
 	<style>
 	body{
-background-color: #F2F2F2;}
+background-color: white;}
 		.header_image{
 			width: 300px;
 		}

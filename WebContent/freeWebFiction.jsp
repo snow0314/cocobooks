@@ -90,7 +90,7 @@
 	</div>
 	</form>
 	<script type="text/javascript">
-		$("#board").append("${list}");
+		$("#board").append( "${list}");
 	</script>
 	<script type="text/javascript" src="jsFile/freeSearchList.js?ver1"></script>
 

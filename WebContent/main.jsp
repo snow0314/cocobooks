@@ -9,12 +9,12 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style type="text/css">
 body {
-	background-color: #F2F2F2;
+	background-color: white;
 }
 
 .free_best {
 	border: 2.5px solid #2E9AFE;
-	width: 900px;
+	width: 920px;
 	height: 1000px;
 }
 

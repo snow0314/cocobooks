@@ -7,7 +7,7 @@
 <title>Header</title>
 	<style>
 body{
-background-color: #F2F2F2;}
+background-color: white;}
 		.header_logo{
 			padding-left: 650px;
 			position: absolute;
