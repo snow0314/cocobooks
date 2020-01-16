@@ -37,9 +37,11 @@ public class NovelGradeChangeDao {
 			}
 			if (result != 0) {
 				System.out.println("등급 전환 성공");
+				JdbcUtill.close(rs, pstmt, con);
 				return true;
 			} else {
 				System.out.println("등급 전환 실패");
+				JdbcUtill.close(rs, pstmt, con);
 				return false;
 			}
 

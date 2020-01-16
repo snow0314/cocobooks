@@ -39,7 +39,8 @@ import service.Viewer;
 @WebServlet({"/noveldetaillist","/list","/mynovel","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
 			,"/singoinfo","/novelgradechange","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
 			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch","/storydelete","/blacklistadd"
-			,"/buynovel","/paidCheck","/preferenceadd","/viewer","/recommendation","/freenovelsearch","/deleteFavoritesNovel","/report"})
+			,"/buynovel","/paidCheck","/preferenceadd","/viewer","/recommendation","/freenovelsearch","/deleteFavoritesNovel","/report"
+			,"/gradechangeapply"})
 
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -109,7 +110,7 @@ public class RestController extends HttpServlet {
 	
 			break;
 			
-		case "/novelgradechange": //관리자기능, 작품등급 변환하는 기능
+		case "/novelgradechange": // 작품등급 변환하는 기능
 			NovelGradeChange nChange=new NovelGradeChange(request,response);
 			json=nChange.novelgradechange();
 			
@@ -218,7 +219,7 @@ public class RestController extends HttpServlet {
 			ReportAction report=new ReportAction(request,response);
 			json=report.reportAdd();
 			break;
-
+		
 		default:
 			break;
 		}

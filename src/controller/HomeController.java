@@ -35,7 +35,8 @@ import service.Writing;
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
 				"/noveldetail","/write","/bestfreewebnovel","/myPage","/payment","/authorchange","/signcompleted"
-				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert","/bestpaywebnovel"})
+				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert","/bestpaywebnovel"
+				,"/writemove"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -197,6 +198,11 @@ public class HomeController extends HttpServlet {
 			NovelInsert nInsert=new NovelInsert(request,response);
 			fw=nInsert.insert();
 			break;
+		case "/writemove":
+			//NovelDetail.java에서 novelNumdm으로 작품번호 넘긴다
+			Write wmove=new Write(request,response);
+			fw=wmove.wirtemove();
+			
 		default:
 
 			break;

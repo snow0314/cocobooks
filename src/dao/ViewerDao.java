@@ -133,6 +133,37 @@ public class ViewerDao {
 		
 		JdbcUtill.close(rs, pstmt, con);
 	}
+
+	public boolean authorCheck(String id, int story_num) {
+		String sql="SELECT * FROM STORY WHERE SR_NUM=?";
+		con=JdbcUtill.getConnection();
+		
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, story_num);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String author=rs.getNString("SR_ID");
+				if(id.equals(author)) {
+					JdbcUtill.close(rs, pstmt, con);
+					return true;
+				}else {
+					JdbcUtill.close(rs, pstmt, con);
+					return false;
+				}
+			}
+			JdbcUtill.close(rs, pstmt, con);
+			return false;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return false;
+	}
 	
 	
 

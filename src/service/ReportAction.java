@@ -20,9 +20,7 @@ public class ReportAction {
 		HttpSession session= request.getSession();
 		String[] info=request.getParameterValues("reportCol");
 		//0:신고받은 아이디, 1:글번호, 2:카테고리, 3:내용
-		for(int i=0;i<info.length;i++) {
-			System.out.println(info[i]);
-		}
+	
 		Report rt=new Report();
 		rt.setName((String)session.getAttribute("id"));
 		rt.setId(info[0]);

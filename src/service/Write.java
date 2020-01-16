@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import bean.Forward;
 import bean.Story;
 import dao.FreeWebFictionDao;
+import dao.WriteDao;
 
 
 public class Write {
@@ -25,20 +26,35 @@ public class Write {
 		public Forward add() {
 			HttpSession session=request.getSession();
 			Story story=new Story();
+			Forward fw=new Forward();
 			story.setSR_ID((String)session.getAttribute("id"));
 			story.setSR_CONTENTS(request.getParameter("board_content"));
 			story.setSR_TITLE(request.getParameter("board_subject"));
-			//story.setSR_NOBLE_NUM(sR_NOBLE_NUM);
-			boolean result;
-			FreeWebFictionDao fictiondao = new FreeWebFictionDao();
-			result=fictiondao.write(story);
+			story.setSR_NOBLE_NUM(Integer.parseInt(request.getParameter("novel")));
+			WriteDao wDao=new WriteDao();
+			boolean result=wDao.add(story);
+
 			
-			
-			if(result==false){
-                System.out.println("게시판 등록 실패");
-                return null;
+			if(result==true){
+                System.out.println("게시판 등록 완료");
+                fw.setPath("noveldetail?novelNum="+story.getSR_NOBLE_NUM());
+                fw.setRedirect(false);
+                return fw;
             }
-            System.out.println("게시판 등록 완료");
+            System.out.println("게시판 등록 실패");
 			return null;
+		}
+
+
+
+		public Forward wirtemove() {
+			Forward fw=new Forward();
+			String num=request.getParameter("novelNum");
+			request.setAttribute("nobel_num", num);
+			
+			fw.setPath("write.jsp");
+			fw.setRedirect(false);
+			
+			return fw;
 		}			   
 }      

@@ -30,13 +30,27 @@ public class NovelDetail {
 		Forward fw=new Forward();
 		Novel novel=new Novel();
 		int NovelNum=Integer.parseInt(request.getParameter("novelNum"));
+		HttpSession session = request.getSession();
 		
 		NovelDetailDao nDao=new NovelDetailDao();
-		novel=nDao.novelDetailShow(NovelNum);
-		request.setAttribute("novelDetail",novelDetailHtml(novel));
-		fw.setPath("novelDetail.jsp");
-		fw.setRedirect(false);
-		return fw;
+		String id=(String)session.getAttribute("id");
+		int age=nDao.novelDetailCheck(id);
+		String grade=nDao.novelDetailGradeCheck(NovelNum);
+		
+		//나이가 19세 이하면 성인 등급 소설은 읽지 못한다.
+		if(age<19 && grade.equals("성인")) {
+			fw.setPath("main.jsp");
+			fw.setRedirect(true);
+			return fw;
+		}else {
+			novel=nDao.novelDetailShow(NovelNum);
+			request.setAttribute("novelDetail",novelDetailHtml(novel));
+			fw.setPath("novelDetail.jsp");
+			fw.setRedirect(false);
+			return fw;
+		}
+		
+		
 	}
 
 	private String novelDetailHtml(Novel novel) { //소설 상세페이지  HTML
@@ -48,6 +62,7 @@ public class NovelDetail {
 		sb.append("<div class='root' id='novel_num'>"+novel.getNovel_num()+"</div>");
 		sb.append("<input type='hidden' id='novelNum' value='"+novel.getNovel_num()+"'>");
 		sb.append("</div>");
+		
 		sb.append("<div class='root' id='sub_title'>"+novel.getIntro()+"</div>");
 		
 		HttpSession session= request.getSession();
@@ -57,13 +72,15 @@ public class NovelDetail {
 			//등급변경 신청하는 버튼, 작품번호를 매개변수로 가져간다. 아이디의 경우는 세션에 저장되어 있음, novelDetail.jsp에 함수 작성
 			sb.append("<input type='submit' onclick='gradeChangeApply("+novel.getNovel_num()+")' value='등급변경'>");
 			//글쓰기 버튼, 작품번호를 가지고 write URL로 이동한다.
-			sb.append("<input type='button' formaction='write?novelNum="+novel.getNovel_num()+"' value='글쓰기'>");
+			sb.append("<input type='button' onclick='writemove("+novel.getNovel_num()+")' value='글쓰기'>");
 			sb.append("</div>");
+			sb.append("<p>현재등급: "+novel.getGrade()+"</p>");
 		}else {
 			sb.append("<div class='root' id='bottom'>");
 			sb.append("<input type='button' onclick='preferenceAdd("+novel.getNovel_num()+")' value='선호작 추가'>");
 			sb.append("<input type='button' id='modalopen' value='구매'>");
 			sb.append("</div>");
+			sb.append("<p>현재등급: "+novel.getGrade()+"</p>");
 		}
 		sb.append("<div class='root' id=\"contents_container\">");
 		sb.append("<div class='root' id=\"contents\">");
@@ -71,7 +88,7 @@ public class NovelDetail {
 		sb.append("<div class='root' id=\"paging\">");
 		sb.append("페이징 버튼");
 		sb.append("</div>"); 
-		sb.append("<input type='button' id='listBtn' onclick='history.back(-1)' value='작품 목록으로'>");
+		sb.append("<input type='button' id='listBtn' onclick='moveMain()' value='메인으로'>");
 		sb.append("</div>"); //container End
 		
 		return sb.toString();
