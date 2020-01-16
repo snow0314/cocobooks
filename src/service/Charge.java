@@ -11,7 +11,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import bean.AllChargeList;
-import bean.Member;
 import dao.AllChargeListDao;
 
 

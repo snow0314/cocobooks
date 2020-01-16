@@ -10,12 +10,12 @@ import java.util.List;
 import bean.FaideWebFictionBean;
 import common.JdbcUtill;
 
-public class SearchDao {
+public class FreesearchDao {
 	Connection con;
 	PreparedStatement pstmt;
 	ResultSet rs;
 	
-	public SearchDao() {
+	public FreesearchDao() {
 		con=JdbcUtill.getConnection();
 	}
 	public void close() {
@@ -26,13 +26,13 @@ public class SearchDao {
 		String sql=null;
 		try {
 		if(searchValue[0].equals("번호")) {
-			sql="SELECT * FROM WEB_PAY_LIST WHERE NO_NUM=?";
+			sql="SELECT * FROM FREE_WEB_LIST WHERE NO_NUM=?";
 		}else if(searchValue[0].equals("작가")) {
-			sql="SELECT * FROM WEB_PAY_LIST WHERE NO_ID=?";
+			sql="SELECT * FROM FREE_WEB_LIST WHERE NO_ID=?";
 		}else if(searchValue[0].equals("제목")) {
-			sql="SELECT * FROM WEB_PAY_LIST WHERE NO_TITLE=?";
+			sql="SELECT * FROM FREE_WEB_LIST WHERE NO_TITLE=?";
 		}else if(searchValue[0].equals("장르")) {
-			sql="SELECT * FROM WEB_PAY_LIST WHERE GE_NAME=?";
+			sql="SELECT * FROM FREE_WEB_LIST WHERE GE_NAME=?";
 		}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setNString(1, searchValue[1]);

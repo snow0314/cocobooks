@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
 
 import bean.Novel;
 import service.AllNovelShow;
@@ -17,6 +16,8 @@ import service.Author;
 import service.BlackList;
 import service.Charge;
 import service.Contents;
+import service.DeleteFavoritesNovel;
+import service.FreeNovelSearch;
 import service.Genre;
 import service.MyInfo;
 import service.NovelDetail;
@@ -37,7 +38,8 @@ import service.Viewer;
 @WebServlet({"/noveldetaillist","/list","/mynoble","/preference","/myinfo","/contents","/charge","/userinfo","/blacklistshow"
 			,"/singoinfo","/novelgradechange","/checkid","/checkemail","/genredelete","/genreshow","/genreadd","/authorchangeshow"
 			,"/blacklistdelete","/authorchangecomplete","/allnovelshow","/paidnovelsearch","/storydelete","/blacklistadd"
-			,"/buynovel","/paidCheck","/preferenceadd","/viewer","/recommendation","/report"})
+			,"/buynovel","/paidCheck","/preferenceadd","/viewer","/recommendation","/freenovelsearch","/deleteFavoritesNovel","/report"})
+
 public class RestController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -65,8 +67,8 @@ public class RestController extends HttpServlet {
 			
 			break;	
 		case "/preference": //선호작 목록
-			
-			
+			PreferenceAction pfa=new PreferenceAction(request,response);
+			json=pfa.preferenceShow();
 			
 			break;	
 		case "/myinfo": //회원가입시 입력한 정보 출력
@@ -157,7 +159,7 @@ public class RestController extends HttpServlet {
 			AllNovelShow novelShow=new AllNovelShow(request,response);
 			json=novelShow.allnovelshow();
 			break;
-		case "/paidnovelsearch": //구입한 작품 보기
+		case "/paidnovelsearch": //유료 웹소설 검색
 			PaidNovelSearch pNS=new PaidNovelSearch(request,response);
 			json=pNS.search();
 			
@@ -200,11 +202,22 @@ public class RestController extends HttpServlet {
 			json=rc.recAdd();
 			
 			break;
+
+		case "/freenovelsearch": //무료 웹소설 검색
+			FreeNovelSearch fNS=new FreeNovelSearch(request,response);
+			json=fNS.search();
+			
+			break;	
+		case "/deleteFavoritesNovel":
+			DeleteFavoritesNovel delFnovel= new DeleteFavoritesNovel(request,response);
+			json=delFnovel.del();
+			break;
+			
 		case "/report":
 			ReportAction report=new ReportAction(request,response);
 			json=report.reportAdd();
-			
 			break;
+
 		default:
 			break;
 		}

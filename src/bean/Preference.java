@@ -3,7 +3,14 @@ package bean;
 public class Preference {
 	String id;
 	int novel_Num;
+	String novel_title;
 	
+	public String getNovel_title() {
+		return novel_title;
+	}
+	public void setNovel_title(String novel_title) {
+		this.novel_title = novel_title;
+	}
 	public String getId() {
 		return id;
 	}

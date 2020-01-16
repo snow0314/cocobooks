@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<style>
+  <style>
 		.maintxt{
 			font-size: 30px;
 			margin-top: 60px;
@@ -69,7 +69,7 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 <form method="post">	
-	<div class="maintxt">유료 웹소설</div>
+	<div class="maintxt">무료 웹소설</div>
 	
 	
 	
@@ -85,16 +85,14 @@
     <option value="장르">장르</option>
 	</select>
 	<input type="text" class="txtBox" id="txtBox">
-	<input type="button" value="검색" class="search" id="paidnovelsearch">
+	<input type="button" value="검색" class="search" id="freenovelsearch">
 	<input type="submit" value="작품 등록" class="createNovel" formaction="writing">
 	</div>
 	</form>
 	<script type="text/javascript">
 		$("#board").append("${list}");
 	</script>
-	
+	<script type="text/javascript" src="jsFile/freeSearchList.js?ver1"></script>
 
-<script type="text/javascript" src="jsFile/searchList.js?ver2">
-</script>
 </body>
 </html>

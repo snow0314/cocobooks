@@ -45,12 +45,14 @@ background-color: #F2F2F2;}
 		border: 1px solid #2E9AFE;
 		border-radius: 8px;
 		
+		
 		}
 		.menu{
 			padding-left: 320px;
 			font-size: 20px;
 			font-family:sans-serif;
 			font-weight: 600;
+			
 		}
 		.search_text{
 			padding: 7px;
@@ -72,6 +74,12 @@ background-color: #F2F2F2;}
 			background-color:#2E9AFE;
 			color: #EFF5FB;
 		}
+		input:hover{
+		cursor: pointer;
+		}
+		img{
+		cursor: pointer;
+		}
 	</style>
 </head>
 <body>
@@ -84,7 +92,7 @@ background-color: #F2F2F2;}
 	<div class="header_item">&#124; 관리자 기능</div>
 	</div>
 	<div class="header_logo">
-	<img src="image/logo.png" class="header_image" alt="logo">
+	<img src="image/logo.png" class="header_image" alt="logo" onclick="cocoMain()">
 	</div>
 	<div class="header_search">
 		<input type="text" placeholder="작품명,작가명" class="search_text" name="search_box" id="search_box" value="">
@@ -109,6 +117,11 @@ background-color: #F2F2F2;}
 	function img_main(){
 		location.href="main";
 	}
+	</script>
+	<script type="text/javascript">
+	function cocoMain() {
+		location.href="main";
+	} 
 	</script>
 </body>
 </html>

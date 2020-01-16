@@ -13,7 +13,7 @@
 		body{
 			background-color: #F2F2F2;
 		}
-		.myNovel,.Favorites,.profile,.buyList,.chargeList,.chargeCoin,.changeKind{
+		.myNovel,.favorites,.profile,.buyList,.chargeList,.chargeCoin,.changeKind{
 			width: 200px;
 			height: 130px;
 			background-color: white;
@@ -79,7 +79,7 @@
 	<div class="totalBox">
 	<div class="BtnBox">
 	<div><input type="submit" value="내 작품" class="myNovel"></div>
-	<div><input type="submit" value="선호작" class="Favorites"></div>
+	<div><input type="button" value="선호작" class="favorites" id="favorites" onclick="prefList()" ></div>
 	<div><input type="button" value="프로필" class="profile" id="profile"></div>
 	<div><input type="button" value="구매목록" class="buyList" id="buyList"></div>
 	<div><input type="button" value="충전내역" class="chargeList" id="chargeList"></div>
@@ -105,5 +105,30 @@
 	}
 	</script>
 	<script type="text/javascript" src="jsFile/buyList.js"></script>
+	<script type="text/javascript" src="jsFile/favoriteList.js?ver1"></script>
+	<script type="text/javascript">
+	function moveNovel(num) {
+		location.href="noveldetail?novelNum="+num;
+	}
+	</script>
+	<script type="text/javascript">
+	function delLikeNovel(num) {
+		var q=confirm("정말 삭제하시겠습니까?");
+		if(q){
+		$.ajax({
+    		url: "deleteFavoritesNovel?novelNum="+num,
+    		type: "get",
+    		dataType: 'text',
+    		success: function(data) {
+    			alert(data);
+    			prefList();
+    		},
+    		error: function(error) {
+    			console.log(error);
+    		}
+    	}); //ajax End
+		}
+	}
+	</script>
 </body>
 </html>

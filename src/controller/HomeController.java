@@ -16,6 +16,7 @@ import service.BestPayWebNovel;
 import service.ChargeCoin;
 import service.Delete;
 import service.FaideWebFiction;
+import service.FreeWebFiction;
 import service.Idsearch;
 import service.LogOut;
 import service.Login;
@@ -98,6 +99,9 @@ public class HomeController extends HttpServlet {
 			
 			
 		case "/freewebfiction": //무료 웹 소설
+			FreeWebFiction freeWebFiction= new FreeWebFiction(request,response);
+			fw=freeWebFiction.move();
+		
 			break;
 			
 			

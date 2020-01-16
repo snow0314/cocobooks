@@ -61,5 +61,10 @@
 		location.href="noveldetail?novelNum="+num;
 	}
 	</script>
+	<script type="text/javascript">
+	function delLikeNovel(num) {
+		
+	}
+	</script>
 </body>
 </html>
