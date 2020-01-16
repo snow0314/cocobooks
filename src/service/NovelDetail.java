@@ -41,34 +41,34 @@ public class NovelDetail {
 
 	private String novelDetailHtml(Novel novel) { //소설 상세페이지  HTML
 		StringBuilder sb=new StringBuilder();
-		sb.append("<div id='container'>");
-		sb.append("<div id='top'>");
-		sb.append("<div id='author'>"+novel.getId()+"</div>");
-		sb.append("<div id='title'>"+novel.getTitle()+"</div>");
-		sb.append("<div id='novel_num'>"+novel.getNovel_num()+"</div>");
+		sb.append("<div class='root' id='container'>");
+		sb.append("<div class='root'id='top'>");
+		sb.append("<div class='root' id='author'>"+novel.getId()+"</div>");
+		sb.append("<div class='root' id='title'>"+novel.getTitle()+"</div>");
+		sb.append("<div class='root' id='novel_num'>"+novel.getNovel_num()+"</div>");
 		sb.append("<input type='hidden' id='novelNum' value='"+novel.getNovel_num()+"'>");
 		sb.append("</div>");
-		sb.append("<div id='sub_title'>"+novel.getIntro()+"</div>");
+		sb.append("<div class='root' id='sub_title'>"+novel.getIntro()+"</div>");
 		
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("id");
 		if(id.equals(novel.getId())) {
-			sb.append("<div id='author_button'>");
+			sb.append("<div class='root' id='author_button'>");
 			//등급변경 신청하는 버튼, 작품번호를 매개변수로 가져간다. 아이디의 경우는 세션에 저장되어 있음, novelDetail.jsp에 함수 작성
 			sb.append("<input type='submit' onclick='gradeChangeApply("+novel.getNovel_num()+")' value='등급변경'>");
 			//글쓰기 버튼, 작품번호를 가지고 write URL로 이동한다.
 			sb.append("<input type='button' formaction='write?novelNum="+novel.getNovel_num()+"' value='글쓰기'>");
 			sb.append("</div>");
 		}else {
-			sb.append("<div id='bottom'>");
+			sb.append("<div class='root' id='bottom'>");
 			sb.append("<input type='button' onclick='preferenceAdd("+novel.getNovel_num()+")' value='선호작 추가'>");
 			sb.append("<input type='button' id='modalopen' value='구매'>");
 			sb.append("</div>");
 		}
-		sb.append("<div id=\"contents_container\">");
-		sb.append("<div id=\"contents\">");
+		sb.append("<div class='root' id=\"contents_container\">");
+		sb.append("<div class='root' id=\"contents\">");
 		sb.append("</div>");
-		sb.append("<div id=\"paging\">");
+		sb.append("<div class='root' id=\"paging\">");
 		sb.append("페이징 버튼");
 		sb.append("</div>"); 
 		sb.append("<input type='button' id='listBtn' onclick='history.back(-1)' value='작품 목록으로'>");

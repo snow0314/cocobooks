@@ -34,7 +34,7 @@ import service.Writing;
 
 
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
-				"/noveldetail","/report","/write","/bestfreewebnovel","/myPage","/payment","/authorchange","/signcompleted"
+				"/noveldetail","/write","/bestfreewebnovel","/myPage","/payment","/authorchange","/signcompleted"
 				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert","/bestpaywebnovel"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -119,10 +119,6 @@ public class HomeController extends HttpServlet {
 			fw=nDetail.novelDetailShow();
 			break;
 
-		case "/report": //신고하기
-			break;
-
-			
 		case "/write": //글쓰기
 			Write write= new Write(request, response);
 			fw=write.add();
