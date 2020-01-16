@@ -12,9 +12,9 @@
 	
 <div class="mainTxt">Best 무료 웹 소설 </div>
 
-	<table class="listTable" id="listTable">
+	<div class="listTable" id="listTable">
 	
-	</table>
+	</div>
 	<script type="text/javascript">
 		$("#listTable").append("${list}");
 	</script>

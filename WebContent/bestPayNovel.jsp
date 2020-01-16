@@ -9,7 +9,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
 body {
-	background-color: #F2F2F2;
+	background-color: white;
 }
 
 table {
@@ -57,47 +57,50 @@ a:visited {
 a:hover {
 	color: #2E9AFE;
 }
-		img{
+			img{
 			width: 90px;
 			height: 70px;
 		}
 		.oneViewBox{
 			display: flex;
-			margin-left: 84px;
 			margin-top: 10px;
+			margin-left: 270px;
 		}
 		.oneImg{
-			margin-left: 119px;
+			text-align: center;
 		}
 		.one{
-			margin-left: 90px;
-			margin-top: 10px;
 			font-weight: 700;
-			width: 140px;
+			margin-top: 12px;
+			font-weight: 700;
+			text-align: center;
+			 
 		}
 		.oneViewNum{
 			padding-left: 5px;
 			background-color: gold;
 			font-weight: 700;
 			color: red;
+			text-align: center;
 		}
 		.oneViewTxt{
 			border-bottom: 1px solid gold;
 			background-color: gold;
 			font-weight: 700;
+			text-align: center;
 		}
 		.twoViewBox{
 			display: flex;
 		}
-		.twoImg{
-			margin-left: 30px;
-			margin-top: 7px;
-		}
+		
 		.two{
-			margin-left: 42px;
-			margin-top: 5px;
 			font-weight: bold;
-			width: 140px;
+			margin-top: 5px;
+			
+		}
+		.twoViewBox{
+			
+			margin-top: 10px;
 		}
 		.twoViewTxt{
 			display: flex;
@@ -108,42 +111,53 @@ a:hover {
 			background-color: silver;
 			font-weight: bold;
 			color: red;
+			padding-left: 5px;
 		}
 		.twoAndthree{
 			display: flex;
 		}
 		.threeImg{
-			margin-top: 4px;
-			margin-left: 73px;
+			text-align: center;
 		}
 		.three{
 			display: flex;
 			font-weight: bolder;
-			margin-left: 82px;
+			margin-left: 30px;
 			margin-top: 8px;
-			width: 140px;
+			width: 50px;
+			overflow:auto; 
 		}
 		.threeViewTxt{
-			margin-left: 38px;
+			
 			font-weight: bold;
 			background-color: saddlebrown;
 			color: currentColor;
 		}
 		.threeBox{
 			display: flex;
+			margin-top: 7px;
 		}
 		.threeViewNum{
 			font-weight: bold;
 			background-color: saddlebrown;
 			color: red;
+			padding-left: 5px;
+		}
+		.twotot{
+			text-align: center;
+			margin-left: 100px;
+		}
+		.threetot{
+		text-align:center;
+		margin-left: 230px;
 		}
 </style>
 </head>
 <body>
 	<div class="mainTxt">Best 유료 웹 소설</div>
-	<table class="listTable2" id="listTable2">
+	<div class="listTable2" id="listTable2">
 
-	</table>
+	</div>
 	<script type="text/javascript">
 		$("#listTable2").append("${list}");
 	</script>

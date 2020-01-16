@@ -64,6 +64,7 @@
 			width: 90px; 
 		}
 	</style>
+	
 </head>
 <body>
 
@@ -90,11 +91,16 @@
 	</div>
 	</form>
 	<script type="text/javascript">
-		$("#board").append("${list}");
+	
+		
+		$("#board").append("${list}");	
+	
 	</script>
 	
 
 <script type="text/javascript" src="jsFile/searchList.js?ver2">
+
 </script>
+
 </body>
 </html>
