@@ -16,6 +16,8 @@ background-color: #F2F2F2;}
 		{	
 			width: 400px;
 			height: 200px;
+			position: relative;
+			z-index: 10;
 		}
 		.header_menu{
 			position: relative;
@@ -80,19 +82,14 @@ background-color: #F2F2F2;}
 		img{
 		cursor: pointer;
 		}
+		
 	</style>
 </head>
 <body>
 	<form method="post">
-	<div class="header_menu">
-		<div class="header_item"><input type="submit" value="&#124; 메인으로" formaction="main" class="header_item"></div>
-	<div class="header_item">&#124; 로그인</div>
-	<div class="header_item">&#124; 회원가입</div>
-	<div class="header_item">&#124; 결제하기 </div>
-	<div class="header_item">&#124; 관리자 기능</div>
-	</div>
+
 	<div class="header_logo">
-	<img src="image/logo.png" class="header_image" alt="logo" onclick="cocoMain()">
+	<img onclick="coco()" src="image/logo.png" class="header_image" alt="logo" >
 	</div>
 	<div class="header_search">
 		<input type="text" placeholder="작품명,작가명" class="search_text" name="search_box" id="search_box" value="">
@@ -112,14 +109,8 @@ background-color: #F2F2F2;}
 		alert("${login}");
 	}
 	</script>
-	
 	<script type="text/javascript">
-	function img_main(){
-		location.href="main";
-	}
-	</script>
-	<script type="text/javascript">
-	function cocoMain() {
+	function coco() {
 		location.href="main";
 	} 
 	</script>

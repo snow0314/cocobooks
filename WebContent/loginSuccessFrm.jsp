@@ -99,7 +99,7 @@ body {
 		console.log(kind);
 		if (kind == "관리") {
 			document.getElementById("admin").style.display = "";
-		} else if (kind == "일반") {
+		} else {
 			document.getElementById("admin").style.display = "none";
 		}
 	</script>

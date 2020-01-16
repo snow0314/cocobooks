@@ -23,11 +23,12 @@
 			border-radius: 17px;
 		}
 		.myPageMainText{
-			font-size: 50px;
-			margin-left: 300px;
-			font-family: fantasy;
+			font-size: 25px;
 			font-weight: 700;
-			padding-top: 30px;
+			color: white;
+			background-color:  #2E9AFE;
+			text-align: center;
+			margin-top: 25px;
 		}
 		.contents{
 			border: 2px solid #2E9AFE;
@@ -52,33 +53,33 @@
 		.idtxt1,.nametxt1,.agetxt1,.emailtxt1,.cointxt1,.kindtxt1,.applytxt1{
 			font-size: 40px;
 			padding: 20px;
-			margin-left: 100px;
+			margin-left: 120px;
 			color: #2E9AFE;
+			font-weight: bold;
 		}
 		.idtxt2,.nametxt2,.agetxt2,.emailtxt2,.cointxt2,.kindtxt2,.applytxt2{
 			font-size: 30px;
 			padding: 30px;
+			font-weight: bold;
+			color: graytext;
 		}
-		a{ cursor: pointer;}
-			
-		.myPageimg{
-			width: 290px;
-			margin-left: 50px;
-			}
-			.mainBox{
-				display: flex;
-			}
+		a{
+	cursor:pointer;
+}		
+	.idbox{
+	margin-top: 75px;
+ }
 	</style>
 </head>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="mainBox">
-	<a href="main"><img src="image/logo.png" class="myPageimg"></a>
 	<div class="myPageMainText">${id}님의 마이 페이지</div>
 	</div>
 <form method="post">
 	<div class="totalBox">
 	<div class="BtnBox">
-	<div><input type="submit" value="내 작품" class="myNovel"></div>
+	<div><input type="button" value="내 작품" class="myNovel" onclick="myNovel()"></div>
 	<div><input type="button" value="선호작" class="favorites" id="favorites" onclick="prefList()" ></div>
 	<div><input type="button" value="프로필" class="profile" id="profile"></div>
 	<div><input type="button" value="구매목록" class="buyList" id="buyList"></div>
@@ -94,7 +95,7 @@
 	</form>
 	<script type="text/javascript" src="jsFile/chargeList.js?ver2">
 	</script>
-	<script type="text/javascript" src="jsFile/profile.js?ver2">
+	<script type="text/javascript" src="jsFile/profile.js?ver3">
 	</script>
 	<script type="text/javascript">
 	var msg="${msg}";
@@ -129,6 +130,9 @@
     	}); //ajax End
 		}
 	}
+	</script>
+	<script type="text/javascript" src="jsFile/myNovelList.js?ver1">
+	
 	</script>
 </body>
 </html>
