@@ -1,6 +1,4 @@
-	
-	
-	$("#paidnovelsearch").click(function () {
+$("#freenovelsearch").click(function () {
 		var lists=[];
 		var selectBoxVal=$("#selectBox option:selected").val();
 		var txtBoxVal=$("#txtBox").val();
@@ -11,7 +9,7 @@
 		console.log(lists);
 		 jQuery.ajaxSettings.traditional = true;
 		$.ajax({
-    		url: "paidnovelsearch",
+    		url: "freenovelsearch",
     		type: "post",
     		data: {"data1":lists},
     		dataType: 'json',
@@ -105,4 +103,3 @@
  			pageShow(json,num);
  		}
 	}
-
