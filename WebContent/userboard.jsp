@@ -57,6 +57,7 @@
 		<td>2020.01.15</td>
 		<td>2</td>
 	</tr>
+	
 	</tbody>
 	</table>
 <input type="button" value="글쓰기" onclick="move('userwrite.jsp');" />
