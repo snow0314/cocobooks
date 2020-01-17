@@ -22,7 +22,7 @@ public class BestPayWebNovel {
 		BestListDao bDao= new BestListDao();
 		List<NovelList> payList=bDao.payList();
 		if(payList!=null&&payList.size()!=0) {
-			request.setAttribute("list", makeHtml(payList));
+			request.setAttribute("bestPList", makeHtml(payList));
 			fw.setPath("bestPayNovel.jsp");
 			fw.setRedirect(false);
 		}
@@ -45,7 +45,7 @@ public class BestPayWebNovel {
 		sb.append("<td>"+payList.get(0).getNum()+"</td>");
 		sb.append("<td><a href='noveldetail?novelNum="+payList.get(0).getNum()+"'>"+payList.get(0).getTitle()+"</a></td>");
 		sb.append("<td>"+payList.get(0).getId()+"</td>");
-		sb.append("<td>"+payList.get(0).getTotalView()+"</td>");
+		sb.append("<td class='viewTdG'>"+payList.get(0).getTotalView()+"</td>");
 		sb.append("</tr>");
 		sb.append("<tr>");
 		sb.append("<td>");
@@ -54,7 +54,7 @@ public class BestPayWebNovel {
 		sb.append("<td>"+payList.get(1).getNum()+"</td>");
 		sb.append("<td><a href='noveldetail?novelNum="+payList.get(1).getNum()+"'>"+payList.get(1).getTitle()+"</a></td>");
 		sb.append("<td>"+payList.get(1).getId()+"</td>");
-		sb.append("<td>"+payList.get(1).getTotalView()+"</td>");
+		sb.append("<td class='viewTdS'>"+payList.get(1).getTotalView()+"</td>");
 		sb.append("</tr>");
 		sb.append("<tr>");
 		sb.append("<td>");
@@ -63,7 +63,7 @@ public class BestPayWebNovel {
 		sb.append("<td>"+payList.get(2).getNum()+"</td>");
 		sb.append("<td><a href='noveldetail?novelNum="+payList.get(2).getNum()+"'>"+payList.get(2).getTitle()+"</a></td>");
 		sb.append("<td>"+payList.get(2).getId()+"</td>");
-		sb.append("<td>"+payList.get(2).getTotalView()+"</td>");
+		sb.append("<td class='viewTdB'>"+payList.get(2).getTotalView()+"</td>");
 		sb.append("</tr>");
 		for(int i=3;i<payList.size();i++) {
 			sb.append("<tr>");

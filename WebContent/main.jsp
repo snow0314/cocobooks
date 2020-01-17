@@ -15,14 +15,14 @@ body {
 .free_best {
 	border: 2.5px solid #2E9AFE;
 	width: 920px;
-	height: 1000px;
+	height: 790px;
 }
 
 .pay_best {
 	margin-left: 8px;
 	border: 2.5px solid #2E9AFE;
 	width: 920px;
-	height: 1000px;
+	height: 790px;
 }
 
 .novel_category {

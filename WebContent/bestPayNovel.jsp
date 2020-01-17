@@ -13,17 +13,22 @@ body{
 		}
 
 table {
-	border: 1px solid #444444;
+background-color: #F2F2F2;
+	/*  border: 1px solid #444444; */
 	border-collapse: collapse;
+	border-radius: 10px;
 }
 
 td {
-	border: 1px solid black;
+	/* border: 1px solid black; */
 	font-size: 18px;
 	width: 170px;
 	height: 11px;
 	text-align: center;
 	font-weight: bold;
+	padding: 5px;
+	border-bottom: 1px solid gray;
+	border-radius: 10px;
 }
 
 .mainTxt {
@@ -151,6 +156,15 @@ a:hover {
 		text-align:center;
 		margin-left: 230px;
 		}
+		.viewTdG{
+		background-color: gold;
+		color: red;}
+		.viewTdS{
+		background-color: silver;
+		color: red;}
+		.viewTdB{
+		background-color:#B45F04;
+		color: red;}
 </style>
 </head>
 <body>
@@ -159,7 +173,7 @@ a:hover {
 
 	</div>
 	<script type="text/javascript">
-		$("#listTable2").append("${list}");
+		$("#listTable2").append( "${bestPList}");
 	</script>
 </body>
 </html>

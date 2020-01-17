@@ -6,9 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import bean.FaideWebFictionBean;
 import bean.Forward;
-import dao.FaideWebFictionDao;
+import bean.FreeWebFictionBean;
 import dao.FreeWebFictionDao;
 
 public class FreeWebFiction {
@@ -31,13 +30,13 @@ public class FreeWebFiction {
 			fw.setRedirect(false);
 			return fw;
 		}
-		List<FaideWebFictionBean> fwfList=null;
+		List<FreeWebFictionBean> freeList=null;
 		
 		FreeWebFictionDao fDao=new FreeWebFictionDao();
-		fwfList=fDao.freeWebFictionList();
-		if(fwfList!=null&&fwfList.size()!=0) {
-			System.out.println(fwfList);
-			request.setAttribute("list",makehtml(fwfList));
+		freeList=fDao.freeWebFictionList();
+		if(freeList!=null&&freeList.size()!=0) {
+			System.out.println(freeList);
+			request.setAttribute("freelist",makehtml(freeList));
 			fw.setPath("freeWebFiction.jsp");
 			fw.setRedirect(false);
 		}
@@ -48,7 +47,7 @@ public class FreeWebFiction {
 		return fw;
 	}
 
-	private String makehtml(List<FaideWebFictionBean> fwfList) { //작품 목록 리스트 HTML
+	private String makehtml(List<FreeWebFictionBean> freeList) { //작품 목록 리스트 HTML
 		StringBuilder sb= new StringBuilder();
 		sb.append("<tr>");
 		sb.append("<td class='indexa'>작품 번호</td>");
@@ -59,18 +58,17 @@ public class FreeWebFiction {
 		sb.append("<td class='indexa'>장르</td>");
 		sb.append("<td class='indexa'>총 추천수</td>");
 		sb.append("</tr>");
-		for(int i=0 ;i<fwfList.size();i++) {
+		for(int i=0 ;i<freeList.size();i++) {
 			sb.append("<tr>");
-			sb.append("<td>"+fwfList.get(i).getNovel_num()+"</td>");
-			sb.append("<td>"+fwfList.get(i).getUser_id()+"</td>");
-			sb.append("<td><a href='noveldetail?novelNum="+fwfList.get(i).getNovel_num()+"'>"+fwfList.get(i).getTitle()+"</a></td>");
-			sb.append("<td>"+fwfList.get(i).getIntro()+"</td>");
-			sb.append("<td>"+fwfList.get(i).getGrade()+"</td>");
-			sb.append("<td>"+fwfList.get(i).getGenre()+"</td>");
-			sb.append("<td>"+fwfList.get(i).getLike()+"</td>");
+			sb.append("<td>"+freeList.get(i).getNovel_num()+"</td>");
+			sb.append("<td>"+freeList.get(i).getUser_id()+"</td>");
+			sb.append("<td><a href='noveldetail?novelNum="+freeList.get(i).getNovel_num()+"'>"+freeList.get(i).getTitle()+"</a></td>");
+			sb.append("<td>"+freeList.get(i).getIntro()+"</td>");
+			sb.append("<td>"+freeList.get(i).getGrade()+"</td>");
+			sb.append("<td>"+freeList.get(i).getGenre()+"</td>");
+			sb.append("<td>"+freeList.get(i).getLike()+"</td>");
 			sb.append("</tr>");
 			
-		
 		}
 		System.out.println(sb.toString());
 		return sb.toString();
