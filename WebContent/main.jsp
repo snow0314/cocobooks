@@ -10,18 +10,19 @@
 <style type="text/css">
 body{
 			background-color: #F2F2F2;
+			
 		}
 
 .free_best {
-	border: 2.5px solid #2E9AFE;
+	border: 4px solid #2E9AFE;
 	width: 920px;
 	height: 790px;
 }
 
 .pay_best {
 	margin-left: 8px;
-	border: 2.5px solid #2E9AFE;
-	width: 920px;
+	border: 4px solid #2E9AFE;
+	width: 930px;
 	height: 790px;
 }
 
@@ -54,14 +55,26 @@ body{
 }
 
 .tot {
-	border: 5px solid #2E9AFE;
+	border: 4px solid #2E9AFE;
 	width: 450px;
 	margin-left: 30px;
 	border-radius: 8px;
 }
 
 .msg {
+background-color: #A9F5F2;
 	color: red;
+	margin-top: 30px;
+	margin-left: 20px;
+	width: 270px;
+	font-weight: bold;
+}
+.gitww{
+width: 2000px;
+height: 200px;}
+.gita{
+width: 100%;
+height: 100%;
 }
 </style>
 </head>
