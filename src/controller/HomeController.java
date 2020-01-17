@@ -28,7 +28,7 @@ import service.PayMent;
 import service.Pwsearch;
 import service.Searchboard;
 import service.Signup;
-
+import service.UserBoard;
 import service.Write;
 import service.Writing;
 
@@ -36,7 +36,7 @@ import service.Writing;
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
 				"/noveldetail","/write","/bestfreewebnovel","/myPage","/payment","/authorchange","/signcompleted"
 				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert","/bestpaywebnovel"
-				,"/writemove"})
+				,"/writemove","/userboard"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -202,10 +202,14 @@ public class HomeController extends HttpServlet {
 			//NovelDetail.java에서 novelNumdm으로 작품번호 넘긴다
 			Write wmove=new Write(request,response);
 			fw=wmove.wirtemove();
-			
+			break;
+		case "/userboard": //독자마당 글쓰기 기능
+			UserBoard ub=new UserBoard(request, response);
+			fw=ub.userWrite();
+			break;
 		default:
 
-			break;
+			
 		}
 		
 		
