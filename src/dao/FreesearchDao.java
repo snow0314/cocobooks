@@ -26,13 +26,13 @@ public class FreesearchDao {
 		String sql=null;
 		try {
 		if(searchValue[0].equals("번호")) {
-			sql="SELECT * FROM FREE_WEB_LIST WHERE NO_NUM=?";
+			sql="SELECT * FROM FREE_WEB_LIST WHERE NO_NUM like '%'||?||'%'";
 		}else if(searchValue[0].equals("작가")) {
-			sql="SELECT * FROM FREE_WEB_LIST WHERE NO_ID=?";
+			sql="SELECT * FROM FREE_WEB_LIST WHERE NO_ID like '%'||?||'%'";
 		}else if(searchValue[0].equals("제목")) {
-			sql="SELECT * FROM FREE_WEB_LIST WHERE NO_TITLE=?";
+			sql="SELECT * FROM FREE_WEB_LIST WHERE NO_TITLE like '%'||?||'%'";
 		}else if(searchValue[0].equals("장르")) {
-			sql="SELECT * FROM FREE_WEB_LIST WHERE GE_NAME=?";
+			sql="SELECT * FROM FREE_WEB_LIST WHERE GE_NAME like '%'||?||'%'";
 		}
 			pstmt=con.prepareStatement(sql);
 			pstmt.setNString(1, searchValue[1]);

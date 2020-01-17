@@ -7,7 +7,8 @@
 <title>Header</title>
 	<style>
 body{
-background-color: white;}
+			background-color: #F2F2F2;
+		}
 		.header_logo{
 			padding-left: 650px;
 			position: absolute;
@@ -15,7 +16,7 @@ background-color: white;}
 		.header_image
 		{	
 			width: 400px;
-			height: 200px;
+			height: 190px;
 			position: relative;
 			z-index: 10;
 		}
@@ -89,7 +90,7 @@ background-color: white;}
 	<form method="post">
 
 	<div class="header_logo">
-	<img onclick="coco()" src="image/logo.png" class="header_image" alt="logo" >
+	<img onclick="coco()" src="image/logo.png?ver1" class="header_image" alt="logo" >
 	</div>
 	<div class="header_search">
 		<input type="text" placeholder="작품명,작가명" class="search_text" name="search_box" id="search_box" value="">

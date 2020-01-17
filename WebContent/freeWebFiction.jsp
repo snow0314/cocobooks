@@ -25,24 +25,28 @@
 		table{
 			width: 100%;
 			height: 100%;
-			border: 2px solid #444444;
+			border: 2px solid #2E9AFE;
     		border-collapse: collapse;
 			font-size: 20px;
 			text-align: center;
 		}
 		td{
-			border: 2px solid black;
+			border: 2px solid gray;
+			background-color: white;
 		}
 		.selectBox{
 			width: 200px;
 			height: 40px;
 			font-size: 22px;
-			margin-left: 1100px;
+			margin-left: 1200px;
 			margin-top: 20px;
+			border-radius: 10px;
+			font-weight: bold;
 		}
 		#txtBox{
 			height: 40px;
-			margin-bottom: 10px;
+			font-size: 23px;
+			border-radius: 10px;
 		}
 		.search{
 			height: 40px;
@@ -50,18 +54,31 @@
 			padding-top: 7px;
 			font-size: 18px;
 			margin-top: 5px;
+			border-radius: 10px;
+			background-color: #2E9AFE;
+			color: white;
 		}
 		.createNovel{
 			height: 40px;
 			width: 90px;
 			padding-top: 7px;
 			font-size: 18px;
+			border-radius: 10px;
+			background-color: #2E9AFE;
+			color: white;
 		}
 		.insertnovel{
 		border: 1.5px solid grey;
 		text-decoration: none;
 		height: 40px;
 			width: 90px; 
+		}
+		option{
+		font-weight: bold;}
+		.indexa{
+		background-color: #2E9AFE;
+			color: white;
+			border: 0;
 		}
 	</style>
 </head>
@@ -92,7 +109,7 @@
 	<script type="text/javascript">
 		$("#board").append( "${list}");
 	</script>
-	<script type="text/javascript" src="jsFile/freeSearchList.js?ver1"></script>
+	<script type="text/javascript" src="jsFile/freeSearchList.js?ver2"></script>
 
 </body>
 </html>
