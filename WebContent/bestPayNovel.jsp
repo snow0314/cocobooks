@@ -8,15 +8,12 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
-body{
-			background-color: #F2F2F2;
-		}
+
 
 table {
 background-color: #F2F2F2;
 	/*  border: 1px solid #444444; */
 	border-collapse: collapse;
-	border-radius: 10px;
 }
 
 td {
@@ -28,7 +25,6 @@ td {
 	font-weight: bold;
 	padding: 5px;
 	border-bottom: 1px solid gray;
-	border-radius: 10px;
 }
 
 .mainTxt {

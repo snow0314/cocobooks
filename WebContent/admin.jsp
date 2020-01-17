@@ -12,6 +12,10 @@
   
 <title>Insert title here</title>
 <style type="text/css">
+body{
+			background-color: #F2F2F2;
+			
+		}
     .left {
   position:absolute;
   width:200px;
@@ -84,7 +88,9 @@ table{
 	margin-left: 250px;
 	
 }
-
+.gitt{
+ width: 100%;
+ height: 100%;}
 </style>
 </head>
 <body>
@@ -100,7 +106,7 @@ table{
   </div>
   </div>
   <div class="content" id="content">
-  content
+  <img alt="img" src="image/gith.jpg" class="gitt">
   </div>
   <div class="bottom" id="bottom">
   </div>

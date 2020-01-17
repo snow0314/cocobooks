@@ -69,6 +69,9 @@
 	.idbox{
 	margin-top: 75px;
  }
+ .gitt{
+ width: 100%;
+ height: 100%;}
 	</style>
 </head>
 <body>
@@ -88,7 +91,9 @@
 	<div><input type="button" value="전환신청" class="changeKind" id="changeKind" formaction="authorchange"></div>
 	</div>
 	<div class="contentsbox">
-	<div class="contents" id="content"></div>
+	<div class="contents" id="content">
+	<img alt="img" src="image/gith.jpg" class="gitt">
+	</div>
 	<div id="bottom"></div>
 	</div>
 	</div>
