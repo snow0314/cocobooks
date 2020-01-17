@@ -29,6 +29,7 @@ import service.Pwsearch;
 import service.Searchboard;
 import service.Signup;
 import service.UserBoard;
+import service.UserWrite;
 import service.Write;
 import service.Writing;
 
@@ -36,7 +37,7 @@ import service.Writing;
 @WebServlet({"/signup","/main","/login","/idsearch","/pwsearch","/dropmember","/searchboard","/freewebfiction","/faidewebfiction",
 				"/noveldetail","/write","/bestfreewebnovel","/myPage","/payment","/authorchange","/signcompleted"
 				,"/logout","/chargecoin","/admin","/authorchangeinsert","/writing","/novelinsert","/bestpaywebnovel"
-				,"/writemove","/userboard"})
+				,"/writemove","/userboard","/userwrite","/userview"})
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -203,10 +204,21 @@ public class HomeController extends HttpServlet {
 			Write wmove=new Write(request,response);
 			fw=wmove.wirtemove();
 			break;
-		case "/userboard": //독자마당 글쓰기 기능
-			UserBoard ub=new UserBoard(request, response);
+		case "/userboard": //독자마당 게시판 이동기능
+			UserBoard ub=new UserBoard();
 			fw=ub.userWrite();
 			break;
+		
+		case "/userwrite": //독자마당 게시판 글쓰기 기능
+			UserWrite uw=new UserWrite(request,response);
+			fw=uw.userWrite();
+			break;
+		
+		case "/userview":
+			UserBoard uv=new UserBoard(request,response);
+			fw=uv.userView();
+			break;
+			
 		default:
 
 			

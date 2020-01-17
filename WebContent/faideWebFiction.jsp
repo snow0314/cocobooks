@@ -117,7 +117,7 @@
 	</script>
 	
 
-<script type="text/javascript" src="jsFile/searchList.js?ver3">
+<script type="text/javascript" src="jsFile/searchList.js?ver4">
 
 </script>
 

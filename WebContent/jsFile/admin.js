@@ -39,7 +39,7 @@ function genreInfo() { // DB에 저장된 장르 보기
 function genreAddButton() { // 장르 추가하는 버튼 보여주는 메소드
 	var str = "";
 	str += "<div id='genretext'>"; 
-	str += "<input type='text' class='form-control' id='genreAddText' name='genreName' maxlength='10'>";
+	str += "<input type='text' class='form-control' id='genreAddText' name='genreName' maxlength='10' placeholder='장르명을 입력해주세요'>";
 	str += "</div>"; 
 	str += "<input type='button' class='myButton' id='genreAddButton' onclick='genreAdd()' value='장르 추가하기'>";
 	$("#bottom").html(str);

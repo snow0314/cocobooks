@@ -70,6 +70,7 @@ public class FreeWebFiction {
 			sb.append("</tr>");
 			
 		}
+		System.out.println(sb.toString());
 		return sb.toString();
 	}
 
