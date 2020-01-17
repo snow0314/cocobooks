@@ -8,9 +8,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style type="text/css">
-body{
-			background-color: #F2F2F2;
-		}
+body {
+	background-color: white;
+}
 
 .free_best {
 	border: 2.5px solid #2E9AFE;
@@ -142,7 +142,7 @@ body{
 		}
 		document.onkeydown = doNotReload;
 		
-		var loginNovel="${loginNovel}";
+		var loginNovel="${loginNovel}""
 			console.log("${loginNovel}");
 			if(loginNovel=="로그인 후 이용해주세요"){
 				alert("${loginNovel}");
