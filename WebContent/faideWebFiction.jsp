@@ -112,7 +112,7 @@
 	<script type="text/javascript">
 	
 		
-		$("#board").append("${list}");	
+		$("#board").append("${list2}");
 	
 	</script>
 	

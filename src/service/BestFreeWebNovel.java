@@ -23,7 +23,7 @@ public class BestFreeWebNovel {
 		BestListDao bDao= new BestListDao();
 		List<NovelList> freeList=bDao.freeList();
 		if(freeList!=null&&freeList.size()!=0) {
-			request.setAttribute("list", makeHtml(freeList));
+			request.setAttribute("bestFList", makeHtml(freeList));
 			fw.setPath("bestFreeNovel.jsp");
 			fw.setRedirect(false);
 		}
@@ -47,7 +47,7 @@ public class BestFreeWebNovel {
 		sb.append("<td>"+freeList.get(0).getNum()+"</td>");
 		sb.append("<td><a href='noveldetail?novelNum="+freeList.get(0).getNum()+"'>"+freeList.get(0).getTitle()+"</a></td>");
 		sb.append("<td>"+freeList.get(0).getId()+"</td>");
-		sb.append("<td>"+freeList.get(0).getTotalView()+"</td>");
+		sb.append("<td class='viewTdG'>"+freeList.get(0).getTotalView()+"</td>");
 		sb.append("</tr>");
 		sb.append("<tr>");
 		sb.append("<td>");
@@ -56,7 +56,7 @@ public class BestFreeWebNovel {
 		sb.append("<td>"+freeList.get(1).getNum()+"</td>");
 		sb.append("<td><a href='noveldetail?novelNum="+freeList.get(1).getNum()+"'>"+freeList.get(1).getTitle()+"</a></td>");
 		sb.append("<td>"+freeList.get(1).getId()+"</td>");
-		sb.append("<td>"+freeList.get(1).getTotalView()+"</td>");
+		sb.append("<td class='viewTdS'>"+freeList.get(1).getTotalView()+"</td>");
 		sb.append("</tr>");
 		sb.append("<tr>");
 		sb.append("<td>");
@@ -65,7 +65,7 @@ public class BestFreeWebNovel {
 		sb.append("<td>"+freeList.get(2).getNum()+"</td>");
 		sb.append("<td><a href='noveldetail?novelNum="+freeList.get(2).getNum()+"'>"+freeList.get(2).getTitle()+"</a></td>");
 		sb.append("<td>"+freeList.get(2).getId()+"</td>");
-		sb.append("<td>"+freeList.get(2).getTotalView()+"</td>");
+		sb.append("<td class='viewTdB'>"+freeList.get(2).getTotalView()+"</td>");
 		sb.append("</tr>");
 		for(int i=3;i<freeList.size();i++) {
 			sb.append("<tr>");

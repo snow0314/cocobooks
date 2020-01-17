@@ -39,7 +39,8 @@ public class FaideWebFiction {
 		fwfList=fDao.FaideWebFictionList();
 		if(fwfList!=null&&fwfList.size()!=0) {
 			System.out.println(fwfList);
-			request.setAttribute("list",makehtml(fwfList));
+			
+			request.setAttribute("list2",makehtml(fwfList));
 			fw.setPath("faideWebFiction.jsp");
 			fw.setRedirect(false);
 		}
@@ -52,6 +53,7 @@ public class FaideWebFiction {
 
 	private String makehtml(List<FaideWebFictionBean> fwfList) { //작품 목록 리스트 HTML
 		StringBuilder sb= new StringBuilder();
+	
 		sb.append("<tr>");
 		sb.append("<td class='indexa'>작품 번호</td>");
 		sb.append("<td class='indexa'>작가</td>");
@@ -71,9 +73,8 @@ public class FaideWebFiction {
 			sb.append("<td>"+fwfList.get(i).getGenre()+"</td>");
 			sb.append("<td>"+fwfList.get(i).getLike()+"</td>");
 			sb.append("</tr>");
-			
-		
 		}
+		System.out.println(sb.toString());
 		return sb.toString();
 	}
 

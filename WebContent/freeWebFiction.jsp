@@ -107,7 +107,10 @@
 	</div>
 	</form>
 	<script type="text/javascript">
-		$("#board").append( "${list}");
+	function dd() {
+		$("#board").append("${freelist}");
+	}
+	window.onload=dd();
 	</script>
 	<script type="text/javascript" src="jsFile/freeSearchList.js?ver2"></script>
 

@@ -16,7 +16,7 @@
 	
 	</div>
 	<script type="text/javascript">
-		$("#listTable").append("${list}");
+		$("#listTable").append( "${bestFList}");
 	</script>
 </body>
 </html>
