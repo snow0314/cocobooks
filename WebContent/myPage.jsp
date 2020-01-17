@@ -84,8 +84,8 @@
 	<div><input type="button" value="프로필" class="profile" id="profile"></div>
 	<div><input type="button" value="구매목록" class="buyList" id="buyList"></div>
 	<div><input type="button" value="충전내역" class="chargeList" id="chargeList"></div>
-	<div><input type="submit" value="결제하기" class="chargeCoin" formaction="payment"></div>
-	<div><input type="submit" value="전환신청" class="changeKind" id="changeKind" formaction="authorchange"></div>
+	<div><input type="button" value="결제하기" class="chargeCoin"  id="chargeCoin"></div>
+	<div><input type="button" value="전환신청" class="changeKind" id="changeKind" formaction="authorchange"></div>
 	</div>
 	<div class="contentsbox">
 	<div class="contents" id="content"></div>
@@ -113,6 +113,7 @@
 	}
 	</script>
 	<script type="text/javascript">
+	
 	function delLikeNovel(num) {
 		var q=confirm("정말 삭제하시겠습니까?");
 		if(q){
@@ -132,7 +133,39 @@
 	}
 	</script>
 	<script type="text/javascript" src="jsFile/myNovelList.js?ver1">
+	</script>
+	<script type="text/javascript">
+	$("#chargeCoin").click(function () {
+		$.ajax({
+			url: "payment",
+			type: "get",
+			dataType: 'html',
+			success: function(data) {
+				$("#content").html(data);
+				$("#bottom").html("");
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		}); //ajax End
+	});
 	
+	</script>
+	<script type="text/javascript">
+	$("#changeKind").click(function () {
+		$.ajax({
+			url: "authorchange",
+			type: "get",
+			dataType: 'html',
+			success: function(data) {
+				$("#content").html(data);
+				$("#bottom").html("");
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		}); //ajax End
+	});
 	</script>
 </body>
 </html>

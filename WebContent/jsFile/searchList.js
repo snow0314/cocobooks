@@ -37,13 +37,13 @@
 	
 		var str="";
 		str+="<tr>";
-		str+="<td>작품 번호</td>";
-		str+="<td>작가</td>";
-		str+="<td>작품 제목</td>";
-		str+="<td>작품 소개</td>";
-		str+="<td>등급</td>";
-		str+="<td>장르</td>";
-		str+="<td>총 추천수</td>";
+		str+="<td class='indexa'>작품 번호</td>";
+		str+="<td class='indexa'>작가</td>";
+		str+="<td class='indexa'>작품 제목</td>";
+		str+="<td class='indexa'>작품 소개</td>";
+		str+="<td class='indexa'>등급</td>";
+		str+="<td class='indexa'>장르</td>";
+		str+="<td class='indexa'>총 추천수</td>";
 		str+="</tr>";
 		for(var i=(num - 1) *10;i<(num*10);i++){
 			if(i<json.length){

@@ -7,7 +7,8 @@
 <title>footer</title>
 	<style>
 	body{
-background-color: white;}
+			background-color: #F2F2F2;
+		}
 		.header_image{
 			width: 300px;
 		}
@@ -26,7 +27,7 @@ background-color: white;}
 
 <hr>
 <div class="footer">
-<div><img src="image/logo.png" class="header_image"></div>
+<div><img src="image/logo.png?ver1" class="header_image"></div>
 	<div class="footer_font">
 	인천 남구 학익동 663-1 태승빌딩 5층 (1층 홈플러스) <br/>
        대표자 : 이설형, 양정훈, 마재환 개인정보책임자 : 양정훈 (bluesky@naver.com)<br/>
