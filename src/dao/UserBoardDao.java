@@ -4,6 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import bean.UserBoard;
 import common.JdbcUtill;
 
 public class UserBoardDao {
@@ -38,6 +42,29 @@ public boolean userWrite(String id, String title, String contents) {
 		}		
 			return false;
 	}
-
+public List<UserBoard> userview() {
+	String sql="SELECT * FROM USER_BOARD";
+	try {
+		pstmt=con.prepareStatement(sql);
+		rs=pstmt.executeQuery();
+		List<UserBoard> list=new ArrayList<UserBoard>();
+		
+		while(rs.next()) {
+			UserBoard ub=new UserBoard();
+			ub.setUB_ID(rs.getNString("UB_ID"));
+			ub.setUB_TITLE(rs.getNString("UB_TITLE"));
+			ub.setUB_NUM(rs.getInt("UB_NUM"));
+			ub.setUB_CONTENTS(rs.getNString("UB_CONTENTS"));
+			ub.setUB_VIEW(rs.getInt("UB_VIEW_NUM"));
+			ub.setUB_DATE(rs.getDate("UB_DATE"));
+			list.add(ub);
+		}
+		return list;
+	} catch (SQLException e) {
+		
+		e.printStackTrace();
+	}
+	return null;
+}
 
 }
