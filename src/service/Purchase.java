@@ -20,9 +20,17 @@ public class Purchase {
 		String[] purchase=request.getParameterValues("purchase");
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("id");
+		int coin=pDao.coinCheck(id); //해당 아이디의 코인수를 가져온다
+		boolean result=false;
 		
-		boolean result=pDao.buynovel(id,purchase);
+		if(coin>(purchase.length+1)*100) {
+			result=pDao.buynovel(id,purchase);
+			pDao.coinDown(id,coin-((purchase.length+1)*100));
+		}else {
+			return "코인이 부족합니다.";
+		}
 		
+	
 		if(result) {
 			return "구매 성공";
 		}else {

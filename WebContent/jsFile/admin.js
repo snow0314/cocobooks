@@ -41,7 +41,7 @@ function genreAddButton() { // 장르 추가하는 버튼 보여주는 메소드
 	str += "<div id='genretext'>"; 
 	str += "<input type='text' class='form-control' id='genreAddText' name='genreName' maxlength='10'>";
 	str += "</div>"; 
-	str += "<input type='button' class='myButton pull-right' id='genreAddButton' onclick='genreAdd()' value='장르 추가하기'>";
+	str += "<input type='button' class='myButton' id='genreAddButton' onclick='genreAdd()' value='장르 추가하기'>";
 	$("#bottom").html(str);
 }
 

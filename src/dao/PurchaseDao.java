@@ -40,4 +40,49 @@ public class PurchaseDao {
 		return false;
 	}
 
+	public int coinCheck(String id) {
+		String sql="SELECT * FROM MB WHERE MB_ID=?";
+		con=JdbcUtill.getConnection();
+		
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setNString(1, id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int coin=rs.getInt("MB_COIN");
+				return coin;
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("코인체크 오류");
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public void coinDown(String id,int coin) {
+		String sql="update mb set MB_COIN=? where mb_id=?";
+		con=JdbcUtill.getConnection();
+		
+		try {
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, coin);
+			pstmt.setNString(2, id);
+			int result=pstmt.executeUpdate();
+			
+			if(result!=0) {
+				System.out.println("코인 소비 성공");
+			}else {
+				System.out.println("코인 소비 실패");
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("코인 소비 오류");
+			e.printStackTrace();
+		}
+		
+	}
+
 }

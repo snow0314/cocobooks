@@ -102,7 +102,7 @@
 		var flg;
 		str += "<table class='table-striped'>";
 		str += "<tr>";
-		str += "<th><input type='checkbox' id='allCheck'></th>";
+		str += "<th></th>";
 		str += "<th>화수</th>";
 		str += "<th>제목</th>";
 		str += "<th>날짜</th>";
@@ -347,7 +347,7 @@
 	}
 	
 	function moveMain() {
-		location.href="main.jsp";
+		location.href="main";
 	}
 	
 	

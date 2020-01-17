@@ -141,6 +141,14 @@ body {
 			}
 		}
 		document.onkeydown = doNotReload;
+		
+		var loginNovel="${loginNovel}";
+			console.log("${loginNovel}");
+			if(loginNovel=="로그인 후 이용해주세요"){
+				alert("${loginNovel}");
+			}
+		
+		
 	</script>
 </body>
 </html>

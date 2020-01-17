@@ -96,14 +96,14 @@ public class Viewer {
 			if (cookies != null) {
 				for (Cookie c : cookies) {//
 					// story_num 쿠키가 있는 경우
-					if (c.getName().equals("story_num")) {
+					if (c.getName().equals(Integer.toString(story_num))) {
 						isGet = true;
 					}
 				}
 			}
 			if (!isGet) {
 				vDao.viewUp(story_num);// 조회수증가
-				Cookie c1 = new Cookie("story_num", Integer.toString(story_num));
+				Cookie c1 = new Cookie(Integer.toString(story_num), Integer.toString(story_num));
 				c1.setMaxAge(60 * 60);// 한시간 저장
 				response.addCookie(c1);
 			}

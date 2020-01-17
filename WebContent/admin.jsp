@@ -47,7 +47,7 @@ table{
 	background-color:#3d94f6;
 	border-radius:6px;
 	border:3px solid #337fed;
-	display:inline-block;
+	display:flex;
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Verdana;

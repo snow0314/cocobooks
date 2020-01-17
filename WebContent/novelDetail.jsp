@@ -15,9 +15,20 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <style>
 .root {
-	border: solid 1px black;
+	border: solid 1px #2E9AFE;
 }
-p{
+.rootBtn{
+	border:hidden;
+}
+.rootGrade{
+	border: solid 1px #2E9AFE;
+	width: 200px;
+	height: 30px;
+	margin-left: 50px;
+	margin-top: -30px;
+	
+}
+p {
 	margin-left: 50px;
 	font: bold;
 }
@@ -29,6 +40,7 @@ a {
 	width: 1000px;
 	height: 1000px;
 	margin-left: 350px;
+	background-color: #F2F2F2;
 }
 
 table {
@@ -234,8 +246,7 @@ textarea {
 					<input type="radio" name="radioChk" value="abuse" checked="checked">욕설<br> <input
 						type="radio"  name="radioChk" value="hateSpeech">혐오표현<br>
 					<input type="radio"  name="radioChk" value="inapposite">부적절한
-					콘텐츠<br> <input type="radio"  name="radioChk" value="mistake">잘못
-					분류된 콘텐츠<br> <br>
+					콘텐츠<br> <input type="radio"  name="radioChk" value="mistake">외설적인 콘텐츠<br> <br>
 					<h5>자세한 내용을 입력해주세요(200자 이내)</h5>
 					<textarea id="report_contents" rows="" cols=""></textarea>
 				</div>
@@ -249,7 +260,7 @@ textarea {
 	</div>
 
 </body>
-<script type="text/javascript" src="jsFile/novelDetail.js?ver7">
+<script type="text/javascript" src="jsFile/novelDetail.js?ver9">
 	var message = "${message}"; //구매하라는 메세지
 	if (message != "") {
 		alert(message);

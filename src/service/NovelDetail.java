@@ -37,9 +37,16 @@ public class NovelDetail {
 		int age=nDao.novelDetailCheck(id);
 		String grade=nDao.novelDetailGradeCheck(NovelNum);
 		
+		
+		if(id==null) { //로그인 하지 않으면 소설 상세페이지로 접근 불가
+			request.setAttribute("loginNovel", "로그인 후 이용해주세요");
+			fw.setPath("main");
+			fw.setRedirect(false);
+			return fw;
+		}
 		//나이가 19세 이하면 성인 등급 소설은 읽지 못한다.
 		if(age<19 && grade.equals("성인")) {
-			fw.setPath("main.jsp");
+			fw.setPath("main");
 			fw.setRedirect(true);
 			return fw;
 		}else {
@@ -68,27 +75,32 @@ public class NovelDetail {
 		HttpSession session= request.getSession();
 		String id=(String)session.getAttribute("id");
 		if(id.equals(novel.getId())) {
-			sb.append("<div class='root' id='author_button'>");
+			sb.append("<div class='rootBtn' id='author_button'>");
 			//등급변경 신청하는 버튼, 작품번호를 매개변수로 가져간다. 아이디의 경우는 세션에 저장되어 있음, novelDetail.jsp에 함수 작성
-			sb.append("<input type='submit' onclick='gradeChangeApply("+novel.getNovel_num()+")' value='등급변경'>");
+			sb.append("<input type='submit' class='btn btn-secondary' onclick='gradeChangeApply("+novel.getNovel_num()+")' value='등급변경'>");
 			//글쓰기 버튼, 작품번호를 가지고 write URL로 이동한다.
-			sb.append("<input type='button' onclick='writemove("+novel.getNovel_num()+")' value='글쓰기'>");
+			sb.append("<input type='button' class='btn btn-secondary' onclick='writemove("+novel.getNovel_num()+")' value='글쓰기'>");
 			sb.append("</div>");
+			sb.append("<div class='rootGrade'>");
 			sb.append("<p>현재등급: "+novel.getGrade()+"</p>");
+			sb.append("</div>");
 		}else {
-			sb.append("<div class='root' id='bottom'>");
-			sb.append("<input type='button' onclick='preferenceAdd("+novel.getNovel_num()+")' value='선호작 추가'>");
-			sb.append("<input type='button' id='modalopen' value='구매'>");
+			sb.append("<div class='rootBtn' id='bottom'>");
+			sb.append("<input type='button' class='btn btn-secondary' onclick='preferenceAdd("+novel.getNovel_num()+")' value='선호작 추가'>");
+			if(novel.getPay_n_free().equals("유료")){ //작품이 유료일 경우에만 구매 버튼이 생긴다
+			sb.append("<input type='button' class='btn btn-secondary' id='modalopen' value='구매'>");}
 			sb.append("</div>");
+			sb.append("<div class='rootGrade'>");
 			sb.append("<p>현재등급: "+novel.getGrade()+"</p>");
+			sb.append("</div>");
 		}
 		sb.append("<div class='root' id=\"contents_container\">");
 		sb.append("<div class='root' id=\"contents\">");
 		sb.append("</div>");
-		sb.append("<div class='root' id=\"paging\">");
+		sb.append("<div class='rootBtn' id=\"paging\">");
 		sb.append("페이징 버튼");
 		sb.append("</div>"); 
-		sb.append("<input type='button' id='listBtn' onclick='moveMain()' value='메인으로'>");
+		sb.append("<input type='button' class='btn btn-primary' id='listBtn' onclick='moveMain()' value='메인으로'>");
 		sb.append("</div>"); //container End
 		
 		return sb.toString();
