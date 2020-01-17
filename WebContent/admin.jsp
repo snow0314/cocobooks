@@ -57,7 +57,7 @@ table{
 	text-decoration:none;
 	text-shadow:0px 1px 0px #1570cd;
 	margin-left: 300px;
-	margin-top: -100px;
+	
 	
 }
 .myButton:hover {
@@ -104,9 +104,8 @@ table{
   </div>
   <div class="bottom" id="bottom">
   </div>
-
 </body>
-<script src="jsFile/admin.js?ver2">
+<script src="jsFile/admin.js?ver3">
 
 
 </script>
