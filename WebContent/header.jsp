@@ -99,7 +99,7 @@ background-color: #F2F2F2;}
 	<div class="main_menu">
 		<div class="menu"><input type="submit" value="무료 웹소설" class="freeWeb" formaction="freewebfiction"></div>
 		<div class="menu"><input type="submit" value="유료 웹소설" class="freeWeb" formaction="faidewebfiction"></div>
-		<div class="menu">독자 게시판</div>
+		<div class="menu"><input type="submit" value="독자 게시판" class="freeWeb" formaction="userview"></div>
 	</div>
 	</form>
 	<script type="text/javascript">
