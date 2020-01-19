@@ -72,6 +72,10 @@
  .gitt{
  width: 100%;
  height: 100%;}
+ .chargeBox1,#chargeBox2{
+ 
+ width: 100%;
+ margin-left: 0;}
 	</style>
 </head>
 <body>

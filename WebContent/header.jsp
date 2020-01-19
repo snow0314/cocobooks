@@ -21,11 +21,12 @@ body{
 			z-index: 10;
 		}
 		.header_menu{
-			position: relative;
-			display: flex;
 			font-size: 15px;
-			padding-left: 1200px;
 			font-family: fantasy;
+			z-index: 10;
+			float: right;
+			display: flex;
+			margin-right: 30px;
 			
 		}
 		.header_item{
@@ -83,7 +84,6 @@ body{
 		img{
 		cursor: pointer;
 		}
-		
 	</style>
 </head>
 <body>
@@ -92,6 +92,7 @@ body{
 	<div class="header_logo">
 	<img onclick="coco()" src="image/logo.png?ver1" class="header_image" alt="logo" >
 	</div>
+
 	<div class="header_search">
 		<input type="text" placeholder="작품명,작가명" class="search_text" name="search_box" id="search_box" value="">
 		<input type="submit" value="통합검색" class="search_button" formaction="searchboard">
