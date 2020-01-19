@@ -33,11 +33,12 @@
 		.chargeBox1{
 			margin-top: 70px;
 			border: 1px solid #2E9AFE;
-			width: 100%;
+			width: 900px;
 			height: 500px;
 			border-radius: 40px;
 			text-align: center;
 			background-color:  #2E9AFE;
+			margin-left: 300px;
 		}
 		.chargeBoxText{
 			font-size: 30px;
@@ -84,7 +85,7 @@
 <body>
 	<form method="post">
 		<div class="chargeMainText">결제 페이지</div>
-		<div class="chargeBox1">
+		<div class="chargeBox1" id="chargeBox2">
 			<div class="chargeBoxText">결제 금액</div>
 			<div class="coin1">
 				<input type="radio" name="radio" value="1000" class="radioc">

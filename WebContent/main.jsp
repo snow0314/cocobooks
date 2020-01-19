@@ -9,19 +9,20 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style type="text/css">
 body{
+
 			background-color: #F2F2F2;
 		}
 .free_best {
 	border: 4px solid #2E9AFE;
 	width: 920px;
-	height: 790px;
+	height: 950px;
 }
 
 .pay_best {
 	margin-left: 8px;
 	border: 4px solid #2E9AFE;
 	width: 930px;
-	height: 790px;
+	height: 950px;
 }
 
 .novel_category {
@@ -153,7 +154,7 @@ height: 100%;
 		}
 		document.onkeydown = doNotReload;
 		
-		var loginNovel="${loginNovel}""
+		var loginNovel="${loginNovel}";
 			console.log("${loginNovel}");
 			if(loginNovel=="로그인 후 이용해주세요"){
 				alert("${loginNovel}");
