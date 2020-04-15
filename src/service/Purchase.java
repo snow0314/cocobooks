@@ -23,9 +23,9 @@ public class Purchase {
 		int coin=pDao.coinCheck(id); //해당 아이디의 코인수를 가져온다
 		boolean result=false;
 		
-		if(coin>(purchase.length+1)*100) {
+		if(coin>(purchase.length)*100) {
 			result=pDao.buynovel(id,purchase);
-			pDao.coinDown(id,coin-((purchase.length+1)*100));
+			pDao.coinDown(id,coin-((purchase.length)*100));
 		}else {
 			return "코인이 부족합니다.";
 		}
